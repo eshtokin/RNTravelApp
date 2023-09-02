@@ -12,6 +12,7 @@ const Colors = {
   },
   black: {
     0: '#FFFFFF',
+    10: '#FAFAFA',
     100: '#F3F3F3',
     200: '#E8E8E8',
     300: '#BABABA',
