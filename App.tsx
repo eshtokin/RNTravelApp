@@ -4,7 +4,6 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native'
@@ -13,7 +12,9 @@ import {
   TypographyView,
   Button,
   ButtonView,
+  Category,
 } from './src/components'
+import {categoryIconBeach, categoryIconMountain} from './assets/icons'
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark'
@@ -29,6 +30,15 @@ function App(): JSX.Element {
         <ColorPalleteView />
         <TypographyView />
         <ButtonView />
+        <View style={{flexDirection: 'row'}}>
+          <Category label="Beach" icon={categoryIconBeach} onPress={() => {}} />
+          <Category
+            active
+            label="Mountain"
+            icon={categoryIconMountain}
+            onPress={() => {}}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
