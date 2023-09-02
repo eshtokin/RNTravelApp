@@ -8,7 +8,12 @@ import {
   useColorScheme,
   View,
 } from 'react-native'
-import ColorPalleteView from './src/components/ColorPalleteView'
+import {
+  ColorPalleteView,
+  TypographyView,
+  Button,
+  ButtonView,
+} from './src/components'
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark'
@@ -20,8 +25,10 @@ function App(): JSX.Element {
   return (
     <SafeAreaView style={{flex: 1}}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView>
+      <ScrollView style={{backgroundColor: 'white'}}>
         <ColorPalleteView />
+        <TypographyView />
+        <ButtonView />
       </ScrollView>
     </SafeAreaView>
   )

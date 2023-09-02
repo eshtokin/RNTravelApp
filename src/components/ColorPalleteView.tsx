@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, Text} from 'react-native'
 import Colors from '../utils/Colors'
+import Typography from '../utils/Typography'
 
 const ColorPalleteView = () => {
   const colorEntries = React.useMemo(
@@ -17,7 +18,7 @@ const ColorPalleteView = () => {
           <View
             key={item[0].toString()}
             style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{color: 'white'}}>{item[0]}</Text>
+            <Text style={Typography.headline[400]}>{item[0]}</Text>
             <View style={{flexDirection: 'row'}}>
               {typeof item[1] === 'object' &&
                 item[1].map(color => {
