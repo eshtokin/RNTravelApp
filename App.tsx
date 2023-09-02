@@ -17,6 +17,8 @@ import {
 } from './src/components'
 import {categoryIconBeach, categoryIconMountain} from './assets/icons'
 import {MOCK_PACKAGE} from './src/store/mock'
+import {LogoBlack, LogoWhite} from './assets/icons/svg'
+import Colors from './src/utils/Colors'
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark'
@@ -50,6 +52,10 @@ function App(): JSX.Element {
           image={0}
           onHeartIconPress={() => {}}
         />
+        <LogoBlack />
+        <View style={{backgroundColor: Colors.black[300]}}>
+          <LogoWhite />
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
