@@ -13,8 +13,10 @@ import {
   Button,
   ButtonView,
   Category,
+  Package,
 } from './src/components'
 import {categoryIconBeach, categoryIconMountain} from './assets/icons'
+import {MOCK_PACKAGE} from './src/store/mock'
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark'
@@ -39,6 +41,15 @@ function App(): JSX.Element {
             onPress={() => {}}
           />
         </View>
+        <Package
+          name={MOCK_PACKAGE.name}
+          description={MOCK_PACKAGE.description}
+          price={MOCK_PACKAGE.price}
+          rate={MOCK_PACKAGE.rate}
+          inFavourite={true}
+          image={0}
+          onHeartIconPress={() => {}}
+        />
       </ScrollView>
     </SafeAreaView>
   )
