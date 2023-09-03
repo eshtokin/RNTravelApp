@@ -15,6 +15,7 @@ import {
   Category,
   Package,
   Destination,
+  Rate,
 } from './src/components'
 import {categoryIconBeach, categoryIconMountain} from './assets/icons'
 import {MOCK_PACKAGE} from './src/store/mock'
@@ -57,6 +58,9 @@ function App(): JSX.Element {
         <View style={{backgroundColor: Colors.black[300]}}>
           <LogoWhite />
         </View>
+        <Rate value={5} size="large" />
+        <Rate value={4} size="medium" />
+        <Rate value={3} size="small" />
         <Destination
           inFavourites={true}
           name={MOCK_PACKAGE.name}
