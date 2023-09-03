@@ -14,6 +14,7 @@ import {
   ButtonView,
   Category,
   Package,
+  Destination,
 } from './src/components'
 import {categoryIconBeach, categoryIconMountain} from './assets/icons'
 import {MOCK_PACKAGE} from './src/store/mock'
@@ -56,6 +57,14 @@ function App(): JSX.Element {
         <View style={{backgroundColor: Colors.black[300]}}>
           <LogoWhite />
         </View>
+        <Destination
+          inFavourites={true}
+          name={MOCK_PACKAGE.name}
+          location={MOCK_PACKAGE.location}
+          rate={MOCK_PACKAGE.rate}
+          onFavIconPress={() => {}}
+          onDestinationPress={() => {}}
+        />
       </ScrollView>
     </SafeAreaView>
   )

@@ -9,11 +9,8 @@ import {
 } from 'react-native'
 import Colors from '../utils/Colors'
 import Typography from '../utils/Typography'
-import {
-  HeartIconFilled,
-  HeartIconOutlined,
-  StarIconFilled,
-} from '../../assets/icons/svg'
+import {HeartIconFilled, HeartIconOutlined} from '../../assets/icons/svg'
+import Rate from './Rate'
 
 type PackageProps = {
   name: string
@@ -42,17 +39,7 @@ const Package: React.FC<PackageProps> = ({
         </Pressable>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.price}>${price.toFixed(2)}</Text>
-        <View style={styles.rateContainer}>
-          {Array(5)
-            .fill(undefined)
-            .map((_, index) => (
-              <StarIconFilled
-                key={index.toString()}
-                filled={index - rate < 0}
-              />
-            ))}
-          <Text style={styles.rate}>{rate}</Text>
-        </View>
+        <Rate value={rate} />
         <Text style={styles.description} numberOfLines={2}>
           {description}
         </Text>
@@ -95,15 +82,6 @@ const styles = StyleSheet.create({
   price: {
     ...Typography.headline[200],
     color: Colors.error[500],
-  },
-  rateContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
-  },
-  rate: {
-    ...Typography.heading[200],
-    color: Colors.black[900],
   },
 })
 export default Package
