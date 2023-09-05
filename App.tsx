@@ -19,6 +19,7 @@ import {
   Rate,
   Input,
   Switch,
+  Header,
 } from './src/components'
 import {categoryIconBeach, categoryIconMountain} from './assets/icons'
 import {MOCK_PACKAGE} from './src/store/mock'
@@ -92,6 +93,7 @@ function App(): JSX.Element {
           onChageText={setPassword}
         />
         <Switch onToggle={flag => {}} value={false} />
+        <Header />
       </ScrollView>
     </SafeAreaView>
   )
