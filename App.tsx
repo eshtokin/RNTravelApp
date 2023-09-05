@@ -18,6 +18,7 @@ import {
   Destination,
   Rate,
   Input,
+  Switch,
 } from './src/components'
 import {categoryIconBeach, categoryIconMountain} from './assets/icons'
 import {MOCK_PACKAGE} from './src/store/mock'
@@ -90,6 +91,7 @@ function App(): JSX.Element {
           value={password}
           onChageText={setPassword}
         />
+        <Switch onToggle={flag => {}} value={false} />
       </ScrollView>
     </SafeAreaView>
   )
