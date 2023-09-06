@@ -11,6 +11,7 @@ const Colors = {
     900: '#78560C',
   },
   black: {
+    transparent: 'rgba(0, 0, 0, 0.0)',
     0: '#FFFFFF',
     10: '#FAFAFA',
     100: '#F3F3F3',

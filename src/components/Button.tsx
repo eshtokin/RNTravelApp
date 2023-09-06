@@ -20,6 +20,7 @@ type ButtonProps = {
   disabled?: boolean
   label?: String
   onPress: () => void
+  addStyles?: ViewStyle
 }
 const Button: React.FC<ButtonProps> = ({
   type = 'primary',
@@ -29,6 +30,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   label,
   onPress,
+  addStyles,
 }) => {
   const [buttonState, setButtonState] = React.useState<
     'pressed' | 'disabled' | ''
@@ -57,6 +59,7 @@ const Button: React.FC<ButtonProps> = ({
         styles.container,
         styles[containerSize] as ViewStyle,
         styles[containerType] as ViewStyle,
+        addStyles,
         'pressed' === buttonState && (styles[pressedStyleKey] as ViewStyle),
         'disabled' === buttonState && (styles[disabledStyleKey] as ViewStyle),
         icon === 'icon-only' && (containerSizeForIconOnly as ViewStyle),

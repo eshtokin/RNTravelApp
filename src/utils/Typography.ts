@@ -28,7 +28,7 @@ const heading = StyleSheet.create({
 const bodyText = StyleSheet.create({
   300: {
     fontSize: 16,
-    lineHeight: 24,
+    lineHeight: 26, // 24
     ...fontWeight.regular,
   },
   200: {
@@ -75,8 +75,10 @@ const headline = StyleSheet.create({
     ...fontWeight.medium,
   },
   300: {
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 16,
+    lineHeight: 26,
+    // fontSize: 12,
+    // lineHeight: 16,
     ...fontWeight.medium,
   },
   200: {

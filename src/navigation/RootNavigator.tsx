@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
-import {Onboarding} from '../../features/Onboarding'
-import {ComponentsView} from '../../features/ComponentsView'
+import {Onboarding} from '../features/Onboarding'
+import {ComponentsView} from '../features/ComponentsView'
 
 export enum Screens {
   Components = 'Components',
