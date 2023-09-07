@@ -1,28 +1,33 @@
 import React from 'react'
-import {FlatList} from 'react-native'
+import {SectionList} from 'react-native'
 import {PageComponent} from '../components'
 import {ONBOARDING_DATA} from '../onboarding_info'
 import SCREEN_SIZE from '../../../utils/ScreenSIze'
 
 type DinamicContentProps = {
-  listRef: React.Ref<FlatList>
+  listRef: React.Ref<SectionList>
 }
 const DinamicContent: React.FC<DinamicContentProps> = ({listRef}) => {
   return (
-    <FlatList
-      horizontal
-      scrollEnabled={false}
+    <SectionList
       ref={listRef}
-      data={ONBOARDING_DATA}
-      style={{width: SCREEN_SIZE.width, height: SCREEN_SIZE.height}}
+      scrollEnabled={false}
+      horizontal
+      style={{
+        width: SCREEN_SIZE.width,
+        height: SCREEN_SIZE.height,
+      }}
+      sections={ONBOARDING_DATA}
       keyExtractor={item => item.title}
-      renderItem={({item: {backgraundImage, title, text}}) => (
-        <PageComponent
-          backgroundImage={backgraundImage}
-          title={title}
-          text={text}
-        />
-      )}
+      renderItem={({item, section}) => {
+        return (
+          <PageComponent
+            backgroundImage={item.backgraundImage}
+            text={item.text}
+            title={item.title}
+          />
+        )
+      }}
     />
   )
 }

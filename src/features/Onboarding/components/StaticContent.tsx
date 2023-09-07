@@ -22,7 +22,7 @@ const StaticContent: React.FC<StaticContentProps> = ({
         type={'primary'}
         icon={'label-only'}
         size={'large'}
-        label={ONBOARDING_DATA[currentIndex].buttonLabel}
+        label={ONBOARDING_DATA[currentIndex].data[0].buttonLabel}
         onPress={onNextPress}
       />
     </View>

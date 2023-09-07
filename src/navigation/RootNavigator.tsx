@@ -2,18 +2,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
 import {Onboarding} from '../features/Onboarding'
 import {ComponentsView} from '../features/ComponentsView'
+import {Login} from '../features/Login'
+import {RootStackProps, Screens} from './types'
 
-export enum Screens {
-  Components = 'Components',
-  Onboarding = 'Onboarding',
-}
-
-export type RootStackProps = {
-  [Screens.Components]: undefined
-  [Screens.Onboarding]: undefined
-}
-
-const {Screen, Navigator} = createNativeStackNavigator()
+const {Screen, Navigator} = createNativeStackNavigator<RootStackProps>()
 
 type RootNavigationProps = {}
 const RootNavigation: React.FC<RootNavigationProps> = ({}) => {
@@ -24,6 +16,7 @@ const RootNavigation: React.FC<RootNavigationProps> = ({}) => {
         component={Onboarding}
         options={{headerShown: false}}
       />
+      <Screen name={Screens.Login} component={Login} />
       <Screen name={Screens.Components} component={ComponentsView} />
     </Navigator>
   )

@@ -1,8 +1,6 @@
 #import "AppDelegate.h"
-
-#import <React/RCTBundleURLProvider.h>
-
 #import "RNSplashScreen.h"
+#import <React/RCTBundleURLProvider.h>
 
 @implementation AppDelegate
 
@@ -14,7 +12,7 @@
   self.initialProps = @{};
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
-  [RNSplashScreen show];
+ [RNSplashScreen show];
   return YES;
 }
 
