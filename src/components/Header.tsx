@@ -3,6 +3,7 @@ import {Pressable, StyleSheet, Text, View, useAnimatedValue} from 'react-native'
 import Typography from '../utils/Typography'
 import Colors from '../utils/Colors'
 import {BackArrow, LoupeIcon, SquarePlus} from '../../assets/icons/svg'
+import {useNavigation} from '@react-navigation/native'
 
 type HeaderProps = {
   withBackIcon?: boolean
@@ -16,7 +17,8 @@ const Header: React.FC<HeaderProps> = ({
   onPlusIconPress,
   onSearchIconPress,
 }) => {
-  const goBack = () => {}
+  const navigation = useNavigation()
+  const goBack = () => navigation.canGoBack() && navigation.goBack()
   return (
     <View
       style={[styles.container, transparent && styles.transparentContainer]}>

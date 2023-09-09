@@ -11,3 +11,7 @@ export {default as SecureEye} from './SecureEye'
 export {default as UnsecureEye} from './UnsecureEye'
 export {default as BackArrow} from './BackArrow'
 export {default as SquarePlus} from './SquarePlus'
+
+export {default as InstagramIcon} from './InstagramIcon'
+export {default as GoogleIcon} from './GoogleIcon'
+export {default as FacebookIcon} from './FacebookIcon'

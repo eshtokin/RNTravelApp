@@ -55,8 +55,8 @@ const headline = StyleSheet.create({
     ...fontWeight.semiBold,
   },
   700: {
-    fontSize: 20,
-    lineHeight: 24,
+    fontSize: 28,
+    lineHeight: 34,
     ...fontWeight.semiBold,
   },
   600: {

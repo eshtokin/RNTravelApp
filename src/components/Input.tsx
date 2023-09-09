@@ -77,9 +77,7 @@ const Input: React.FC<InputProps> = ({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 16,
-  },
+  container: {marginTop: 11},
   input: {
     paddingHorizontal: 20,
     paddingVertical: 12,
