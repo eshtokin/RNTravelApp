@@ -30,7 +30,6 @@ const Switch: React.FC<SwitchProps> = ({value, onToggle}) => {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 16,
     paddingHorizontal: 5,
     width: 55,
     height: 30,

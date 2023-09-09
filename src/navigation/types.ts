@@ -3,6 +3,7 @@ export enum Screens {
   Onboarding = 'Onboarding',
   Login = 'Login',
   ForgotPassword = 'ForgotPassword',
+  CreateAccount = 'CreateAccount',
 }
 
 export type RootStackProps = {
@@ -10,4 +11,5 @@ export type RootStackProps = {
   [Screens.Onboarding]: undefined
   [Screens.Login]: undefined
   [Screens.ForgotPassword]: undefined
+  [Screens.CreateAccount]: undefined
 }

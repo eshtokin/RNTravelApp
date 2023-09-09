@@ -35,13 +35,13 @@ const Login: React.FC<LoginProps> = ({}) => {
     }
   }
 
-  const setToggleCheckBox = (newValue: boolean) => {
-    setCheckboxValue(newValue)
-  }
+  const setToggleCheckBox = (newValue: boolean) => setCheckboxValue(newValue)
 
-  const onForgotPasswordPress = () => {
+  const onForgotPasswordPress = () =>
     navigation.navigate(Screens.ForgotPassword)
-  }
+
+  const onCreateAccountHandler = () =>
+    navigation.navigate(Screens.CreateAccount)
 
   const onSignInHandler = () => {
     console.log(
@@ -76,7 +76,7 @@ const Login: React.FC<LoginProps> = ({}) => {
           icon={'label-only'}
           size={'large'}
           label={'Create Account'}
-          onPress={() => {}}
+          onPress={onCreateAccountHandler}
         />
         <Button
           type={'primary'}

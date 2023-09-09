@@ -13,7 +13,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
   const onSubmitHandler = () => {}
   return (
     <View style={[styles.container, {paddingBottom: 20 + insets.bottom}]}>
-      <Header withBackIcon />
+      <Header withBackIcon withoutTitle />
       <View style={styles.contentContainer}>
         <View style={styles.infoContainer}>
           <Text style={{...Typography.bodyText[300], color: Colors.black[400]}}>

@@ -3,7 +3,7 @@ import React, {useEffect} from 'react'
 import {Onboarding} from '../features/Onboarding'
 import {ComponentsView} from '../features/ComponentsView'
 import {RootStackProps, Screens} from './types'
-import {ForgotPassword, Login} from '../features/Login'
+import {CreateAccount, ForgotPassword, Login} from '../features/Login'
 
 const {Screen, Navigator} = createNativeStackNavigator<RootStackProps>()
 
@@ -20,6 +20,7 @@ const RootNavigation: React.FC<RootNavigationProps> = ({}) => {
       />
       <Screen name={Screens.Login} component={Login} />
       <Screen name={Screens.ForgotPassword} component={ForgotPassword} />
+      <Screen name={Screens.CreateAccount} component={CreateAccount} />
       <Screen name={Screens.Components} component={ComponentsView} />
     </Navigator>
   )
