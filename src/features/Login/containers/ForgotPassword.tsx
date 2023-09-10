@@ -1,6 +1,6 @@
 import React from 'react'
 import {StyleSheet, Text, View} from 'react-native'
-import {useSafeAreaInsets} from 'react-native-safe-area-context'
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context'
 import {Button, Header, Input} from '../../../components'
 import Typography from '../../../utils/Typography'
 import Colors from '../../../utils/Colors'
@@ -12,7 +12,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
 
   const onSubmitHandler = () => {}
   return (
-    <View style={[styles.container, {paddingBottom: 20 + insets.bottom}]}>
+    <SafeAreaView
+      style={[styles.container, {paddingBottom: 20 + insets.bottom}]}>
       <Header withBackIcon withoutTitle />
       <View style={styles.contentContainer}>
         <View style={styles.infoContainer}>
@@ -33,7 +34,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

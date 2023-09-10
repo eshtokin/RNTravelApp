@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, View} from 'react-native'
+import {StyleSheet, Text, View} from 'react-native'
 import {CodeField, Cursor} from 'react-native-confirmation-code-field'
 import Colors from '../../../utils/Colors'
 import Typography from '../../../utils/Typography'
@@ -15,35 +15,18 @@ const CreateAccountOTP: React.FC<CreateAccountOTPProps> = ({}) => {
         value={otp}
         onChangeText={setOtp}
         cellCount={4}
-        rootStyle={{marginBottom: 27}}
+        rootStyle={styles.inputRootStyle}
         keyboardType="number-pad"
         textContentType="oneTimeCode"
         renderCell={({index, symbol, isFocused}) => (
-          <View
-            key={'OPT-' + index}
-            style={{
-              paddingHorizontal: 20,
-              paddingVertical: 17,
-              borderWidth: 1,
-              borderRadius: 15,
-              borderColor: Colors.brand[500],
-            }}>
-            <Text
-              key={index}
-              style={[
-                {
-                  width: 30,
-                  textAlign: 'center',
-                  ...Typography.bodyText[200],
-                  color: Colors.black[900],
-                },
-              ]}>
+          <View key={'OPT-' + index} style={styles.numberWrapper}>
+            <Text key={index} style={styles.text}>
               {symbol || (isFocused ? <Cursor /> : null)}
             </Text>
           </View>
         )}
       />
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.timerWrapper}>
         <Text
           style={{
             ...Typography.bodyText[100],
@@ -63,5 +46,26 @@ const CreateAccountOTP: React.FC<CreateAccountOTPProps> = ({}) => {
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  inputRootStyle: {
+    marginBottom: 27,
+    marginTop: 12,
+  },
+  numberWrapper: {
+    paddingHorizontal: 20,
+    paddingVertical: 17,
+    borderWidth: 1,
+    borderRadius: 15,
+    borderColor: Colors.brand[500],
+  },
+  text: {
+    width: 30,
+    textAlign: 'center',
+    ...Typography.bodyText[200],
+    color: Colors.black[900],
+  },
+  timerWrapper: {flexDirection: 'row'},
+})
 
 export default CreateAccountOTP
