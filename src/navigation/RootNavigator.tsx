@@ -5,6 +5,7 @@ import {ComponentsView} from '../features/ComponentsView'
 import {RootStackProps, Screens} from './types'
 import {CreateAccount, ForgotPassword, Login} from '../features/Login'
 import ChooseFavouritePlace from '../features/Login/containers/ChooseFavouritePlace'
+import HomeNavigator from './HomeStack'
 
 const {Screen, Navigator} = createNativeStackNavigator<RootStackProps>()
 
@@ -26,6 +27,7 @@ const RootNavigation: React.FC<RootNavigationProps> = ({}) => {
         name={Screens.ChooseFavouritePlace}
         component={ChooseFavouritePlace}
       />
+      <Screen name={Screens.Main} component={HomeNavigator} />
       <Screen name={Screens.Components} component={ComponentsView} />
     </Navigator>
   )

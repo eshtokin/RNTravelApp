@@ -5,9 +5,12 @@ import Colors from '../../../utils/Colors'
 import {Button, Category} from '../../../components'
 import {kutaBeachDestinationSmall} from '../../../../assets/images'
 import {useState} from 'react'
+import {NavigationContainer, useNavigation} from '@react-navigation/native'
+import {Screens} from '../../../navigation/types'
 
 type ChooseFavouritePlaceProps = {}
 const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
+  const navigation = useNavigation()
   const [selectedCategory, setSelectedCategory] = useState<string[]>([])
 
   const onCategoryPressHandler = (categoryName: string) => {
@@ -21,6 +24,8 @@ const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
       setSelectedCategory([...selectedCategory, categoryName])
     }
   }
+
+  const onSubmitHandler = () => navigation.navigate(Screens.Main)
 
   return (
     <SafeAreaView
@@ -65,7 +70,7 @@ const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
         icon={'label-only'}
         size={'large'}
         label={'Next'}
-        onPress={() => {}}
+        onPress={onSubmitHandler}
         addStyles={{
           marginTop: 30,
           marginHorizontal: 30,
