@@ -19,6 +19,7 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import Typography from '../../../utils/Typography'
 import {useNavigation} from '@react-navigation/native'
 import {Screens} from '../../../navigation/types'
+import {SafeAreaView} from 'react-native-safe-area-context'
 
 type LoginProps = {}
 const Login: React.FC<LoginProps> = ({}) => {
@@ -56,9 +57,7 @@ const Login: React.FC<LoginProps> = ({}) => {
     )
   }
   return (
-    <ScrollView
-      contentContainerStyle={styles.contentContainer}
-      style={styles.container}>
+    <SafeAreaView style={[styles.container, styles.contentContainer]}>
       <StatusBar barStyle={'dark-content'} backgroundColor={Colors.black[0]} />
       <LogoBlack />
 
@@ -91,7 +90,7 @@ const Login: React.FC<LoginProps> = ({}) => {
         <GoogleIcon />
         <FacebookIcon />
       </View>
-    </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -165,13 +164,13 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     width: '100%',
     gap: 20,
-    marginTop: 100,
   },
   socialWrapper: {flexDirection: 'row', gap: 50, marginTop: 50},
   //
   inputsContainer: {
     width: '100%',
-    marginTop: 100,
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   checkboxWrapper: {
     flexDirection: 'row',
