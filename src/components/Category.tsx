@@ -28,11 +28,9 @@ const Category: React.FC<CategoryProps> = ({
     <Pressable
       style={[styles.container, active && styles.containerActive]}
       onPress={onPress}>
-      {active && (
-        <View style={{position: 'absolute', top: 10, right: 10}}>
-          <CircleChecked />
-        </View>
-      )}
+      <View style={styles.activeIconPosition}>
+        {active && <CircleChecked />}
+      </View>
       <View style={styles.iconContainer}>
         <Image source={icon} style={styles.icon} />
       </View>
@@ -49,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 10,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: Colors.black[100],
   },
   containerActive: {
@@ -64,6 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   icon: {
     width: 40,
     height: 40,
@@ -71,6 +70,11 @@ const styles = StyleSheet.create({
   label: {
     ...Typography.headline[300],
     color: Colors.black[900],
+  },
+  activeIconPosition: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
   },
 })
 

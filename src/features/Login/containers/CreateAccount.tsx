@@ -11,6 +11,8 @@ import {
   CreateAccountPassword,
   CreateAccountSuccessfully,
 } from '../components'
+import {useNavigation} from '@react-navigation/native'
+import {Screens} from '../../../navigation/types'
 
 const STEPS = [
   {
@@ -37,8 +39,14 @@ const STEPS = [
 
 type CreateAccountProps = {}
 const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
+  const navigation = useNavigation()
   const [currentStep, setCurrentStep] = React.useState(0)
-  const submitButtonHandler = () => setCurrentStep((currentStep + 1) % 5)
+  const submitButtonHandler = () => {
+    if (currentStep + 1 === 5) {
+      navigation.navigate(Screens.ChooseFavouritePlace)
+    }
+    setCurrentStep((currentStep + 1) % 5)
+  }
   return (
     <SafeAreaView style={styles.container}>
       {currentStep < 4 && <Header withBackIcon withoutTitle />}

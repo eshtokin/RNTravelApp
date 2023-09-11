@@ -4,6 +4,7 @@ import {Onboarding} from '../features/Onboarding'
 import {ComponentsView} from '../features/ComponentsView'
 import {RootStackProps, Screens} from './types'
 import {CreateAccount, ForgotPassword, Login} from '../features/Login'
+import ChooseFavouritePlace from '../features/Login/containers/ChooseFavouritePlace'
 
 const {Screen, Navigator} = createNativeStackNavigator<RootStackProps>()
 
@@ -21,6 +22,10 @@ const RootNavigation: React.FC<RootNavigationProps> = ({}) => {
       <Screen name={Screens.Login} component={Login} />
       <Screen name={Screens.ForgotPassword} component={ForgotPassword} />
       <Screen name={Screens.CreateAccount} component={CreateAccount} />
+      <Screen
+        name={Screens.ChooseFavouritePlace}
+        component={ChooseFavouritePlace}
+      />
       <Screen name={Screens.Components} component={ComponentsView} />
     </Navigator>
   )
