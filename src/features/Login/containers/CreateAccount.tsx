@@ -9,6 +9,7 @@ import {
   CreateAccountName,
   CreateAccountOTP,
   CreateAccountPassword,
+  CreateAccountSuccessfully,
 } from '../components'
 
 const STEPS = [
@@ -28,38 +29,46 @@ const STEPS = [
     title: 'OTP Verification',
     buttonLabel: 'Submit',
   },
+  {
+    title: 'Successfully created an account',
+    buttonLabel: 'Let’s Explore!',
+  },
 ]
 
 type CreateAccountProps = {}
 const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
   const [currentStep, setCurrentStep] = React.useState(0)
-  const submitButtonHandler = () => setCurrentStep((currentStep + 1) % 4)
+  const submitButtonHandler = () => setCurrentStep((currentStep + 1) % 5)
   return (
     <SafeAreaView style={styles.container}>
-      <Header withBackIcon withoutTitle />
+      {currentStep < 4 && <Header withBackIcon withoutTitle />}
       <View style={styles.contentContainer}>
-        <View>
-          <Text
-            style={{
-              ...Typography.bodyText[300],
-              color: Colors.black[400],
-              marginTop: 30,
-            }}>
-            Create Your Account
-          </Text>
-          <Text style={styles.title}>{STEPS[currentStep].title}</Text>
+        {currentStep > 3 ? (
+          <CreateAccountSuccessfully title={STEPS[currentStep].title} />
+        ) : (
           <View>
-            {currentStep === 0 ? (
-              <CreateAccountName />
-            ) : currentStep === 1 ? (
-              <CreateAccountEmail />
-            ) : currentStep === 2 ? (
-              <CreateAccountPassword />
-            ) : currentStep === 3 ? (
-              <CreateAccountOTP />
-            ) : null}
+            <Text
+              style={{
+                ...Typography.bodyText[300],
+                color: Colors.black[400],
+                marginTop: 30,
+              }}>
+              Create Your Account
+            </Text>
+            <Text style={styles.title}>{STEPS[currentStep].title}</Text>
+            <View>
+              {currentStep === 0 ? (
+                <CreateAccountName />
+              ) : currentStep === 1 ? (
+                <CreateAccountEmail />
+              ) : currentStep === 2 ? (
+                <CreateAccountPassword />
+              ) : currentStep === 3 ? (
+                <CreateAccountOTP />
+              ) : null}
+            </View>
           </View>
-        </View>
+        )}
         <Button
           type={'primary'}
           icon={'label-only'}
@@ -79,8 +88,8 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingHorizontal: 30,
+    paddingBottom: 30,
     justifyContent: 'space-between',
     backgroundColor: Colors.black[0],
   },

@@ -15,3 +15,5 @@ export {default as SquarePlus} from './SquarePlus'
 export {default as InstagramIcon} from './InstagramIcon'
 export {default as GoogleIcon} from './GoogleIcon'
 export {default as FacebookIcon} from './FacebookIcon'
+
+export {default as CreateAccountSuccessfullyIcon} from './CreateAccountSuccessfullyIcon'
