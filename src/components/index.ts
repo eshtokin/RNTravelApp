@@ -10,3 +10,5 @@ export {default as Destination} from './Destination'
 export {default as Input} from './Input'
 export {default as Switch} from './Switch'
 export {default as Header} from './Header'
+
+export {default as Text} from './Text'

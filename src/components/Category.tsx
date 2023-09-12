@@ -11,19 +11,35 @@ import Colors from '../utils/Colors'
 import Typography from '../utils/Typography'
 import {CircleChecked} from '../../assets/icons/svg'
 
-const beach = require('./../../assets/icons/category-beach.png')
 type CategoryProps = {
   label: string
   icon: ImageSourcePropType
   onPress: () => void
   active?: boolean
+  type?: 'small' | 'large'
 }
 const Category: React.FC<CategoryProps> = ({
   label,
   icon,
   onPress,
   active = false,
+  type = 'small',
 }) => {
+  if (type === 'small') {
+    return (
+      <Pressable
+        style={[styles.smallContainer, active && styles.containerActive]}
+        onPress={onPress}>
+        <View style={styles.activeIconPosition}>
+          {active && <CircleChecked />}
+        </View>
+        <View style={styles.smallIconContainer}>
+          <Image source={icon} style={styles.smallIcon} />
+        </View>
+        <Text style={styles.label}>{label}</Text>
+      </Pressable>
+    )
+  }
   return (
     <Pressable
       style={[styles.container, active && styles.containerActive]}
@@ -50,6 +66,19 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: Colors.black[100],
   },
+  smallContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    borderRadius: 20,
+    justifyContent: 'center',
+    gap: 10,
+    borderWidth: 2,
+    borderColor: Colors.black[100],
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 20,
+  },
   containerActive: {
     borderWidth: 2,
     borderColor: Colors.success[600],
@@ -62,10 +91,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  smallIconContainer: {
+    padding: 10,
+    borderRadius: 25,
+    backgroundColor: Colors.black[10],
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
   icon: {
     width: 40,
     height: 40,
+  },
+  smallIcon: {
+    width: 24,
+    height: 24,
   },
   label: {
     ...Typography.headline[300],

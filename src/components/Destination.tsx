@@ -1,12 +1,18 @@
 import React from 'react'
-import {ImageBackground, Pressable, StyleSheet, Text, View} from 'react-native'
+import {
+  ImageBackground,
+  ImageSourcePropType,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native'
 import Colors from '../utils/Colors'
 import {
   HeartIconFilled,
   HeartIconOutlined,
   Location,
 } from '../../assets/icons/svg'
-import {kutaBeachDestinationSmall} from '../../assets/images'
 import Rate from './Rate'
 import Typography from '../utils/Typography'
 import {Overlay} from '../../assets/decoration'
@@ -18,6 +24,7 @@ type DestinationProps = {
   inFavourites: boolean
   onDestinationPress: () => void
   onFavIconPress: () => void
+  photo: ImageSourcePropType
 }
 const Destination: React.FC<DestinationProps> = ({
   name,
@@ -26,13 +33,14 @@ const Destination: React.FC<DestinationProps> = ({
   inFavourites,
   onDestinationPress,
   onFavIconPress,
+  photo,
 }) => (
   <Pressable style={styles.container} onPress={onDestinationPress}>
     <ImageBackground
       style={styles.imageBackground}
       imageStyle={styles.backImageStyle}
-      source={kutaBeachDestinationSmall}
-      resizeMode="contain">
+      source={photo}
+      resizeMode="cover">
       <Pressable style={styles.favIconContainer} onPress={onFavIconPress}>
         {inFavourites ? (
           <HeartIconFilled />

@@ -21,8 +21,9 @@ import {
   Header,
   Switch,
 } from '../../components'
-import {MOCK_PACKAGE} from '../../store/mock'
 import Colors from '../../utils/Colors'
+import {kutaBeachDestinationSmall} from '../../../assets/images'
+import MOCK_PLACES from '../../store/mock'
 
 type ComponentsViewProps = {}
 const ComponentsView: React.FC<ComponentsViewProps> = ({}) => {
@@ -51,10 +52,10 @@ const ComponentsView: React.FC<ComponentsViewProps> = ({}) => {
           />
         </View>
         <Package
-          name={MOCK_PACKAGE.name}
-          description={MOCK_PACKAGE.description}
-          price={MOCK_PACKAGE.price}
-          rate={MOCK_PACKAGE.rate}
+          name={MOCK_PLACES[0].name}
+          description={MOCK_PLACES[0].description}
+          price={MOCK_PLACES[0].price}
+          rate={MOCK_PLACES[0].rate}
           inFavourite={true}
           image={0}
           onHeartIconPress={() => {}}
@@ -67,10 +68,11 @@ const ComponentsView: React.FC<ComponentsViewProps> = ({}) => {
         <Rate value={4} size="medium" />
         <Rate value={3} size="small" />
         <Destination
+          photo={kutaBeachDestinationSmall}
           inFavourites={true}
-          name={MOCK_PACKAGE.name}
-          location={MOCK_PACKAGE.location}
-          rate={MOCK_PACKAGE.rate}
+          name={MOCK_PLACES[0].name}
+          location={MOCK_PLACES[0].country}
+          rate={MOCK_PLACES[0].rate}
           onFavIconPress={() => {}}
           onDestinationPress={() => {}}
         />

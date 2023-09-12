@@ -13,7 +13,7 @@ type RootNavigationProps = {}
 const RootNavigation: React.FC<RootNavigationProps> = ({}) => {
   return (
     <Navigator
-      initialRouteName={Screens.Login}
+      initialRouteName={Screens.Main}
       screenOptions={{headerShown: false}}>
       <Screen
         name={Screens.Onboarding}
@@ -28,7 +28,6 @@ const RootNavigation: React.FC<RootNavigationProps> = ({}) => {
         component={ChooseFavouritePlace}
       />
       <Screen name={Screens.Main} component={HomeNavigator} />
-      <Screen name={Screens.Components} component={ComponentsView} />
     </Navigator>
   )
 }
