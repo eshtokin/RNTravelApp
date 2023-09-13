@@ -2,12 +2,12 @@ import {makeAutoObservable, reaction} from 'mobx'
 import MOCK_PLACES, {GeneratedPlace, Categories, MOCK_CATEGORIES} from './mock'
 
 export class Places {
+  searchValue: string = ''
   places = MOCK_PLACES
   selectedPlace: GeneratedPlace = MOCK_PLACES[0]
-  selectedCategory: Categories = Categories.all
-  searchValue: string = ''
   placesForSearch: GeneratedPlace[] = []
   categories = MOCK_CATEGORIES
+  selectedCategory: Categories = Categories.all
 
   constructor() {
     makeAutoObservable(this)

@@ -7,10 +7,12 @@ import Places from './components/PlaceList'
 import CategoryList from './components/CategoryList'
 import PopularPackagesList from './components/PopularPackageList'
 import {LoupeIcon} from '../../../assets/icons/svg'
+import {observer} from 'mobx-react-lite'
+import store from '../../store/RootStore'
 
 type HomeProps = {}
 const Home: React.FC<HomeProps> = ({}) => {
-  const [searchValue, setSearchValue] = useState('')
+  const {searchValue, changeSearchValue} = store.places
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView style={styles.scrollContainer}>
@@ -21,7 +23,7 @@ const Home: React.FC<HomeProps> = ({}) => {
           <Input
             label={'Search destination'}
             value={searchValue}
-            onChageText={setSearchValue}
+            onChageText={changeSearchValue}
             rightIcon={<LoupeIcon />}
           />
         </View>

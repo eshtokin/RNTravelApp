@@ -1,38 +1,48 @@
 import React from 'react'
 import {ScrollView, StyleSheet} from 'react-native'
-import MOCK_PLACES from '../../../store/mock'
+import {observer} from 'mobx-react-lite'
 import {Destination} from '../../../components'
 import TitleForSection from './TitleForSection'
+import store from '../../../store/RootStore'
 
-const Places: React.FC = () => {
+const Places: React.FC = observer(() => {
+  const {places, toggleFavouriteOnPlace} = store.places
+  const onFavIconPress = (placeName: string) => () =>
+    toggleFavouriteOnPlace(placeName)
+
   return (
     <>
       <TitleForSection title="Favorite Place" label="Explore" />
       <ScrollView
         horizontal
-        style={{flexGrow: 0}}
-        contentContainerStyle={{
-          gap: 20,
-          paddingVertical: 24,
-          paddingHorizontal: 30,
-        }}>
-        {MOCK_PLACES.map(({name, country, rate, photo}) => (
+        style={styles.scrollContainer}
+        contentContainerStyle={styles.scrollContent}>
+        {places.map(({name, country, rate, photo, inFavourites}) => (
           <Destination
             key={name}
-            inFavourites={true}
+            inFavourites={inFavourites}
             name={name}
             location={country}
             rate={rate}
             photo={photo}
-            onFavIconPress={() => {}}
+            onFavIconPress={onFavIconPress(name)}
             onDestinationPress={() => {}}
           />
         ))}
       </ScrollView>
     </>
   )
-}
+})
 
-const stylePlace = StyleSheet.create({})
+const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 0,
+  },
+  scrollContent: {
+    gap: 20,
+    paddingVertical: 24,
+    paddingHorizontal: 30,
+  },
+})
 
 export default Places

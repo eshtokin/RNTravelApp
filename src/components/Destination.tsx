@@ -16,6 +16,7 @@ import {
 import Rate from './Rate'
 import Typography from '../utils/Typography'
 import {Overlay} from '../../assets/decoration'
+import {observer} from 'mobx-react-lite'
 
 type DestinationProps = {
   name: string
@@ -26,41 +27,43 @@ type DestinationProps = {
   onFavIconPress: () => void
   photo: ImageSourcePropType
 }
-const Destination: React.FC<DestinationProps> = ({
-  name,
-  rate,
-  location,
-  inFavourites,
-  onDestinationPress,
-  onFavIconPress,
-  photo,
-}) => (
-  <Pressable style={styles.container} onPress={onDestinationPress}>
-    <ImageBackground
-      style={styles.imageBackground}
-      imageStyle={styles.backImageStyle}
-      source={photo}
-      resizeMode="cover">
-      <Pressable style={styles.favIconContainer} onPress={onFavIconPress}>
-        {inFavourites ? (
-          <HeartIconFilled />
-        ) : (
-          <HeartIconOutlined color={Colors.black[900]} />
-        )}
-      </Pressable>
-      <View style={styles.overlayPosition}>
-        <Overlay />
-      </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.name}>{name}</Text>
-        <View style={styles.locationContainer}>
-          <Location />
-          <Text style={styles.location}>{location}</Text>
+const Destination: React.FC<DestinationProps> = observer(
+  ({
+    name,
+    rate,
+    location,
+    inFavourites,
+    onDestinationPress,
+    onFavIconPress,
+    photo,
+  }) => (
+    <Pressable style={styles.container} onPress={onDestinationPress}>
+      <ImageBackground
+        style={styles.imageBackground}
+        imageStyle={styles.backImageStyle}
+        source={photo}
+        resizeMode="cover">
+        <Pressable style={styles.favIconContainer} onPress={onFavIconPress}>
+          {inFavourites ? (
+            <HeartIconFilled />
+          ) : (
+            <HeartIconOutlined color={Colors.black[900]} />
+          )}
+        </Pressable>
+        <View style={styles.overlayPosition}>
+          <Overlay />
         </View>
-        <Rate value={rate} whiteValue />
-      </View>
-    </ImageBackground>
-  </Pressable>
+        <View style={styles.infoContainer}>
+          <Text style={styles.name}>{name}</Text>
+          <View style={styles.locationContainer}>
+            <Location />
+            <Text style={styles.location}>{location}</Text>
+          </View>
+          <Rate value={rate} whiteValue />
+        </View>
+      </ImageBackground>
+    </Pressable>
+  ),
 )
 
 const styles = StyleSheet.create({
