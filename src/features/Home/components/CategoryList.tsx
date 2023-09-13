@@ -16,7 +16,7 @@ const CategoryList: React.FC<CategoryListProps> = ({}) => {
           paddingHorizontal: 30,
           paddingVertical: 25,
         }}>
-        {store.categories.map(({name, image}) => (
+        {store.places.categories.map(({name, image}) => (
           <Category
             key={name}
             type="small"
