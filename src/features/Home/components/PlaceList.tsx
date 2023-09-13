@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, StyleSheet} from 'react-native'
+import {SectionList, StyleSheet} from 'react-native'
 import {observer} from 'mobx-react-lite'
 import {Destination} from '../../../components'
 import TitleForSection from './TitleForSection'
@@ -13,11 +13,12 @@ const Places: React.FC = observer(() => {
   return (
     <>
       <TitleForSection title="Favorite Place" label="Explore" />
-      <ScrollView
+      <SectionList
         horizontal
         style={styles.scrollContainer}
-        contentContainerStyle={styles.scrollContent}>
-        {places.map(({name, country, rate, photo, inFavourites}) => (
+        contentContainerStyle={styles.scrollContent}
+        sections={[{data: places}]}
+        renderItem={({item: {name, inFavourites, country, rate, photo}}) => (
           <Destination
             key={name}
             inFavourites={inFavourites}
@@ -28,8 +29,8 @@ const Places: React.FC = observer(() => {
             onFavIconPress={onFavIconPress(name)}
             onDestinationPress={() => {}}
           />
-        ))}
-      </ScrollView>
+        )}
+      />
     </>
   )
 })
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     gap: 20,
     paddingVertical: 24,
-    paddingHorizontal: 30,
+    paddingHorizontal: 10,
   },
 })
 

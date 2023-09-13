@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet} from 'react-native'
+import {FlatList, ScrollView, StyleSheet} from 'react-native'
 import TitleForSection from './TitleForSection'
 import {Category} from '../../../components'
 import store from '../../../store/RootStore'

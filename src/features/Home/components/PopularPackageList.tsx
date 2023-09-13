@@ -15,18 +15,20 @@ const PopularPackagesList = observer(() => {
     <View style={styles.container}>
       <TitleForSection title="Popular Packages" />
       <View style={[styles.scrollContainer, styles.scrollContentContainer]}>
-        {places.map(({name, description, rate, price, photo, inFavourites}) => (
-          <Package
-            key={name}
-            name={name}
-            description={description}
-            price={price}
-            rate={rate}
-            inFavourite={inFavourites}
-            image={photo}
-            onHeartIconPress={() => onFavIconPress(name)}
-          />
-        ))}
+        {places
+          .slice(0, 5)
+          .map(({name, description, rate, price, photo, inFavourites}) => (
+            <Package
+              key={name}
+              name={name}
+              description={description}
+              price={price}
+              rate={rate}
+              inFavourite={inFavourites}
+              image={photo}
+              onHeartIconPress={() => onFavIconPress(name)}
+            />
+          ))}
       </View>
     </View>
   )
