@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import {ScrollView, StyleSheet, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import Colors from '../../utils/Colors'
@@ -7,7 +6,6 @@ import Places from './components/PlaceList'
 import CategoryList from './components/CategoryList'
 import PopularPackagesList from './components/PopularPackageList'
 import {LoupeIcon} from '../../../assets/icons/svg'
-import {observer} from 'mobx-react-lite'
 import store from '../../store/RootStore'
 
 type HomeProps = {}

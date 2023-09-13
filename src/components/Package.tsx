@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
   heartIconContainer: {
     position: 'absolute',
     right: 0,
+    zIndex: 1000,
   },
   name: {
     ...Typography.headline[300],

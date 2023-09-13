@@ -1,6 +1,5 @@
 import {makeAutoObservable} from 'mobx'
 import places, {Places} from './PlacesStore'
-import {BottomTabBarHeightCallbackContext} from '@react-navigation/bottom-tabs'
 
 export type UserType = {
   email: string

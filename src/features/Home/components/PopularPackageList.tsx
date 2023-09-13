@@ -1,30 +1,37 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {StyleSheet, View} from 'react-native'
+import {observer} from 'mobx-react-lite'
 import TitleForSection from './TitleForSection'
-import MOCK_PLACES from '../../../store/mock'
 import {Package} from '../../../components'
+import store from '../../../store/RootStore'
 
-const PopularPackagesList = () => {
+const PopularPackagesList = observer(() => {
+  const {places, toggleFavouriteOnPlace} = store.places
+  const onFavIconPress = (name: string) => toggleFavouriteOnPlace(name)
+  useEffect(() => {
+    setTimeout(() => toggleFavouriteOnPlace(places[0].name), 1000)
+  }, [])
   return (
     <View style={styles.container}>
       <TitleForSection title="Popular Packages" />
       <View style={[styles.scrollContainer, styles.scrollContentContainer]}>
-        {MOCK_PLACES.map(({name, description, rate, price, photo}, index) => (
+        {places.map(({name, description, rate, price, photo, inFavourites}) => (
           <Package
             key={name}
             name={name}
             description={description}
             price={price}
             rate={rate}
-            inFavourite={true}
+            inFavourite={inFavourites}
             image={photo}
-            onHeartIconPress={() => {}}
+            onHeartIconPress={() => onFavIconPress(name)}
           />
         ))}
       </View>
     </View>
   )
-}
+})
+
 const styles = StyleSheet.create({
   container: {gap: 24, marginTop: 30},
   scrollContainer: {paddingHorizontal: 30, paddingBottom: 24},
