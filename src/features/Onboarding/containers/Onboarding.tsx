@@ -6,6 +6,7 @@ import StaticContent from '../components/StaticContent'
 import {useNavigation} from '@react-navigation/native'
 import {Screens} from '../../../navigation/types'
 import {DinamicContent} from '../components'
+import store from '../../../store/RootStore'
 
 type OnboardingProps = {}
 const Onboarding: React.FC<OnboardingProps> = ({}) => {
@@ -17,7 +18,7 @@ const Onboarding: React.FC<OnboardingProps> = ({}) => {
   const onNextPress = () => {
     const newIndex = currentIndex + 1
     if (newIndex >= ONBOARDING_DATA.length) {
-      navigation.navigate(Screens.Login)
+      store.setIsOnboardingPassed(true)
       return
     }
     setCurrentIndex(newIndex)

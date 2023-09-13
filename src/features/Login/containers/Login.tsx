@@ -20,12 +20,13 @@ import Typography from '../../../utils/Typography'
 import {useNavigation} from '@react-navigation/native'
 import {Screens} from '../../../navigation/types'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import store, {UserType} from '../../../store/RootStore'
 
 type LoginProps = {}
 const Login: React.FC<LoginProps> = ({}) => {
   const navigation = useNavigation()
   const [checkboxValue, setCheckboxValue] = React.useState(false)
-  const [inputValues, setInputValues] = React.useState({
+  const [inputValues, setInputValues] = React.useState<UserType>({
     email: '',
     password: '',
   })
@@ -44,18 +45,8 @@ const Login: React.FC<LoginProps> = ({}) => {
   const onCreateAccountHandler = () =>
     navigation.navigate(Screens.CreateAccount)
 
-  const onSignInHandler = () => {
-    console.log(
-      JSON.stringify(
-        {
-          checkboxValue,
-          ...inputValues,
-        },
-        null,
-        2,
-      ),
-    )
-  }
+  const onSignInHandler = () => store.setUserInfo(inputValues)
+
   return (
     <SafeAreaView style={[styles.container, styles.contentContainer]}>
       <StatusBar barStyle={'dark-content'} backgroundColor={Colors.black[0]} />
