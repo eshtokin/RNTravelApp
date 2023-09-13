@@ -25,30 +25,32 @@ const Category: React.FC<CategoryProps> = ({
   active = false,
   type = 'small',
 }) => {
-  if (type === 'small') {
-    return (
-      <Pressable
-        style={[styles.smallContainer, active && styles.containerActive]}
-        onPress={onPress}>
+  const s = React.useMemo(() => {
+    if (type === 'large') {
+      return {
+        container: styles.container,
+        iconContainer: styles.iconContainer,
+        icon: styles.icon,
+      }
+    }
+    return {
+      container: styles.smallContainer,
+      iconContainer: styles.smallIconContainer,
+      icon: styles.smallIcon,
+    }
+  }, [type])
+
+  return (
+    <Pressable
+      style={[s.container, active && styles.containerActive]}
+      onPress={onPress}>
+      {type === 'large' && (
         <View style={styles.activeIconPosition}>
           {active && <CircleChecked />}
         </View>
-        <View style={styles.smallIconContainer}>
-          <Image source={icon} style={styles.smallIcon} />
-        </View>
-        <Text style={styles.label}>{label}</Text>
-      </Pressable>
-    )
-  }
-  return (
-    <Pressable
-      style={[styles.container, active && styles.containerActive]}
-      onPress={onPress}>
-      <View style={styles.activeIconPosition}>
-        {active && <CircleChecked />}
-      </View>
-      <View style={styles.iconContainer}>
-        <Image source={icon} style={styles.icon} />
+      )}
+      <View style={s.iconContainer}>
+        <Image source={icon} style={s.icon} />
       </View>
       <Text style={styles.label}>{label}</Text>
     </Pressable>
