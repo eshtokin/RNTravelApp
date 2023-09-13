@@ -7,7 +7,7 @@ import TitleForSection from './TitleForSection'
 const Places: React.FC = () => {
   return (
     <>
-      <TitleForSection title="Favorite Place" />
+      <TitleForSection title="Favorite Place" label="Explore" />
       <ScrollView
         horizontal
         style={{flexGrow: 0}}

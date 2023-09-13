@@ -2,7 +2,10 @@ import React from 'react'
 import {View, StyleSheet} from 'react-native'
 import {Text} from '../../../components'
 
-const TitleForSection: React.FC<{title: string}> = ({title}) => {
+const TitleForSection: React.FC<{title: string; label?: string}> = ({
+  title,
+  label,
+}) => {
   return (
     <View style={{paddingHorizontal: 30}}>
       <View
@@ -16,7 +19,7 @@ const TitleForSection: React.FC<{title: string}> = ({title}) => {
           {title}
         </Text>
         <Text colorWeight={300} font="headline" fontWeight={200}>
-          See All
+          {label || 'See All'}
         </Text>
       </View>
     </View>
