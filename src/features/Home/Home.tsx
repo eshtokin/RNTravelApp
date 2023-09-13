@@ -1,4 +1,5 @@
-import {ScrollView, View} from 'react-native'
+import {useState} from 'react'
+import {ScrollView, StyleSheet, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import Colors from '../../utils/Colors'
 import {Input, Text} from '../../components'
@@ -9,22 +10,18 @@ import {LoupeIcon} from '../../../assets/icons/svg'
 
 type HomeProps = {}
 const Home: React.FC<HomeProps> = ({}) => {
+  const [searchValue, setSearchValue] = useState('')
   return (
-    <SafeAreaView
-      style={{flex: 1, backgroundColor: Colors.black[0]}}
-      edges={['top']}>
-      <ScrollView style={{flex: 1, backgroundColor: Colors.black[0]}}>
-        <View style={{paddingHorizontal: 30}}>
-          <Text
-            font="headline"
-            fontWeight={700}
-            style={{marginBottom: 18, marginTop: 30}}>
+    <SafeAreaView style={styles.container} edges={['top']}>
+      <ScrollView style={styles.scrollContainer}>
+        <View style={styles.contentPadding}>
+          <Text font="headline" fontWeight={700} style={styles.textAddStyle}>
             Where do you want to explore today?
           </Text>
           <Input
             label={'Search destination'}
-            value={''}
-            onChageText={function (text: string): void {}}
+            value={searchValue}
+            onChageText={setSearchValue}
             rightIcon={<LoupeIcon />}
           />
         </View>
@@ -36,4 +33,10 @@ const Home: React.FC<HomeProps> = ({}) => {
   )
 }
 
+const styles = StyleSheet.create({
+  container: {flex: 1, backgroundColor: Colors.black[0]},
+  scrollContainer: {flex: 1, backgroundColor: Colors.black[0]},
+  contentPadding: {paddingHorizontal: 30},
+  textAddStyle: {marginBottom: 18, marginTop: 30},
+})
 export default Home

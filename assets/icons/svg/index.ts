@@ -17,3 +17,8 @@ export {default as GoogleIcon} from './GoogleIcon'
 export {default as FacebookIcon} from './FacebookIcon'
 
 export {default as CreateAccountSuccessfullyIcon} from './CreateAccountSuccessfullyIcon'
+
+export {default as HomeIcon} from './bottomBar/Home'
+export {default as HeartIcon} from './bottomBar/OutlinedHeart'
+export {default as PersonIcon} from './bottomBar/Person'
+export {default as PlaneIcon} from './bottomBar/Plane'

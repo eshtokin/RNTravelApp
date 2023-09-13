@@ -1,37 +1,26 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Home} from '../features/Home'
 import {ComponentsView} from '../features/ComponentsView'
-
-enum HomeScreens {
-  Home = 'Home',
-  WishList = 'WishList',
-  MyTrip = 'MyTrip',
-  Profile = 'Profile',
-  Components = 'Components',
-}
-
-type HomeScreensPropsTypes = {
-  [HomeScreens.Home]: undefined
-  [HomeScreens.WishList]: undefined
-  [HomeScreens.MyTrip]: undefined
-  [HomeScreens.Profile]: undefined
-  [HomeScreens.Components]: undefined
-}
+import TabBar from './Tabbar'
+import {HomeScreens, HomeScreensPropsTypes} from './types'
+import {Wishlist} from '../features/Wishlist'
+import {Profile} from '../features/Profile'
+import {MyTrip} from '../features/MyTrip'
 
 const {Navigator, Screen} = createBottomTabNavigator<HomeScreensPropsTypes>()
 
 type HomeNavigatorProps = {}
 const HomeNavigator: React.FC<HomeNavigatorProps> = ({}) => {
   return (
-    <Navigator>
+    <Navigator tabBar={TabBar}>
       <Screen
         name={HomeScreens.Home}
         component={Home}
         options={{headerShown: false}}
       />
-      <Screen name={HomeScreens.WishList} component={Home} />
-      <Screen name={HomeScreens.MyTrip} component={Home} />
-      {/* <Screen name={HomeScreens.Profile} component={Home} /> */}
+      <Screen name={HomeScreens.MyTrip} component={MyTrip} />
+      <Screen name={HomeScreens.Wishlist} component={Wishlist} />
+      <Screen name={HomeScreens.Profile} component={Profile} />
       <Screen name={HomeScreens.Components} component={ComponentsView} />
     </Navigator>
   )

@@ -15,3 +15,19 @@ export type RootStackProps = {
   [Screens.ChooseFavouritePlace]: undefined
   [Screens.Main]: undefined
 }
+
+export enum HomeScreens {
+  Home = 'Home',
+  Wishlist = 'Wishlist',
+  MyTrip = 'MyTrip',
+  Profile = 'Profile',
+  Components = 'Components',
+}
+
+export type HomeScreensPropsTypes = {
+  [HomeScreens.Home]: undefined
+  [HomeScreens.Wishlist]: undefined
+  [HomeScreens.MyTrip]: undefined
+  [HomeScreens.Profile]: undefined
+  [HomeScreens.Components]: undefined
+}

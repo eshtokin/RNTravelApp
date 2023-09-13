@@ -1,7 +1,6 @@
+import React from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import React, {useEffect} from 'react'
 import {Onboarding} from '../features/Onboarding'
-import {ComponentsView} from '../features/ComponentsView'
 import {RootStackProps, Screens} from './types'
 import {CreateAccount, ForgotPassword, Login} from '../features/Login'
 import ChooseFavouritePlace from '../features/Login/containers/ChooseFavouritePlace'

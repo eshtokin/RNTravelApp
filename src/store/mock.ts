@@ -18,13 +18,33 @@ import {
   Etretat,
   Bali,
 } from './../../assets/images/index'
+import {
+  category_beach,
+  category_camping,
+  category_fishing,
+  category_forest,
+  category_mountins,
+  category_wave,
+} from '../../assets/images'
 
 export enum Categories {
   all = 'All',
-  Cities = 'Cities',
-  Nature = 'Nature',
-  Resort = 'Resort',
+  Forest = 'Forest',
+  Beach = 'Beach',
+  Mountain = 'Mountain',
+  Ocean = 'Ocean',
+  Camping = 'Camping',
+  Fishing = 'Fishing',
 }
+
+export const MOCK_CATEGORIES = [
+  {name: 'Forest', image: category_forest},
+  {name: 'Beach', image: category_beach},
+  {name: 'Mountain', image: category_mountins},
+  {name: 'Ocean', image: category_wave},
+  {name: 'Camping', image: category_camping},
+  {name: 'Fishing', image: category_fishing},
+]
 
 export type GeneratedPlace = {
   name: string
@@ -60,7 +80,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 4.6,
     inFavourites: false,
     photo: Santorini,
-    category: Categories.Cities,
+    category: Categories.Ocean,
     darkContent: true,
   },
   {
@@ -78,7 +98,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 4.0,
     inFavourites: false,
     photo: BoraBora,
-    category: Categories.Resort,
+    category: Categories.Beach,
     darkContent: true,
   },
   {
@@ -96,7 +116,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 4.8,
     inFavourites: false,
     photo: MachuPicchu,
-    category: Categories.Nature,
+    category: Categories.Forest,
     darkContent: false,
   },
   {
@@ -114,7 +134,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 5.0,
     inFavourites: false,
     photo: VictoriaFalls,
-    category: Categories.Nature,
+    category: Categories.Mountain,
     darkContent: true,
   },
   {
@@ -132,7 +152,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 4.5,
     inFavourites: false,
     photo: GreatBarrierReef,
-    category: Categories.Nature,
+    category: Categories.Ocean,
     darkContent: false,
   },
   {
@@ -150,7 +170,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 4.0,
     inFavourites: false,
     photo: MountCook,
-    category: Categories.Nature,
+    category: Categories.Mountain,
     darkContent: false,
   },
   {
@@ -168,7 +188,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 4.6,
     inFavourites: false,
     photo: BanffNationalPark,
-    category: Categories.Nature,
+    category: Categories.Forest,
     darkContent: false,
   },
   {
@@ -186,7 +206,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     rate: 4.0,
     inFavourites: false,
     photo: Bali,
-    category: Categories.Resort,
+    category: Categories.Beach,
     darkContent: false,
   },
   {
@@ -204,7 +224,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
     },
     inFavourites: false,
     photo: Etretat,
-    category: Categories.Nature,
+    category: Categories.Mountain,
     darkContent: false,
   },
   {
@@ -222,7 +242,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 0.6,
       latitudeDelta: 0.6,
     },
-    category: Categories.Nature,
+    category: Categories.Mountain,
     darkContent: false,
   },
   {
@@ -240,7 +260,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 1,
       latitudeDelta: 1,
     },
-    category: Categories.Cities,
+    category: Categories.Camping,
     darkContent: false,
   },
   {
@@ -258,7 +278,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 0.5,
       latitudeDelta: 0.5,
     },
-    category: Categories.Nature,
+    category: Categories.Fishing,
     darkContent: false,
   },
   {
@@ -276,7 +296,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 0.5,
       latitudeDelta: 0.5,
     },
-    category: Categories.Nature,
+    category: Categories.Fishing,
     darkContent: true,
   },
   {
@@ -294,7 +314,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 0.4,
       latitudeDelta: 0.4,
     },
-    category: Categories.Cities,
+    category: Categories.Forest,
     darkContent: false,
   },
   {
@@ -312,7 +332,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 0.3,
       latitudeDelta: 0.5,
     },
-    category: Categories.Cities,
+    category: Categories.Camping,
     darkContent: false,
   },
   {
@@ -330,7 +350,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 0.5,
       latitudeDelta: 0.5,
     },
-    category: Categories.Cities,
+    category: Categories.Camping,
     darkContent: false,
   },
   {
@@ -348,7 +368,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 1,
       latitudeDelta: 1,
     },
-    category: Categories.Nature,
+    category: Categories.Forest,
     darkContent: false,
   },
   {
@@ -366,7 +386,7 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       longitudeDelta: 0.1,
       latitudeDelta: 0.1,
     },
-    category: Categories.Cities,
+    category: Categories.Camping,
     darkContent: false,
   },
 ]
