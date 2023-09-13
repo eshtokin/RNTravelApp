@@ -9,7 +9,7 @@ import usePersistedData from './src/store/usePersistanceStore'
 function App(): JSX.Element {
   usePersistedData(store)
   React.useEffect(() => {
-    setTimeout(SplashScreen.hide, 700)
+    setTimeout(SplashScreen.hide, 1000)
   }, [])
 
   return (
