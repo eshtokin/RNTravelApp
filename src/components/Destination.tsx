@@ -17,25 +17,23 @@ import Rate from './Rate'
 import Typography from '../utils/Typography'
 import {Overlay} from '../../assets/decoration'
 import {observer} from 'mobx-react-lite'
+import {GeneratedPlace} from '../store/mock'
 
 type DestinationProps = {
-  name: string
-  rate: number
-  location: string
-  inFavourites: boolean
+  item: GeneratedPlace
+  // name: string
+  // rate: number
+  // location: string
+  // inFavourites: boolean
+  // photo: ImageSourcePropType
   onDestinationPress: () => void
   onFavIconPress: () => void
-  photo: ImageSourcePropType
 }
 const Destination: React.FC<DestinationProps> = observer(
   ({
-    name,
-    rate,
-    location,
-    inFavourites,
+    item: {name, rate, location, country, inFavourites, photo},
     onDestinationPress,
     onFavIconPress,
-    photo,
   }) => (
     <Pressable style={styles.container} onPress={onDestinationPress}>
       <ImageBackground
@@ -57,7 +55,7 @@ const Destination: React.FC<DestinationProps> = observer(
           <Text style={styles.name}>{name}</Text>
           <View style={styles.locationContainer}>
             <Location />
-            <Text style={styles.location}>{location}</Text>
+            <Text style={styles.location}>{country}</Text>
           </View>
           <Rate value={rate} whiteValue />
         </View>

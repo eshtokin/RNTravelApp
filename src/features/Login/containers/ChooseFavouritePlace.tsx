@@ -7,6 +7,7 @@ import {kutaBeachDestinationSmall} from '../../../../assets/images'
 import {useState} from 'react'
 import {NavigationContainer, useNavigation} from '@react-navigation/native'
 import {Screens} from '../../../navigation/types'
+import store from '../../../store/RootStore'
 
 type ChooseFavouritePlaceProps = {}
 const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
@@ -25,7 +26,8 @@ const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
     }
   }
 
-  const onSubmitHandler = () => navigation.navigate(Screens.Main)
+  const onSubmitHandler = () =>
+    store.setUserInfo({email: 'test', password: 'test'})
 
   return (
     <SafeAreaView

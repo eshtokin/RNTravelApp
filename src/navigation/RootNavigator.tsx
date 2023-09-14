@@ -17,12 +17,6 @@ const RootNavigation: React.FC<RootNavigationProps> = observer(({}) => {
       {store.isUserLogged() ? (
         <Screen name={Screens.Main} component={HomeNavigator} />
       ) : store.isOnboardingPassed ? (
-        <Screen
-          name={Screens.Onboarding}
-          component={Onboarding}
-          options={{headerShown: false}}
-        />
-      ) : (
         <>
           <Screen name={Screens.Login} component={Login} />
           <Screen name={Screens.ForgotPassword} component={ForgotPassword} />
@@ -32,6 +26,12 @@ const RootNavigation: React.FC<RootNavigationProps> = observer(({}) => {
             component={ChooseFavouritePlace}
           />
         </>
+      ) : (
+        <Screen
+          name={Screens.Onboarding}
+          component={Onboarding}
+          options={{headerShown: false}}
+        />
       )}
     </Navigator>
   )
