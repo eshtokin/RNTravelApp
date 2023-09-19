@@ -21,7 +21,6 @@ export enum HomeScreens {
   Wishlist = 'Wishlist',
   MyTrip = 'MyTrip',
   Profile = 'Profile',
-  Components = 'Components',
 }
 
 export type HomeScreensPropsTypes = {
@@ -29,5 +28,4 @@ export type HomeScreensPropsTypes = {
   [HomeScreens.Wishlist]: undefined
   [HomeScreens.MyTrip]: undefined
   [HomeScreens.Profile]: undefined
-  [HomeScreens.Components]: undefined
 }

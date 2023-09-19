@@ -45,8 +45,8 @@ const TabBar: React.FC<TabBarProps> = ({state, insets, navigation}) => {
       <TabbarIcon
         label="Profile"
         Icon={PersonIcon}
-        active={activeRoute === HomeScreens.Components}
-        onPress={() => onIconPress(HomeScreens.Components)}
+        active={activeRoute === HomeScreens.Profile}
+        onPress={() => onIconPress(HomeScreens.Profile)}
       />
     </View>
   )

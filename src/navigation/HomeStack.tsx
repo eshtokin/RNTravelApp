@@ -1,6 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {Home} from '../features/Home'
-import {ComponentsView} from '../features/ComponentsView'
 import TabBar from './Tabbar'
 import {HomeScreens, HomeScreensPropsTypes} from './types'
 import {Wishlist} from '../features/Wishlist'
@@ -21,7 +20,6 @@ const HomeNavigator: React.FC<HomeNavigatorProps> = ({}) => {
       <Screen name={HomeScreens.MyTrip} component={MyTrip} />
       <Screen name={HomeScreens.Wishlist} component={Wishlist} />
       <Screen name={HomeScreens.Profile} component={Profile} />
-      <Screen name={HomeScreens.Components} component={ComponentsView} />
     </Navigator>
   )
 }

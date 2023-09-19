@@ -11,31 +11,20 @@ import Colors from '../utils/Colors'
 import Typography from '../utils/Typography'
 import {HeartIconFilled, HeartIconOutlined} from '../../assets/icons/svg'
 import Rate from './Rate'
+import {GeneratedPlace} from '../store/mock'
 
 type PackageProps = {
-  name: string
-  description: string
-  price: number
-  rate: number
-  inFavourite: boolean
-  image: ImageSourcePropType
+  item: GeneratedPlace
   onHeartIconPress: () => void
 }
-const Package: React.FC<PackageProps> = ({
-  name,
-  description,
-  price,
-  rate,
-  image,
-  inFavourite,
-  onHeartIconPress,
-}) => {
+const Package: React.FC<PackageProps> = ({item, onHeartIconPress}) => {
+  const {name, price, inFavourites, rate, description, photo} = item
   return (
     <Pressable style={styles.container}>
-      <Image source={image} style={styles.image} />
+      <Image source={photo} style={styles.image} />
       <View style={styles.infoContainer}>
         <Pressable style={styles.heartIconContainer} onPress={onHeartIconPress}>
-          {inFavourite ? <HeartIconFilled /> : <HeartIconOutlined />}
+          {inFavourites ? <HeartIconFilled /> : <HeartIconOutlined />}
         </Pressable>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.price}>${price.toFixed(2)}</Text>

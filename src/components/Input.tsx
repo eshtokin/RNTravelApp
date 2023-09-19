@@ -1,8 +1,15 @@
-import React, {ReactElement} from 'react'
-import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native'
+import React, {ReactElement, ReactNode} from 'react'
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TextInputProps,
+} from 'react-native'
 import Colors from '../utils/Colors'
 import Typography from '../utils/Typography'
-import {SecureEye, UnsecureEye} from '../../assets/icons/svg'
+import {CrossIcon, SecureEye, UnsecureEye} from '../../assets/icons/svg'
 
 type InputProps = {
   label: string
@@ -10,9 +17,9 @@ type InputProps = {
   onChageText: (text: string) => void
   error?: string
   secured?: boolean
-  rightIcon?: ReactElement
+  rightIcon?: ReactNode
   onRightIconPress?: () => void
-}
+} & TextInputProps
 const Input: React.FC<InputProps> = ({
   label,
   value,
@@ -21,11 +28,15 @@ const Input: React.FC<InputProps> = ({
   rightIcon,
   onRightIconPress,
   secured = false,
+  ...props
 }) => {
   const [isActive, setIsActive] = React.useState(false)
   const [securedField, setSecureField] = React.useState(secured)
 
+  const inputRef = React.useRef<TextInput>(null)
+
   const _onRigthIconPress = () => {
+    inputRef.current?.blur()
     if (rightIcon) {
       onRightIconPress && onRightIconPress()
       return
@@ -47,12 +58,14 @@ const Input: React.FC<InputProps> = ({
         </Text>
       </View>
       <TextInput
+        ref={inputRef}
         secureTextEntry={securedField}
         style={[styles.input, isActive && styles.activeInput]}
         onFocus={() => setIsActive(true)}
         onBlur={() => setIsActive(false)}
         onChangeText={onChageText}
         value={value}
+        {...props}
       />
       <Pressable style={styles.iconContainer} onPress={_onRigthIconPress}>
         {secured ? (
@@ -77,13 +90,14 @@ const Input: React.FC<InputProps> = ({
 }
 
 const styles = StyleSheet.create({
-  container: {marginTop: 11},
+  container: {marginTop: 11, zIndex: 900},
   input: {
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderWidth: 1,
     borderColor: Colors.black[300],
     borderRadius: 20,
+    backgroundColor: Colors.black[0],
     ...Typography.bodyText[200],
     lineHeight: 22,
     color: Colors.black[900],
@@ -114,6 +128,7 @@ const styles = StyleSheet.create({
   label: {
     ...Typography.bodyText[200],
     color: Colors.black[300],
+    zIndex: 9000,
   },
   activeLabel: {
     ...Typography.headline[100],

@@ -22,3 +22,5 @@ export {default as HomeIcon} from './bottomBar/Home'
 export {default as HeartIcon} from './bottomBar/OutlinedHeart'
 export {default as PersonIcon} from './bottomBar/Person'
 export {default as PlaneIcon} from './bottomBar/Plane'
+
+export {default as CrossIcon} from './CrossIcon'

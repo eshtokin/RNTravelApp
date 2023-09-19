@@ -15,6 +15,7 @@ export class Places {
     this.toggleFavouriteOnPlace = this.toggleFavouriteOnPlace.bind(this)
     this.selectPlace = this.selectPlace.bind(this)
     this.setCurrentCategory = this.setCurrentCategory.bind(this)
+    this.changeSearchValue = this.changeSearchValue.bind(this)
   }
 
   setCurrentCategory(category: Categories) {
