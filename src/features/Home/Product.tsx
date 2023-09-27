@@ -3,8 +3,14 @@ import {Dimensions, ImageBackground, StyleSheet, View} from 'react-native'
 import store from '../../store/RootStore'
 import {Button, Header, Text} from '../../components'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import {Location, StarIcon} from '../../../assets/icons/svg'
+import {
+  HeartIcon,
+  HeartIconFilled,
+  Location,
+  StarIcon,
+} from '../../../assets/icons/svg'
 import {DarkOverlay} from '../../../assets/decoration'
+import Colors from '../../utils/Colors'
 
 const SCREEN_SIZE = Dimensions.get('screen')
 
@@ -24,7 +30,14 @@ const Product: React.FC<ProductProps> = observer(({}) => {
           transparent
           withoutTitle
           withBackIcon
-          onPlusIconPress={onFavIconPress}
+          RightIcon={
+            selectedPlace.inFavourites ? (
+              <HeartIconFilled />
+            ) : (
+              <HeartIcon color={Colors.black[0]} />
+            )
+          }
+          onRightIconPress={onFavIconPress}
         />
         <View style={styles.information}>
           <View style={styles.destinationInformation}>

@@ -1,13 +1,14 @@
-import React from 'react'
+import React, {ReactElement} from 'react'
 import {Pressable, StyleSheet, Text, View, useAnimatedValue} from 'react-native'
 import Typography from '../utils/Typography'
 import Colors from '../utils/Colors'
-import {BackArrow, LoupeIcon, SquarePlus} from '../../assets/icons/svg'
+import {BackArrow} from '../../assets/icons/svg'
 import {useNavigation} from '@react-navigation/native'
 
 type HeaderProps = {
   withBackIcon?: boolean
-  onPlusIconPress?: () => void
+  RightIcon?: ReactElement
+  onRightIconPress?: () => void
   onSearchIconPress?: () => void
   transparent?: boolean
   withoutTitle?: boolean
@@ -15,9 +16,9 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({
   transparent = false,
   withBackIcon = false,
-  onPlusIconPress,
-  onSearchIconPress,
+  onRightIconPress,
   withoutTitle,
+  RightIcon,
 }) => {
   const navigation = useNavigation()
   const goBack = () => navigation.canGoBack() && navigation.goBack()
@@ -25,19 +26,12 @@ const Header: React.FC<HeaderProps> = ({
     <View
       style={[styles.container, transparent && styles.transparentContainer]}>
       <Pressable style={styles.leftIconContainer} onPress={goBack}>
-        {withBackIcon && <BackArrow />}
+        {withBackIcon && <BackArrow color={Colors.black[0]} />}
       </Pressable>
       {!withoutTitle && <Text style={styles.headerTitle}>Travel</Text>}
       <View style={styles.rightIconContainer}>
-        {onPlusIconPress && (
-          <Pressable style={styles.plusContainer} onPress={onPlusIconPress}>
-            <SquarePlus />
-          </Pressable>
-        )}
-        {onSearchIconPress && (
-          <Pressable onPress={onSearchIconPress}>
-            <LoupeIcon />
-          </Pressable>
+        {RightIcon && onRightIconPress && (
+          <Pressable onPress={onRightIconPress}>{RightIcon}</Pressable>
         )}
       </View>
     </View>
@@ -51,19 +45,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.black[0],
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
   },
   transparentContainer: {backgroundColor: 'transparent'},
   headerTitle: {
     ...Typography.headline[500],
     color: Colors.black[900],
   },
-
   leftIconContainer: {},
   rightIconContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 20,
+    // alignItems: 'center',
+    // gap: 20,
   },
   plusContainer: {
     position: 'absolute',
