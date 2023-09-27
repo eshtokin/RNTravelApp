@@ -1,37 +1,25 @@
 import React from 'react'
-import {
-  ImageBackground,
-  ImageSourcePropType,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native'
+import {ImageBackground, Pressable, StyleSheet, View} from 'react-native'
+import {observer} from 'mobx-react-lite'
+import Rate from './Rate'
+import Text from './Text'
+import {GeneratedPlace} from '../store/mock'
 import Colors from '../utils/Colors'
 import {
   HeartIconFilled,
   HeartIconOutlined,
   Location,
 } from '../../assets/icons/svg'
-import Rate from './Rate'
-import Typography from '../utils/Typography'
-import {Overlay} from '../../assets/decoration'
-import {observer} from 'mobx-react-lite'
-import {GeneratedPlace} from '../store/mock'
+import {DestinationOverlay} from '../../assets/decoration'
 
 type DestinationProps = {
   item: GeneratedPlace
-  // name: string
-  // rate: number
-  // location: string
-  // inFavourites: boolean
-  // photo: ImageSourcePropType
   onDestinationPress: () => void
   onFavIconPress: () => void
 }
 const Destination: React.FC<DestinationProps> = observer(
   ({
-    item: {name, rate, location, country, inFavourites, photo},
+    item: {name, rate, country, inFavourites, photo},
     onDestinationPress,
     onFavIconPress,
   }) => (
@@ -49,13 +37,26 @@ const Destination: React.FC<DestinationProps> = observer(
           )}
         </Pressable>
         <View style={styles.overlayPosition}>
-          <Overlay />
+          <DestinationOverlay />
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.name}>{name}</Text>
+          <Text
+            font="headline"
+            fontWeight={500}
+            color="black"
+            colorWeight={0}
+            numberOfLines={1}>
+            {name}
+          </Text>
           <View style={styles.locationContainer}>
             <Location />
-            <Text style={styles.location}>{country}</Text>
+            <Text
+              font="headline"
+              fontWeight={100}
+              color="black"
+              colorWeight={0}>
+              {country}
+            </Text>
           </View>
           <Rate value={rate} whiteValue />
         </View>
@@ -105,18 +106,10 @@ const styles = StyleSheet.create({
     height: 65,
     justifyContent: 'space-between',
   },
-  name: {
-    ...Typography.headline[500],
-    color: Colors.black[0],
-  },
   locationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
-  },
-  location: {
-    ...Typography.headline[100],
-    color: Colors.black[0],
   },
   rate: {},
 })

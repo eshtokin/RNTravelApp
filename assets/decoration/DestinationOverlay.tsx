@@ -2,8 +2,10 @@ import React from 'react'
 import Svg, {Defs, LinearGradient, Rect, Stop} from 'react-native-svg'
 import Colors from '../../src/utils/Colors'
 
-type OverlayProps = {color?: string}
-const Overlay: React.FC<OverlayProps> = ({color = Colors.black[300]}) => {
+type DestinationOverlayProps = {color?: string}
+const DestinationOverlay: React.FC<DestinationOverlayProps> = ({
+  color = Colors.black[300],
+}) => {
   return (
     <Svg width="186" height="183" viewBox="0 0 186 183" fill="none">
       <Rect
@@ -28,4 +30,4 @@ const Overlay: React.FC<OverlayProps> = ({color = Colors.black[300]}) => {
   )
 }
 
-export default Overlay
+export default DestinationOverlay

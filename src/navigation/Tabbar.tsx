@@ -1,8 +1,6 @@
-import {ReactElement} from 'react'
-import {Pressable, StyleSheet, View} from 'react-native'
-import Colors from '../utils/Colors'
-import {Text} from '../components'
+import {StyleSheet, View} from 'react-native'
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
+import Colors from '../utils/Colors'
 import {
   HeartIcon,
   HomeIcon,

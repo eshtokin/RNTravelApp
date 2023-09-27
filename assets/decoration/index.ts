@@ -1,1 +1,2 @@
-export {default as Overlay} from './Overlay'
+export {default as DestinationOverlay} from './DestinationOverlay'
+export {default as DarkOverlay} from './DarkOverlay'

@@ -4,11 +4,20 @@ import {observer} from 'mobx-react-lite'
 import {Destination} from '../../../components'
 import TitleForSection from './TitleForSection'
 import store from '../../../store/RootStore'
+import {useNavigation} from '@react-navigation/native'
+import {Screens} from '../../../navigation/types'
 
 const Places: React.FC = observer(() => {
-  const {placesForSelectedCategory, toggleFavouriteOnPlace} = store.places
+  const navigation = useNavigation()
+  const {placesForSelectedCategory, toggleFavouriteOnPlace, selectPlace} =
+    store.places
   const onFavIconPress = (placeName: string) => () =>
     toggleFavouriteOnPlace(placeName)
+
+  const onDestinationPress = (name: string) => {
+    selectPlace(name)
+    navigation.navigate(Screens.Product)
+  }
 
   return (
     <>
@@ -24,7 +33,7 @@ const Places: React.FC = observer(() => {
             key={item.name}
             item={item}
             onFavIconPress={onFavIconPress(item.name)}
-            onDestinationPress={() => {}}
+            onDestinationPress={() => onDestinationPress(item.name)}
           />
         )}
       />

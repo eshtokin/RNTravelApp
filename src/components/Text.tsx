@@ -1,5 +1,5 @@
 import {PropsWithChildren} from 'react'
-import {Text as RNText, TextStyle, TextProps} from 'react-native'
+import {Text as RNText, TextProps} from 'react-native'
 import Colors from '../utils/Colors'
 import Typography from '../utils/Typography'
 
@@ -23,9 +23,11 @@ type FontVariants =
       fontWeight: BodyTextWeightVarinats
     }
 
+type ColorWeightKeys = keyof (typeof Colors)[ColorKeys]
+
 type MyTextProps = PropsWithChildren & {
   color?: ColorKeys
-  colorWeight?: keyof (typeof Colors)[ColorKeys]
+  colorWeight?: ColorWeightKeys | keyof (typeof Colors)['black']
 } & FontVariants &
   TextProps
 
@@ -45,7 +47,7 @@ const Text: React.FC<MyTextProps> = ({
         {
           // @ts-ignore
           ...Typography[font][fontWeight],
-          color: Colors[color][colorWeight],
+          color: Colors[color][colorWeight as ColorWeightKeys],
         },
       ]}>
       {children}
