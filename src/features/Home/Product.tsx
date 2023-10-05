@@ -11,14 +11,17 @@ import {
 } from '../../../assets/icons/svg'
 import {DarkOverlay} from '../../../assets/decoration'
 import Colors from '../../utils/Colors'
+import {useNavigation} from '@react-navigation/native'
+import {Screens} from '../../navigation/types'
 
 const SCREEN_SIZE = Dimensions.get('screen')
 
 type ProductProps = {}
 const Product: React.FC<ProductProps> = observer(({}) => {
+  const navigation = useNavigation()
   const {selectedPlace, toggleFavouriteOnPlace} = store.places
   const onFavIconPress = () => toggleFavouriteOnPlace(selectedPlace.name)
-  const onBookingPress = () => console.log('book the trip')
+  const onBookingPress = () => navigation.navigate(Screens.Booking)
 
   return (
     <ImageBackground source={selectedPlace.photo} style={{flex: 1}}>

@@ -7,7 +7,7 @@ import ChooseFavouritePlace from '../features/Login/containers/ChooseFavouritePl
 import HomeNavigator from './HomeStack'
 import store from '../store/RootStore'
 import {RootStackProps, Screens} from './types'
-import {Product} from '../features/Home'
+import {Product, Booking} from '../features/Home'
 
 const {Screen, Navigator} = createNativeStackNavigator<RootStackProps>()
 
@@ -19,6 +19,7 @@ const RootNavigation: React.FC<RootNavigationProps> = observer(({}) => {
         <>
           <Screen name={Screens.Main} component={HomeNavigator} />
           <Screen name={Screens.Product} component={Product} />
+          <Screen name={Screens.Booking} component={Booking} />
         </>
       ) : store.isOnboardingPassed ? (
         <>

@@ -12,6 +12,7 @@ type HeaderProps = {
   onSearchIconPress?: () => void
   transparent?: boolean
   withoutTitle?: boolean
+  blackIconColor?: string
 }
 const Header: React.FC<HeaderProps> = ({
   transparent = false,
@@ -19,6 +20,7 @@ const Header: React.FC<HeaderProps> = ({
   onRightIconPress,
   withoutTitle,
   RightIcon,
+  blackIconColor = Colors.black[0],
 }) => {
   const navigation = useNavigation()
   const goBack = () => navigation.canGoBack() && navigation.goBack()
@@ -26,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({
     <View
       style={[styles.container, transparent && styles.transparentContainer]}>
       <Pressable style={styles.leftIconContainer} onPress={goBack}>
-        {withBackIcon && <BackArrow color={Colors.black[0]} />}
+        {withBackIcon && <BackArrow color={blackIconColor} />}
       </Pressable>
       {!withoutTitle && <Text style={styles.headerTitle}>Travel</Text>}
       <View style={styles.rightIconContainer}>

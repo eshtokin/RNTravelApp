@@ -24,3 +24,4 @@ export {default as PersonIcon} from './bottomBar/Person'
 export {default as PlaneIcon} from './bottomBar/Plane'
 
 export {default as CrossIcon} from './CrossIcon'
+export {default as VerifiedIcon} from './VerifiedIcon'

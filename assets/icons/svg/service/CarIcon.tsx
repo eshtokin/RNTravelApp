@@ -1,11 +1,11 @@
 import Svg, {Path} from 'react-native-svg'
 import Colors from '../../../../src/utils/Colors'
 
-type HotelIconProps = {
+type CarIconProps = {
   color?: string
   size?: number
 }
-const HotelIcon: React.FC<HotelIconProps> = ({
+const CarIcon: React.FC<CarIconProps> = ({
   color = Colors.brand[600],
   size = 20,
 }) => {
@@ -47,4 +47,4 @@ const HotelIcon: React.FC<HotelIconProps> = ({
   )
 }
 
-export default HotelIcon
+export default CarIcon

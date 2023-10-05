@@ -6,6 +6,7 @@ export enum Screens {
   ChooseFavouritePlace = 'ChooseFavouritePlase',
   Main = 'Main',
   Product = 'Product',
+  Booking = 'Booking',
 }
 
 export type RootStackProps = {
@@ -18,6 +19,7 @@ export type RootStackProps = {
     screen: HomeScreens
   }
   [Screens.Product]: undefined
+  [Screens.Booking]: undefined
 }
 
 export enum HomeScreens {
