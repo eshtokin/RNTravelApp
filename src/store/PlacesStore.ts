@@ -1,5 +1,9 @@
 import {makeAutoObservable, reaction} from 'mobx'
-import MOCK_PLACES, {GeneratedPlace, Categories, MOCK_CATEGORIES} from './mock'
+import MOCK_PLACES, {
+  GeneratedPlace,
+  Categories,
+  MOCK_CATEGORIES,
+} from './mockData/places'
 
 export class Places {
   searchValue: string = ''

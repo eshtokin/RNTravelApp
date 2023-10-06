@@ -2,7 +2,7 @@ import {FlatList, ScrollView, StyleSheet} from 'react-native'
 import TitleForSection from './TitleForSection'
 import {Category} from '../../../components'
 import store from '../../../store/RootStore'
-import {Categories} from '../../../store/mock'
+import {Categories} from '../../../store/mockData/places'
 import {observer} from 'mobx-react-lite'
 
 type CategoryListProps = {}

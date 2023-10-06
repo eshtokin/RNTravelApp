@@ -11,7 +11,7 @@ import Colors from '../utils/Colors'
 import Typography from '../utils/Typography'
 import {HeartIconFilled, HeartIconOutlined} from '../../assets/icons/svg'
 import Rate from './Rate'
-import {GeneratedPlace} from '../store/mock'
+import {GeneratedPlace} from '../store/mockData/places'
 
 type PackageProps = {
   item: GeneratedPlace

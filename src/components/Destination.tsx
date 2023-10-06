@@ -3,7 +3,7 @@ import {ImageBackground, Pressable, StyleSheet, View} from 'react-native'
 import {observer} from 'mobx-react-lite'
 import Rate from './Rate'
 import Text from './Text'
-import {GeneratedPlace} from '../store/mock'
+import {GeneratedPlace} from '../store/mockData/places'
 import Colors from '../utils/Colors'
 import {
   HeartIconFilled,

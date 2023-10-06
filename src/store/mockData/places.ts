@@ -17,7 +17,7 @@ import {
   BanffNationalPark,
   Etretat,
   Bali,
-} from './../../assets/images/index'
+} from '../../../assets/images/index'
 import {
   category_beach,
   category_camping,
@@ -25,7 +25,7 @@ import {
   category_forest,
   category_mountins,
   category_wave,
-} from '../../assets/images'
+} from '../../../assets/images'
 import {ImageSourcePropType} from 'react-native'
 
 export enum Categories {
