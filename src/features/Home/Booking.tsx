@@ -7,6 +7,7 @@ import {Location, StarIcon, VerifiedIcon} from '../../../assets/icons/svg'
 import PlaneIcon from '../../../assets/icons/svg/service/PlaneIcon'
 import HotelIcon from '../../../assets/icons/svg/service/CarIcon'
 import CarIcon from '../../../assets/icons/svg/service/CarIcon'
+import REVIEWS from '../../store/mockReviews'
 
 const SERVICE = [
   {label: 'Flight', icon: <PlaneIcon />},
@@ -31,7 +32,7 @@ const Booking: React.FC<BookingProps> = ({}) => {
             padding: 24,
           }}
           source={selectedPlace.photo}>
-          <View style={{position:"absolute", top: 24, right: 24,}}>
+          <View style={{position: 'absolute', top: 24, right: 24}}>
             <VerifiedIcon />
           </View>
           <View style={{gap: 5}}>
@@ -123,13 +124,7 @@ const Booking: React.FC<BookingProps> = ({}) => {
             About Trip
           </Text>
           <Text font="headline" fontWeight={100}>
-            Bali is an island in Indonesia known for its verdant volcanoes,
-            unique rice terraces, beaches, and beautiful coral reefs. Before
-            becoming a tourist attraction, Kuta was a trading port where local
-            products were traded to buyers from outside Bali. See beautiful Bali
-            and help us keep it that way by joining this EcoTour of a Bali
-            village. All proceeds from the EcoTour are donated to the Tangkas
-            Village Recycling Center. Expert Friendly Service
+            {selectedPlace.description}
           </Text>
           <Text font="headline" fontWeight={400} style={{marginTop: 24}}>
             Gallery Photo
@@ -150,9 +145,18 @@ const Booking: React.FC<BookingProps> = ({}) => {
                     height: 90,
                     borderRadius: 20,
                     backgroundColor: 'grey',
-                  }}
-                >
-                  <Text font='headline' fontWeight={600}>+ 20</Text>
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  {index === 2 && (
+                    <Text
+                      font="headline"
+                      fontWeight={600}
+                      color="black"
+                      colorWeight={0}>
+                      + 20
+                    </Text>
+                  )}
                 </View>
               ))}
           </View>
@@ -222,72 +226,45 @@ const Booking: React.FC<BookingProps> = ({}) => {
           </View>
         </View>
       </ScrollView>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginHorizontal: 30,
+          paddingTop: 24,
+        }}>
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginHorizontal: 30,
-            paddingTop: 24,
+            alignItems: 'flex-end',
+            alignSelf: 'center',
           }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'flex-end',
-              alignSelf: 'center',
-            }}>
-            <Text
-              font="headline"
-              fontWeight={300}
-              color="error"
-              colorWeight={500}>
-              $745
-            </Text>
-            <Text
-              font="bodyText"
-              fontWeight={100}
-              color="black"
-              colorWeight={400}>
-              / Person
-            </Text>
-          </View>
-          <Button
-            size="large"
-            type="primary"
-            label={'Booking'}
-            onPress={() => {}}
-            icon={'label-only'}
-            addStyles={{minWidth: 175}}
-          />
+          <Text
+            font="headline"
+            fontWeight={300}
+            color="error"
+            colorWeight={500}>
+            $745
+          </Text>
+          <Text
+            font="bodyText"
+            fontWeight={100}
+            color="black"
+            colorWeight={400}>
+            / Person
+          </Text>
         </View>
+        <Button
+          size="large"
+          type="primary"
+          label={'Booking'}
+          onPress={() => {}}
+          icon={'label-only'}
+          addStyles={{minWidth: 175}}
+        />
+      </View>
     </SafeAreaView>
   )
 }
-
-const REVIEWS = [
-  {
-    name: 'Yelena Belova',
-    date: 'Today',
-    rate: 5,
-    icon: '',
-    comment:
-      'Pretty nice. The entrance is quite far from the parking lot but wouldnt be much of a problem if it wasnt raining. Love the interior :)',
-  },
-  {
-    name: 'Mark Tawor',
-    date: 'Today',
-    rate: 5,
-    icon: '',
-    comment:
-      'A really great place and amazing work place, I really love staying there! Will definitely come back!',
-  },
-  {
-    name: 'James Mulner',
-    date: 'Today',
-    rate: 5,
-    icon: '',
-    comment:
-      'Ketut offering supports to almost every cases, always reachable and was really helpful. definitely value for money stay!',
-  },
-]
 
 export default Booking
