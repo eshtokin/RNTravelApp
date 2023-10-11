@@ -30,3 +30,7 @@ export const MilfordSoundNewZeland = require('./places/MilfordSound-NewZeland.jp
 export const MoraineLakeCanada = require('./places/MoraineLake-Canada.jpeg')
 export const MunichGermany = require('./places/Munich-Germany.jpeg')
 export const TheEiffelTowerParisFrance = require('./places/TheEiffelTower-ParisFrance.jpeg')
+
+export const SmallBooking1 = require('./small_booking1.png')
+export const SmallBooking2 = require('./small_booking2.png')
+export const SmallBooking3 = require('./small_booking3.png')
