@@ -73,8 +73,8 @@ const MOCK_PLACES: Array<GeneratedPlace> = [
       'Known for its stunning sunsets and white-washed buildings perched atop cliffs overlooking the Aegean Sea, Santorini offers a captivating blend of natural beauty and traditional charm.',
     country: 'Greece',
     location: {
-      latitude: 36.33,
       longitude: 25.4,
+      latitude: 36.4,
       longitudeDelta: 0.2,
       latitudeDelta: 0.2,
     },
