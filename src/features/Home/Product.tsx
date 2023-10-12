@@ -93,7 +93,7 @@ const Product: React.FC<ProductProps> = observer(({}) => {
               fontWeight={300}
               color="black"
               colorWeight={0}>
-              {selectedPlace.price} / Person
+              ${selectedPlace.price} / Person
             </Text>
             <Button
               type={'primary'}

@@ -109,7 +109,8 @@ const bookingStyle = StyleSheet.create({
     justifyContent: 'space-between',
   },
   reviewListContainer: {
-    paddingVertical: 24,
+    marginTop: 24,
+    marginBottom: 30,
     gap: 24,
     justifyContent: 'center',
     maxWidth: '100%',
