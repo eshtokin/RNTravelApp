@@ -1,6 +1,8 @@
 import {observer} from 'mobx-react-lite'
+import {useState} from 'react'
 import {FlatList, StyleSheet, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import {CrossIcon, LoupeIcon} from '../../../assets/icons/svg'
 import {Input, Package, Text} from '../../components'
 import store from '../../store/RootStore'
 import Colors from '../../utils/Colors'
@@ -8,13 +10,21 @@ import Colors from '../../utils/Colors'
 type WishListProps = {}
 const WishList: React.FC<WishListProps> = observer(({}) => {
   const {favouritePlaces, toggleFavouriteOnPlace} = store.places
+  const [searchValue, setSearchValue] = useState('')
+  const clearInput = () => setSearchValue('')
   return (
     <SafeAreaView style={styles.screenContainer} edges={['top']}>
       <Text font="headline" fontWeight={700} style={styles.textAddStyle}>
         Your Wishlist
       </Text>
       <View style={styles.searchContainer}>
-        <Input label="Search" onChageText={() => {}} value="" />
+        <Input
+          label="Search"
+          onChageText={setSearchValue}
+          value={searchValue}
+          rightIcon={searchValue.length ? <CrossIcon /> : <LoupeIcon />}
+          onRightIconPress={searchValue.length ? clearInput : undefined}
+        />
       </View>
       <FlatList
         data={favouritePlaces}

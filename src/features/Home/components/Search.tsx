@@ -46,7 +46,7 @@ const Search: React.FC<SearchProps> = observer(({}) => {
         value={searchValue}
         onChageText={onChangeSearchValue}
         onRightIconPress={clearInput}
-        rightIcon={<CrossIcon />}
+        rightIcon={searchValue.length ? <CrossIcon /> : <LoupeIcon />}
         clearTextOnFocus={true}
         autoCorrect={false}
         returnKeyType="done"
