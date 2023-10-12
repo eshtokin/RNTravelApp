@@ -1,9 +1,9 @@
-import {FlatList, StyleSheet, View} from 'react-native'
-import {Input, Package, Text} from '../../components'
-import Colors from '../../utils/Colors'
-import {SafeAreaView} from 'react-native-safe-area-context'
-import store from '../../store/RootStore'
 import {observer} from 'mobx-react-lite'
+import {FlatList, StyleSheet, View} from 'react-native'
+import {SafeAreaView} from 'react-native-safe-area-context'
+import {Input, Package, Text} from '../../components'
+import store from '../../store/RootStore'
+import Colors from '../../utils/Colors'
 
 type WishListProps = {}
 const WishList: React.FC<WishListProps> = observer(({}) => {
