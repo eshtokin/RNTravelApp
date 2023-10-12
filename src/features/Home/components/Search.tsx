@@ -38,7 +38,6 @@ const Search: React.FC<SearchProps> = observer(({}) => {
     <View
       style={[
         isEnabled && styles.activeContainer,
-
         styles.searchContainerWithActivePosition,
       ]}>
       <Input

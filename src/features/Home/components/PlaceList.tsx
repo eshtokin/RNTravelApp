@@ -1,7 +1,7 @@
 import React from 'react'
 import {FlatList, StyleSheet} from 'react-native'
 import {observer} from 'mobx-react-lite'
-import {Destination} from '../../../components'
+import {Destination, Package} from '../../../components'
 import TitleForSection from './TitleForSection'
 import store from '../../../store/RootStore'
 import {useNavigation} from '@react-navigation/native'

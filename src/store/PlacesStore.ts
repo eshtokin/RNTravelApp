@@ -26,6 +26,10 @@ export class Places {
     this.selectedCategory = category
   }
 
+  get favouritePlaces() {
+    return this.places.filter(p => p.inFavourites)
+  }
+
   get placesForSelectedCategory() {
     if (this.selectedCategory === Categories.all) {
       return this.places
