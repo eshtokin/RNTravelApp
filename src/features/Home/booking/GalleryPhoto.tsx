@@ -13,8 +13,8 @@ const GalleryPhoto: React.FC<GalleryPhotoProps> = ({}) => {
   return (
     <View style={styles.listContainer}>
       {SMALL_IMAGES.map((_, index) => (
-        <View style={styles.listElement}>
-          <Image key={`galery-${index}`} source={_} />
+        <View key={`galery-${index}`} style={styles.listElement}>
+          <Image source={_} />
           <View style={styles.textWrapper}>
             {index === 2 && (
               <Text
