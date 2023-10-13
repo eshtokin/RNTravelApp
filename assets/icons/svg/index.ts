@@ -28,3 +28,8 @@ export {default as HotelIcon} from './service/HotelIcon'
 
 export {default as CrossIcon} from './CrossIcon'
 export {default as VerifiedIcon} from './VerifiedIcon'
+
+export {default as ProfileIcon} from './ProfileIcon'
+export {default as GlobalIcon} from './GlobalIcon'
+export {default as MessageIcon} from './MessageIcon'
+export {default as NorificationIcon} from './NotificationIcon'

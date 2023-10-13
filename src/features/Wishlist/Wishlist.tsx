@@ -6,6 +6,7 @@ import {CrossIcon, LoupeIcon} from '../../../assets/icons/svg'
 import {Input, Package, Text} from '../../components'
 import store from '../../store/RootStore'
 import Colors from '../../utils/Colors'
+import ScreenTitle from '../../components/ScreenTitle'
 
 type WishListProps = {}
 const WishList: React.FC<WishListProps> = observer(({}) => {
@@ -14,9 +15,7 @@ const WishList: React.FC<WishListProps> = observer(({}) => {
   const clearInput = () => setSearchValue('')
   return (
     <SafeAreaView style={styles.screenContainer} edges={['top']}>
-      <Text font="headline" fontWeight={700} style={styles.textAddStyle}>
-        Your Wishlist
-      </Text>
+      <ScreenTitle title="Your Wishlist" style={styles.screenTitle} />
       <View style={styles.searchContainer}>
         <Input
           label="Search"
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.black[0],
   },
-  textAddStyle: {
+  screenTitle: {
     marginVertical: 30,
     paddingHorizontal: 30,
   },

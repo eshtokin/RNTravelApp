@@ -34,3 +34,5 @@ export const TheEiffelTowerParisFrance = require('./places/TheEiffelTower-ParisF
 export const SmallBooking1 = require('./small_booking1.png')
 export const SmallBooking2 = require('./small_booking2.png')
 export const SmallBooking3 = require('./small_booking3.png')
+
+export const avatar1 = require('./avatar1.png')
