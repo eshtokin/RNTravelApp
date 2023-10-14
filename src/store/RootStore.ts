@@ -1,6 +1,5 @@
 import {makeAutoObservable} from 'mobx'
 import places, {Places} from './PlacesStore'
-import {HomeScreens, Screens} from '../navigation/types'
 
 export type UserType = {
   email: string

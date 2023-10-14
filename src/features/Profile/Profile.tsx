@@ -25,7 +25,7 @@ const Profile: React.FC<ProfileProps> = ({}) => {
       </View>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         {ProfileElementsTitle.map(e => (
-          <ProfileElement label={e.label} icon={e.icon} />
+          <ProfileElement key={e.label} label={e.label} icon={e.icon} />
         ))}
       </ScrollView>
     </SafeAreaView>
