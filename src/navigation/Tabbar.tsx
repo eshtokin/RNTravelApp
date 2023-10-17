@@ -13,6 +13,7 @@ import TabbarIcon from './TabbarIcon'
 type TabBarProps = BottomTabBarProps
 const TabBar: React.FC<TabBarProps> = ({state, insets, navigation}) => {
   const activeRoute = state.routeNames[state.index]
+  console.log(activeRoute)
   const onIconPress = (screen: HomeScreens) => navigation.navigate(screen)
   return (
     <View

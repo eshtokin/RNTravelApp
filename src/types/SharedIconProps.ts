@@ -3,6 +3,7 @@ import {Path, PathProps} from 'react-native-svg'
 
 type SharedIconProps = {
   color?: string
+  animated?: boolean
   animatedProps?: AnimatedProps<Path>
 }
 

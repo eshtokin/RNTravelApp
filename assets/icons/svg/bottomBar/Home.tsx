@@ -1,6 +1,6 @@
 import React from 'react'
-import Animated from 'react-native-reanimated'
-import Svg, {Path} from 'react-native-svg'
+import Animated, {useAnimatedProps} from 'react-native-reanimated'
+import Svg, {Path, PathProps} from 'react-native-svg'
 import Colors from '../../../../src/utils/Colors'
 import SharedIconProps from '../../../../src/types/SharedIconProps'
 
