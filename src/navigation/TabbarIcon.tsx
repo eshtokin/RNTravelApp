@@ -27,26 +27,24 @@ const TabbarIcon: React.FC<TabbarIconProps> = ({
 }) => {
   const colorProgress = useSharedValue(1)
   const opacity = useSharedValue(0)
+  const blackToWhiteInterpolatedColor = interpolateColor(
+    colorProgress.value,
+    [0, 1],
+    [Colors.black[900], Colors.black[0]],
+  )
+  const whiteToBlackInterpolatedColor = interpolateColor(
+    colorProgress.value,
+    [0, 1],
+    [Colors.black[0], Colors.black[900]],
+  )
   const aStroke = useAnimatedProps<Path>(() => ({
-    stroke: interpolateColor(
-      colorProgress.value,
-      [0, 1],
-      [Colors.black[900], Colors.black[0]],
-    ),
+    stroke: blackToWhiteInterpolatedColor,
   }))
   const aTextColor = useAnimatedStyle<Text>(() => ({
-    color: interpolateColor(
-      colorProgress.value,
-      [0, 1],
-      [Colors.black[900], Colors.black[0]],
-    ),
+    color: blackToWhiteInterpolatedColor,
   }))
   const aBackgroundColor = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(
-      colorProgress.value,
-      [0, 1],
-      [Colors.black[0], Colors.black[900]],
-    ),
+    backgroundColor: whiteToBlackInterpolatedColor,
   }))
 
   useEffect(() => {
@@ -59,13 +57,12 @@ const TabbarIcon: React.FC<TabbarIconProps> = ({
       <Animated.View
         style={[
           styles.container,
-          active && styles.activeContainer,
           aBackgroundColor,
+          active && styles.activeContainer,
         ]}>
         <Icon
-          animated
           animatedProps={aStroke}
-          color={Colors.black[active ? 900 : 0]}
+          color={active ? Colors.black[900] : Colors.black[0]}
         />
         <Animated.View style={{overflow: 'hidden', flexWrap: 'wrap', opacity}}>
           {active && (
@@ -93,7 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-    backgroundColor: Colors.black[0],
+    // backgroundColor: Colors.black[0],
   },
   activeContainer: {
     paddingHorizontal: 18,
