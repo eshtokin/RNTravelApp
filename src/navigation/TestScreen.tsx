@@ -20,30 +20,38 @@ const TestScreen: React.FC<TestScreenProps> = ({}) => {
   const toggleValue = (label: string) => setValue(label)
   return (
     <SafeAreaView style={styles.container}>
-      <Component
-        active={value === 'home'}
-        label="home"
-        Icon={HomeIcon}
-        onPress={() => toggleValue('home')}
-      />
-      <Component
-        active={value === 'favourite'}
-        label="favourite"
-        Icon={OutlinedHeart}
-        onPress={() => toggleValue('favourite')}
-      />
-      <Component
-        active={value === 'profile'}
-        label="profile"
-        Icon={Person}
-        onPress={() => toggleValue('profile')}
-      />
-      <Component
-        active={value === 'wishlist'}
-        label="wishlist"
-        Icon={Plane}
-        onPress={() => toggleValue('wishlist')}
-      />
+      <View
+        style={{
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingHorizontal: 30,
+        }}>
+        <Component
+          active={value === 'home'}
+          label="home"
+          Icon={HomeIcon}
+          onPress={() => toggleValue('home')}
+        />
+        <Component
+          active={value === 'favourite'}
+          label="favourite"
+          Icon={OutlinedHeart}
+          onPress={() => toggleValue('favourite')}
+        />
+        <Component
+          active={value === 'profile'}
+          label="profile"
+          Icon={Person}
+          onPress={() => toggleValue('profile')}
+        />
+        <Component
+          active={value === 'wishlist'}
+          label="wishlist"
+          Icon={Plane}
+          onPress={() => toggleValue('wishlist')}
+        />
+      </View>
     </SafeAreaView>
   )
 }
