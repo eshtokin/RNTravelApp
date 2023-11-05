@@ -1,6 +1,5 @@
-import {Dimensions, Pressable, StyleSheet, View} from 'react-native'
-import Colors from '../utils/Colors'
-import {Text} from '../components'
+import {JSXElementConstructor, memo, useEffect} from 'react'
+import {Pressable, StyleSheet, View} from 'react-native'
 import Animated, {
   interpolateColor,
   useAnimatedProps,
@@ -8,10 +7,13 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import {JSXElementConstructor, useEffect} from 'react'
 import SharedIconProps from '../types/SharedIconProps'
-import {Path} from 'react-native-svg'
-import {Gesture, GestureDetector} from 'react-native-gesture-handler'
+import Colors from '../utils/Colors'
+
+const APressable = Animated.createAnimatedComponent(Pressable)
+const BASE_WIDTH = 50
+const ACTIVE_WITH = 130
+const DURATION = 0.3 * 1000
 
 type TabbarIconProps = {
   active?: boolean
@@ -19,84 +21,99 @@ type TabbarIconProps = {
   Icon: JSXElementConstructor<SharedIconProps>
   onPress: () => void
 }
-const TabbarIcon: React.FC<TabbarIconProps> = ({
-  active,
-  label,
-  Icon,
-  onPress,
-}) => {
-  const colorProgress = useSharedValue(1)
-  const opacity = useSharedValue(0)
-  const blackToWhiteInterpolatedColor = interpolateColor(
-    colorProgress.value,
-    [0, 1],
-    [Colors.black[900], Colors.black[0]],
-  )
-  const whiteToBlackInterpolatedColor = interpolateColor(
-    colorProgress.value,
-    [0, 1],
-    [Colors.black[0], Colors.black[900]],
-  )
-  const aStroke = useAnimatedProps<Path>(() => ({
-    stroke: blackToWhiteInterpolatedColor,
-  }))
-  const aTextColor = useAnimatedStyle<Text>(() => ({
-    color: blackToWhiteInterpolatedColor,
-  }))
-  const aBackgroundColor = useAnimatedStyle(() => ({
-    backgroundColor: whiteToBlackInterpolatedColor,
-  }))
+const TabbarIcon: React.FC<TabbarIconProps> = memo(
+  ({active, label, Icon, onPress}) => {
+    const width = useSharedValue(BASE_WIDTH)
+    const opacity = useSharedValue(0)
+    const labelWidth = useSharedValue(0)
+    const colorProgress = useSharedValue(0)
 
-  useEffect(() => {
-    colorProgress.value = withTiming(active ? 1 : 0, {duration: 300})
-  }, [active])
+    const animatedProps = useAnimatedProps(
+      () => ({
+        stroke: interpolateColor(
+          colorProgress.value,
+          active ? [1, 0] : [0, 1],
+          active ? ['white', 'black'] : ['black', 'white'],
+        ),
+      }),
+      [active],
+    )
 
-  const gestureHandler = Gesture.Tap().onEnd(onPress)
-  return (
-    <GestureDetector gesture={gestureHandler}>
-      <Animated.View
+    const aConrtainerStyle = useAnimatedStyle(
+      () => ({
+        backgroundColor: interpolateColor(
+          colorProgress.value,
+          active ? [0, 1] : [1, 0],
+          active ? ['white', 'black'] : ['black', 'white'],
+        ),
+      }),
+      [active],
+    )
+
+    useEffect(() => {
+      if (active) {
+        width.value = withTiming(ACTIVE_WITH, {duration: DURATION})
+        opacity.value = withTiming(1, {duration: DURATION / 2})
+        labelWidth.value = withTiming(90, {duration: DURATION / 4})
+        colorProgress.value = withTiming(1, {duration: DURATION})
+      } else {
+        width.value = withTiming(BASE_WIDTH, {duration: DURATION})
+        opacity.value = withTiming(0, {duration: DURATION / 2})
+        labelWidth.value = withTiming(0, {duration: DURATION / 4})
+        colorProgress.value = withTiming(0, {duration: DURATION})
+      }
+    }, [active])
+
+    return (
+      <APressable
+        onPress={onPress}
         style={[
           styles.container,
-          aBackgroundColor,
-          active && styles.activeContainer,
+          {
+            width,
+          },
+          aConrtainerStyle,
         ]}>
-        <Icon
-          animatedProps={aStroke}
-          color={active ? Colors.black[900] : Colors.black[0]}
-        />
-        <Animated.View style={{overflow: 'hidden', flexWrap: 'wrap', opacity}}>
-          {active && (
-            <Text
-              font="headline"
-              fontWeight={300}
-              color="black"
-              colorWeight={100}
-              style={[{flexWrap: 'wrap'}, aTextColor]}>
-              {label}
-            </Text>
-          )}
-        </Animated.View>
-      </Animated.View>
-    </GestureDetector>
-  )
-}
+        <View style={styles.iconContainer}>
+          <Icon animatedProps={animatedProps} />
+        </View>
+        {/* <Animated.Text
+          numberOfLines={1}
+          style={[
+            styles.label,
+            {
+              width: labelWidth,
+              opacity,
+            },
+          ]}>
+          {label}
+        </Animated.Text> */}
+      </APressable>
+    )
+  },
+)
 
 const styles = StyleSheet.create({
   container: {
-    // maxHeight: 40,
-    flex: 1,
-    // maxWidth: 140,
-    flexDirection: 'row',
+    height: 50,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
-    // backgroundColor: Colors.black[0],
+    flexDirection: 'row',
   },
   activeContainer: {
     paddingHorizontal: 18,
     paddingVertical: 8,
     gap: 10,
     backgroundColor: Colors.black[900],
+  },
+  iconContainer: {
+    marginHorizontal: 5,
+  },
+  label: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '500',
   },
 })
 
