@@ -1,5 +1,5 @@
 import {JSXElementConstructor, memo, useEffect, useState} from 'react'
-import {Pressable, StyleSheet} from 'react-native'
+import {Pressable, StyleSheet, View} from 'react-native'
 import Animated, {
   interpolateColor,
   useAnimatedProps,
@@ -70,31 +70,33 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
 
     const maxWidth = active ? lWidth + 13 + BASE_WIDTH : BASE_WIDTH
     return (
-      <APressable
-        onPress={onPress}
-        style={[
-          styles.container,
-          {
-            width,
-            maxWidth,
-          },
-          aConrtainerStyle,
-        ]}>
-        <Icon animatedProps={animatedProps} />
-        <Animated.Text
-          numberOfLines={1}
-          onLayout={({nativeEvent}) => {
-            setLWidth(nativeEvent.layout.width)
-          }}
+      <View style={{width: maxWidth}}>
+        <APressable
+          onPress={onPress}
           style={[
-            styles.label,
+            styles.container,
             {
-              opacity,
+              width,
+              maxWidth,
             },
+            aConrtainerStyle,
           ]}>
-          {label}
-        </Animated.Text>
-      </APressable>
+          <Icon animatedProps={animatedProps} />
+          <Animated.Text
+            numberOfLines={1}
+            onLayout={({nativeEvent}) => {
+              setLWidth(nativeEvent.layout.width)
+            }}
+            style={[
+              styles.label,
+              {
+                opacity,
+              },
+            ]}>
+            {label}
+          </Animated.Text>
+        </APressable>
+      </View>
     )
   },
 )
