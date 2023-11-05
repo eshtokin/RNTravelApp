@@ -4,8 +4,8 @@ import Colors from '../../../../src/utils/Colors'
 import SharedIconProps from '../../../../src/types/SharedIconProps'
 import Animated from 'react-native-reanimated'
 
-const ASvg = Animated.createAnimatedComponent(Svg)
 const APath = Animated.createAnimatedComponent(Path)
+
 const HomeIcon: React.FC<SharedIconProps> = ({
   color = Colors.black[900],
   animatedProps,

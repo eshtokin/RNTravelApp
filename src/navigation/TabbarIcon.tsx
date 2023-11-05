@@ -1,5 +1,5 @@
-import {JSXElementConstructor, memo, useEffect} from 'react'
-import {Pressable, StyleSheet, View} from 'react-native'
+import {JSXElementConstructor, memo, useEffect, useState} from 'react'
+import {Pressable, StyleSheet} from 'react-native'
 import Animated, {
   interpolateColor,
   useAnimatedProps,
@@ -11,9 +11,10 @@ import SharedIconProps from '../types/SharedIconProps'
 import Colors from '../utils/Colors'
 
 const APressable = Animated.createAnimatedComponent(Pressable)
+// iconWidth + paddingHorizontal
 const BASE_WIDTH = 50
 const ACTIVE_WITH = 130
-const DURATION = 0.3 * 1000
+const DURATION = 300
 
 type TabbarIconProps = {
   active?: boolean
@@ -23,9 +24,10 @@ type TabbarIconProps = {
 }
 const TabbarIcon: React.FC<TabbarIconProps> = memo(
   ({active, label, Icon, onPress}) => {
+    const [lWidth, setLWidth] = useState(0)
+
     const width = useSharedValue(BASE_WIDTH)
     const opacity = useSharedValue(0)
-    const labelWidth = useSharedValue(0)
     const colorProgress = useSharedValue(0)
 
     const animatedProps = useAnimatedProps(
@@ -33,7 +35,9 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
         stroke: interpolateColor(
           colorProgress.value,
           active ? [1, 0] : [0, 1],
-          active ? ['white', 'black'] : ['black', 'white'],
+          active
+            ? [Colors.black[0], Colors.black[900]]
+            : [Colors.black[900], Colors.black[0]],
         ),
       }),
       [active],
@@ -44,7 +48,9 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
         backgroundColor: interpolateColor(
           colorProgress.value,
           active ? [0, 1] : [1, 0],
-          active ? ['white', 'black'] : ['black', 'white'],
+          active
+            ? [Colors.black[0], Colors.black[900]]
+            : [Colors.black[900], Colors.black[0]],
         ),
       }),
       [active],
@@ -53,17 +59,16 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
     useEffect(() => {
       if (active) {
         width.value = withTiming(ACTIVE_WITH, {duration: DURATION})
-        opacity.value = withTiming(1, {duration: DURATION / 2})
-        labelWidth.value = withTiming(90, {duration: DURATION / 4})
+        opacity.value = withTiming(1, {duration: DURATION})
         colorProgress.value = withTiming(1, {duration: DURATION})
       } else {
         width.value = withTiming(BASE_WIDTH, {duration: DURATION})
-        opacity.value = withTiming(0, {duration: DURATION / 2})
-        labelWidth.value = withTiming(0, {duration: DURATION / 4})
+        opacity.value = withTiming(0, {duration: DURATION})
         colorProgress.value = withTiming(0, {duration: DURATION})
       }
     }, [active])
 
+    const maxWidth = active ? lWidth + 13 + BASE_WIDTH : BASE_WIDTH
     return (
       <APressable
         onPress={onPress}
@@ -71,23 +76,24 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
           styles.container,
           {
             width,
+            maxWidth,
           },
           aConrtainerStyle,
         ]}>
-        <View style={styles.iconContainer}>
-          <Icon animatedProps={animatedProps} />
-        </View>
-        {/* <Animated.Text
+        <Icon animatedProps={animatedProps} />
+        <Animated.Text
           numberOfLines={1}
+          onLayout={({nativeEvent}) => {
+            setLWidth(nativeEvent.layout.width)
+          }}
           style={[
             styles.label,
             {
-              width: labelWidth,
               opacity,
             },
           ]}>
           {label}
-        </Animated.Text> */}
+        </Animated.Text>
       </APressable>
     )
   },
@@ -95,23 +101,16 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
+    padding: 13,
     borderRadius: 20,
-    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-  },
-  activeContainer: {
-    paddingHorizontal: 18,
-    paddingVertical: 8,
-    gap: 10,
-    backgroundColor: Colors.black[900],
-  },
-  iconContainer: {
-    marginHorizontal: 5,
+    overflow: 'hidden',
   },
   label: {
-    color: 'white',
+    position: 'absolute',
+    left: BASE_WIDTH,
+    color: Colors.black[0],
     fontSize: 20,
     fontWeight: '500',
   },
