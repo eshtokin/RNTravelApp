@@ -9,12 +9,10 @@ import {
   Location,
   StarIcon,
 } from '../../../assets/icons/svg'
-import {DarkOverlay} from '../../../assets/decoration'
 import Colors from '../../utils/Colors'
 import {useNavigation} from '@react-navigation/native'
 import {Screens} from '../../navigation/types'
-
-const SCREEN_SIZE = Dimensions.get('screen')
+import {ProductOverlay} from './components'
 
 type ProductProps = {}
 const Product: React.FC<ProductProps> = observer(({}) => {
@@ -27,7 +25,7 @@ const Product: React.FC<ProductProps> = observer(({}) => {
   return (
     <ImageBackground source={selectedPlace.photo} style={{flex: 1}}>
       <View style={styles.overlayPosition}>
-        <DarkOverlay height={SCREEN_SIZE.height} width={SCREEN_SIZE.width} />
+        <ProductOverlay />
       </View>
       <SafeAreaView style={styles.contentWrapper}>
         <Header

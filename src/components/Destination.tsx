@@ -10,7 +10,13 @@ import {
   HeartIconOutlined,
   Location,
 } from '../../assets/icons/svg'
-import {DestinationOverlay} from '../../assets/decoration'
+import LinearGradient from 'react-native-linear-gradient'
+
+const OVERLAY_COLORS = [
+  Colors.black.transparent,
+  Colors.black[500],
+  Colors.black[700],
+]
 
 type DestinationProps = {
   item: GeneratedPlace
@@ -36,9 +42,10 @@ const Destination: React.FC<DestinationProps> = observer(
             <HeartIconOutlined color={Colors.black[900]} />
           )}
         </Pressable>
-        <View style={styles.overlayPosition}>
-          <DestinationOverlay />
-        </View>
+        <LinearGradient
+          colors={OVERLAY_COLORS}
+          style={styles.overlayPosition}
+        />
         <View style={styles.infoContainer}>
           <Text
             font="headline"
@@ -82,13 +89,13 @@ const styles = StyleSheet.create({
   },
   overlayPosition: {
     position: 'absolute',
-    zIndex: 0,
+    right: 0,
     bottom: 0,
     left: 0,
-    right: 0,
+    height: '50%',
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
-    overflow: 'hidden',
+    opacity: 0.7,
   },
   favIconContainer: {
     position: 'absolute',

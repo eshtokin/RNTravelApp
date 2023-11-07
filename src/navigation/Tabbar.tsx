@@ -1,5 +1,5 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
-import {StyleSheet, View} from 'react-native'
+import {LayoutAnimation, StyleSheet, View} from 'react-native'
 import {
   HeartIcon,
   HomeIcon,
@@ -36,7 +36,10 @@ const tabs = [
 type TabBarProps = BottomTabBarProps
 const TabBar: React.FC<TabBarProps> = ({state, insets, navigation}) => {
   const activeRoute = state.routeNames[state.index]
-  const onIconPress = (screen: HomeScreens) => navigation.navigate(screen)
+  const onIconPress = (screen: HomeScreens) => {
+    LayoutAnimation.easeInEaseOut()
+    navigation.navigate(screen)
+  }
 
   return (
     <View
