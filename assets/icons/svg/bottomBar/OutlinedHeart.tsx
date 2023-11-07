@@ -8,7 +8,7 @@ type OutlinedHeartProps = SharedIconProps & {size?: number}
 const OutlinedHeart: React.FC<OutlinedHeartProps> = ({
   color = Colors.black[900],
   size = 24,
-  animatedProps,
+  animatedProps = {},
 }) => {
   return (
     <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none">
