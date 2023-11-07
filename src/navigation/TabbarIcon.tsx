@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import SharedIconProps from '../types/SharedIconProps'
 import Colors from '../utils/Colors'
+import Typography from '../utils/Typography'
 
 const APressable = Animated.createAnimatedComponent(Pressable)
 // iconWidth + paddingHorizontal
@@ -103,7 +104,8 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
 
 const styles = StyleSheet.create({
   container: {
-    padding: 13,
+    paddingVertical: 8,
+    paddingHorizontal: 18,
     borderRadius: 20,
     alignItems: 'center',
     flexDirection: 'row',
@@ -112,9 +114,8 @@ const styles = StyleSheet.create({
   label: {
     position: 'absolute',
     left: BASE_WIDTH,
-    color: Colors.black[0],
-    fontSize: 20,
-    fontWeight: '500',
+    color: Colors.black[100],
+    ...Typography.headline[300],
   },
 })
 

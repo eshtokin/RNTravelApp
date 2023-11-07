@@ -43,7 +43,7 @@ const TabBar: React.FC<TabBarProps> = ({state, insets, navigation}) => {
       style={[
         styles.container,
         {
-          paddingBottom: 20 + insets.bottom,
+          paddingBottom: insets.bottom + 20,
         },
       ]}>
       {tabs.map(({label, Icon, route}) => {
