@@ -1,19 +1,43 @@
-import {StyleSheet, View} from 'react-native'
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
-import Colors from '../utils/Colors'
+import {StyleSheet, View} from 'react-native'
 import {
   HeartIcon,
   HomeIcon,
   PersonIcon,
   PlaneIcon,
 } from '../../assets/icons/svg'
-import {HomeScreens} from './types'
+import Colors from '../utils/Colors'
 import TabbarIcon from './TabbarIcon'
+import {HomeScreens} from './types'
+
+const tabs = [
+  {
+    label: 'Home',
+    Icon: HomeIcon,
+    route: HomeScreens.Home,
+  },
+  {
+    label: 'My Trip',
+    Icon: PlaneIcon,
+    route: HomeScreens.MyTrip,
+  },
+  {
+    label: 'Wishlist',
+    Icon: HeartIcon,
+    route: HomeScreens.Wishlist,
+  },
+  {
+    label: 'Profile',
+    Icon: PersonIcon,
+    route: HomeScreens.Profile,
+  },
+]
 
 type TabBarProps = BottomTabBarProps
 const TabBar: React.FC<TabBarProps> = ({state, insets, navigation}) => {
   const activeRoute = state.routeNames[state.index]
   const onIconPress = (screen: HomeScreens) => navigation.navigate(screen)
+
   return (
     <View
       style={[
@@ -22,30 +46,18 @@ const TabBar: React.FC<TabBarProps> = ({state, insets, navigation}) => {
           paddingBottom: 20 + insets.bottom,
         },
       ]}>
-      <TabbarIcon
-        label="Home"
-        Icon={HomeIcon}
-        active={activeRoute === HomeScreens.Home}
-        onPress={() => onIconPress(HomeScreens.Home)}
-      />
-      <TabbarIcon
-        label="My Trip"
-        Icon={PlaneIcon}
-        active={activeRoute === HomeScreens.MyTrip}
-        onPress={() => onIconPress(HomeScreens.MyTrip)}
-      />
-      <TabbarIcon
-        label="Wishlist"
-        Icon={HeartIcon}
-        active={activeRoute === HomeScreens.Wishlist}
-        onPress={() => onIconPress(HomeScreens.Wishlist)}
-      />
-      <TabbarIcon
-        label="Profile"
-        Icon={PersonIcon}
-        active={activeRoute === HomeScreens.Profile}
-        onPress={() => onIconPress(HomeScreens.Profile)}
-      />
+      {tabs.map(({label, Icon, route}) => {
+        const isActive = activeRoute === route
+        return (
+          <TabbarIcon
+            key={route}
+            label={label}
+            Icon={Icon}
+            active={isActive}
+            onPress={() => onIconPress(route)}
+          />
+        )
+      })}
     </View>
   )
 }

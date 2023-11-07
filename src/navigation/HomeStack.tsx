@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {Home, Product} from '../features/Home'
+import {Home} from '../features/Home'
 import TabBar from './Tabbar'
 import {HomeScreens, HomeScreensPropsTypes} from './types'
 import {Wishlist} from '../features/Wishlist'

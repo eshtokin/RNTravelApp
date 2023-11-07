@@ -1,13 +1,13 @@
-import React from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import {observer} from 'mobx-react-lite'
-import {Onboarding} from '../features/Onboarding'
+import React from 'react'
+import {Booking, Product} from '../features/Home'
 import {CreateAccount, ForgotPassword, Login} from '../features/Login'
 import ChooseFavouritePlace from '../features/Login/containers/ChooseFavouritePlace'
-import HomeNavigator from './HomeStack'
+import {Onboarding} from '../features/Onboarding'
 import store from '../store/RootStore'
+import HomeNavigator from './HomeStack'
 import {RootStackProps, Screens} from './types'
-import {Product, Booking} from '../features/Home'
 
 const {Screen, Navigator} = createNativeStackNavigator<RootStackProps>()
 
