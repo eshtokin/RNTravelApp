@@ -13,7 +13,7 @@ import Colors from '../utils/Colors'
 const APressable = Animated.createAnimatedComponent(Pressable)
 // iconWidth + paddingHorizontal
 const BASE_WIDTH = 50
-const ACTIVE_WITH = 130
+const ACTIVE_WITH = 150
 const DURATION = 300
 
 type TabbarIconProps = {
@@ -85,7 +85,7 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
           <Animated.Text
             numberOfLines={1}
             onLayout={({nativeEvent}) => {
-              setLWidth(nativeEvent.layout.width)
+              setLWidth(Math.round(nativeEvent.layout.width))
             }}
             style={[
               styles.label,
