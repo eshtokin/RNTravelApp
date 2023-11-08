@@ -51,10 +51,12 @@ const Destination: React.FC<DestinationProps> = observer(
           <View style={styles.locationContainer}>
             <Location />
             <Text
+              style={styles.locationText}
               font="headline"
               fontWeight={100}
               color="black"
-              colorWeight={0}>
+              colorWeight={0}
+              numberOfLines={1}>
               {country}
             </Text>
           </View>
@@ -110,6 +112,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
+  },
+  locationText: {
+    width: '87%',
   },
   rate: {},
 })
