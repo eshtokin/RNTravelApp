@@ -12,3 +12,4 @@ export {default as Switch} from './Switch'
 export {default as Header} from './Header'
 
 export {default as Text} from './Text'
+export {default as Heart} from './Heart'

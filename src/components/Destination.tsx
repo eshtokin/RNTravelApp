@@ -5,12 +5,9 @@ import Rate from './Rate'
 import Text from './Text'
 import {GeneratedPlace} from '../store/mockData/places'
 import Colors from '../utils/Colors'
-import {
-  HeartIconFilled,
-  HeartIconOutlined,
-  Location,
-} from '../../assets/icons/svg'
+import {HeartIcon, Location} from '../../assets/icons/svg'
 import LinearGradient from 'react-native-linear-gradient'
+import Heart from './Heart'
 
 const OVERLAY_COLORS = [
   Colors.black.transparent,
@@ -36,11 +33,7 @@ const Destination: React.FC<DestinationProps> = observer(
         source={photo}
         resizeMode="cover">
         <Pressable style={styles.favIconContainer} onPress={onFavIconPress}>
-          {inFavourites ? (
-            <HeartIconFilled />
-          ) : (
-            <HeartIconOutlined color={Colors.black[900]} />
-          )}
+          <Heart active={inFavourites} size={20} />
         </Pressable>
         <LinearGradient
           colors={OVERLAY_COLORS}

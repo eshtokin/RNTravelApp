@@ -1,30 +1,24 @@
+import {observer} from 'mobx-react-lite'
 import React from 'react'
-import {
-  Image,
-  ImageSourcePropType,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native'
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native'
+import {GeneratedPlace} from '../store/mockData/places'
 import Colors from '../utils/Colors'
 import Typography from '../utils/Typography'
-import {HeartIconFilled, HeartIconOutlined} from '../../assets/icons/svg'
+import Heart from './Heart'
 import Rate from './Rate'
-import {GeneratedPlace} from '../store/mockData/places'
 
 type PackageProps = {
   item: GeneratedPlace
   onHeartIconPress: () => void
 }
-const Package: React.FC<PackageProps> = ({item, onHeartIconPress}) => {
+const Package: React.FC<PackageProps> = observer(({item, onHeartIconPress}) => {
   const {name, price, inFavourites, rate, description, photo} = item
   return (
     <Pressable style={styles.container}>
       <Image source={photo} style={styles.image} />
       <View style={styles.infoContainer}>
         <Pressable style={styles.heartIconContainer} onPress={onHeartIconPress}>
-          {inFavourites ? <HeartIconFilled /> : <HeartIconOutlined />}
+          <Heart active={inFavourites} />
         </Pressable>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.price}>${price.toFixed(2)}</Text>
@@ -35,7 +29,7 @@ const Package: React.FC<PackageProps> = ({item, onHeartIconPress}) => {
       </View>
     </Pressable>
   )
-}
+})
 
 const styles = StyleSheet.create({
   container: {

@@ -1,7 +1,7 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
 import {LayoutAnimation, StyleSheet, View} from 'react-native'
 import {
-  HeartIcon,
+  OutlinedHeart,
   HomeIcon,
   PersonIcon,
   PlaneIcon,
@@ -23,7 +23,7 @@ const tabs = [
   },
   {
     label: 'Wishlist',
-    Icon: HeartIcon,
+    Icon: OutlinedHeart,
     route: HomeScreens.Wishlist,
   },
   {

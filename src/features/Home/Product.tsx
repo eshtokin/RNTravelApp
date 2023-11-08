@@ -1,14 +1,9 @@
 import {observer} from 'mobx-react-lite'
-import {Dimensions, ImageBackground, StyleSheet, View} from 'react-native'
+import {ImageBackground, StyleSheet, View} from 'react-native'
 import store from '../../store/RootStore'
-import {Button, Header, Text} from '../../components'
+import {Button, Header, Heart, Text} from '../../components'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import {
-  HeartIcon,
-  HeartIconFilled,
-  Location,
-  StarIcon,
-} from '../../../assets/icons/svg'
+import {HeartIcon, Location, StarIcon} from '../../../assets/icons/svg'
 import Colors from '../../utils/Colors'
 import {useNavigation} from '@react-navigation/native'
 import {Screens} from '../../navigation/types'
@@ -23,7 +18,7 @@ const Product: React.FC<ProductProps> = observer(({}) => {
   const onBookingPress = () => navigation.navigate(Screens.Booking)
 
   return (
-    <ImageBackground source={selectedPlace.photo} style={{flex: 1}}>
+    <ImageBackground source={selectedPlace.photo} style={styles.container}>
       <View style={styles.overlayPosition}>
         <ProductOverlay />
       </View>
@@ -32,13 +27,7 @@ const Product: React.FC<ProductProps> = observer(({}) => {
           transparent
           withoutTitle
           withBackIcon
-          RightIcon={
-            selectedPlace.inFavourites ? (
-              <HeartIconFilled />
-            ) : (
-              <HeartIcon color={Colors.black[0]} />
-            )
-          }
+          RightIcon={<Heart active={selectedPlace.inFavourites} />}
           onRightIconPress={onFavIconPress}
         />
         <View style={styles.information}>
@@ -110,6 +99,9 @@ const Product: React.FC<ProductProps> = observer(({}) => {
 })
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

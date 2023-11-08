@@ -4,6 +4,7 @@ import MOCK_PLACES, {
   Categories,
   MOCK_CATEGORIES,
 } from './mockData/places'
+import {LayoutAnimation} from 'react-native'
 
 export class Places {
   searchValue: string = ''

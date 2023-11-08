@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {StyleSheet, View} from 'react-native'
-import {observer} from 'mobx-react-lite'
 import TitleForSection from './TitleForSection'
 import {Package} from '../../../components'
 import store from '../../../store/RootStore'
 
-const PopularPackagesList = observer(() => {
+const PopularPackagesList = () => {
   const {places, toggleFavouriteOnPlace} = store.places
-  const onFavIconPress = (name: string) => toggleFavouriteOnPlace(name)
+  const onFavIconPress = (name: string) => {
+    toggleFavouriteOnPlace(name)
+  }
   return (
     <View style={styles.container}>
       <TitleForSection title="Popular Packages" />
@@ -22,7 +23,7 @@ const PopularPackagesList = observer(() => {
       </View>
     </View>
   )
-})
+}
 
 const styles = StyleSheet.create({
   container: {gap: 24, marginTop: 30},

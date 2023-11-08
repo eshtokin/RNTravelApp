@@ -1,7 +1,6 @@
 export {default as CircleChecked} from './CircleChecked'
 export {default as StarIcon} from './StarIcon'
-export {default as HeartIconFilled} from './HeartIconFilled'
-export {default as HeartIconOutlined} from './HeartIconOutlined'
+export {default as HeartIcon} from './HeartIcon'
 
 export {default as LogoBlack} from './LogoBlack'
 export {default as LogoWhite} from './LogoWhite'
@@ -19,7 +18,7 @@ export {default as FacebookIcon} from './FacebookIcon'
 export {default as CreateAccountSuccessfullyIcon} from './CreateAccountSuccessfullyIcon'
 
 export {default as HomeIcon} from './bottomBar/Home'
-export {default as HeartIcon} from './bottomBar/OutlinedHeart'
+export {default as OutlinedHeart} from './bottomBar/OutlinedHeart'
 export {default as PersonIcon} from './bottomBar/Person'
 export {default as PlaneIcon} from './bottomBar/Plane'
 export {default as ServicePlane} from './service/PlaneIcon'
