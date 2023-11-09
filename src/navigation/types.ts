@@ -7,6 +7,7 @@ export enum Screens {
   Main = 'Main',
   Product = 'Product',
   Booking = 'Booking',
+  Modal = 'Modal',
 }
 
 export type RootStackProps = {
@@ -20,6 +21,7 @@ export type RootStackProps = {
   }
   [Screens.Product]: undefined
   [Screens.Booking]: undefined
+  [Screens.Modal]: undefined
 }
 
 export enum HomeScreens {
@@ -27,6 +29,7 @@ export enum HomeScreens {
   Wishlist = 'Wishlist',
   MyTrip = 'MyTrip',
   Profile = 'Profile',
+  Modal = 'Modal',
 }
 
 export type HomeScreensPropsTypes = {
@@ -34,4 +37,5 @@ export type HomeScreensPropsTypes = {
   [HomeScreens.Wishlist]: undefined
   [HomeScreens.MyTrip]: undefined
   [HomeScreens.Profile]: undefined
+  [HomeScreens.Modal]: undefined
 }
