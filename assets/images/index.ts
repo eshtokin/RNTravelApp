@@ -36,3 +36,4 @@ export const SmallBooking2 = require('./small_booking2.png')
 export const SmallBooking3 = require('./small_booking3.png')
 
 export const avatar1 = require('./avatar1.png')
+export const CreditCardImage = require('./credit_card_image.png')

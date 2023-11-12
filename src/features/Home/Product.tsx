@@ -13,7 +13,6 @@ type ProductProps = {}
 const Product: React.FC<ProductProps> = observer(({}) => {
   const navigation = useNavigation()
   const {selectedPlace, toggleFavouriteOnPlace} = store.places
-  console.log(selectedPlace)
   const onFavIconPress = () => toggleFavouriteOnPlace(selectedPlace.name)
   const onBookingPress = () => navigation.navigate(Screens.Booking)
 

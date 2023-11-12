@@ -10,6 +10,7 @@ type HeaderProps = {
   RightIcon?: ReactElement
   onRightIconPress?: () => void
   onSearchIconPress?: () => void
+  title?: string
   transparent?: boolean
   withoutTitle?: boolean
   blackIconColor?: string
@@ -17,6 +18,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({
   transparent = false,
   withBackIcon = false,
+  title = 'Travel',
   onRightIconPress,
   withoutTitle,
   RightIcon,
@@ -30,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({
       <Pressable style={styles.leftIconContainer} onPress={goBack}>
         {withBackIcon && <BackArrow color={blackIconColor} />}
       </Pressable>
-      {!withoutTitle && <Text style={styles.headerTitle}>Travel</Text>}
+      {!withoutTitle && <Text style={styles.headerTitle}>{title}</Text>}
       <View style={styles.rightIconContainer}>
         {RightIcon && onRightIconPress && (
           <Pressable onPress={onRightIconPress}>{RightIcon}</Pressable>

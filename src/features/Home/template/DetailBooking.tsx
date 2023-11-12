@@ -7,9 +7,9 @@ const DetailBooking: React.FC<DetailBookingProps> = () => {
   return (
     <View style={styles.container}>
       <View style={styles.padding}>
-        <Text font="headline" fontWeight={400} style={styles.screenTitle}>
+        {/* <Text font="headline" fontWeight={400} style={styles.screenTitle}>
           Detail Booking
-        </Text>
+        </Text> */}
         <Input
           label={'Person Responsible'}
           value={'Pristia'}

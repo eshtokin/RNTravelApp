@@ -1,41 +1,57 @@
-import {SafeAreaView, StyleSheet, View} from 'react-native'
-import {Button, Text} from '.'
-import Colors from '../utils/Colors'
-import ChooseBookingDate from '../features/Home/template/ChooseBookingDate'
-import {useState} from 'react'
-import DetailBooking from '../features/Home/template/DetailBooking'
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import {HomeScreensPropsTypes, HomeScreens} from '../navigation/types'
+import {useEffect, useState} from 'react'
+import {SafeAreaView, StyleSheet, View} from 'react-native'
+import Animated, {useSharedValue, withTiming} from 'react-native-reanimated'
+import {Button, Header, Text} from '.'
+import BookingSuccessfully from '../features/Home/template/BookingSuccessfully'
+import Card from '../features/Home/template/Card'
+import ChooseBookingDate from '../features/Home/template/ChooseBookingDate'
+import DetailBooking from '../features/Home/template/DetailBooking'
 import PaymentMethods from '../features/Home/template/PaymentMethods'
+import {HomeScreens, HomeScreensPropsTypes} from '../navigation/types'
+import Colors from '../utils/Colors'
+import SCREEN_SIZE from '../utils/ScreenSIze'
 
+const titles = ['', '', 'Detail Booking', 'Payments Methods', 'Payment', '']
 type ModalProps = NativeStackScreenProps<
   HomeScreensPropsTypes,
   HomeScreens.Modal
 >
 export const Modal: React.FC<ModalProps> = ({navigation}) => {
   const [step, setStep] = useState(1)
+  const numberOfActiveSteps = 4
+  const progressWidth = useSharedValue(0)
+  const progressStep = SCREEN_SIZE.width / numberOfActiveSteps
+  useEffect(() => {
+    progressWidth.value = withTiming(step * progressStep)
+  }, [step])
+
   const onBackPress = () => navigation.canGoBack() && navigation.goBack()
   const onConfirmPress = () => {
-    setStep(step + 1)
+    const nextStep = step >= 5 ? 1 : step + 1
+    setStep(nextStep)
   }
   return (
     <SafeAreaView style={styles.container}>
-      {step === 1 && (
-        <ChooseBookingDate
-          onBackPress={onBackPress}
-          onConfirmPress={onConfirmPress}
-        />
+      {step > 1 && step < 5 && (
+        <Header withBackIcon blackIconColor="black" title={titles[step]} />
       )}
+      {step === 1 && <ChooseBookingDate />}
       {step === 2 && <DetailBooking />}
       {step === 3 && <PaymentMethods />}
+      {step === 4 && <Card />}
+      {step === 5 && <BookingSuccessfully />}
+      {step < 5 && (
+        <Animated.View
+          style={{
+            backgroundColor: Colors.black[900],
+            height: 2,
+            width: progressWidth,
+          }}
+        />
+      )}
       <View
-        style={{
-          backgroundColor: Colors.black[900],
-          height: 2,
-          width: `${step * 25}%`,
-        }}
-      />
-      <View style={styles.buttonContainer}>
+        style={[styles.buttonContainer, step < 5 && styles.oneButtonContainer]}>
         {step === 1 && (
           <>
             <Button
@@ -56,10 +72,9 @@ export const Modal: React.FC<ModalProps> = ({navigation}) => {
             />
           </>
         )}
-        {step === 2 && (
+        {step >= 2 && step <= 4 && (
           <>
-            <View
-              style={{flexDirection: 'row', gap: 5, alignItems: 'flex-end'}}>
+            <View style={styles.priceWrapper}>
               <Text
                 font="bodyText"
                 fontWeight={100}
@@ -79,40 +94,26 @@ export const Modal: React.FC<ModalProps> = ({navigation}) => {
               type={'primary'}
               icon={'label-only'}
               size={'large'}
-              label={'Payment Method'}
+              label={
+                step === 2
+                  ? 'Payment Method'
+                  : step > 2 && step <= 4
+                  ? 'Process Payment'
+                  : ''
+              }
               onPress={onConfirmPress}
               addStyles={styles.additionBtnStyles}
             />
           </>
         )}
-        {step === 3 && (
-          <>
-            <View
-              style={{flexDirection: 'row', gap: 5, alignItems: 'flex-end'}}>
-              <Text
-                font="bodyText"
-                fontWeight={100}
-                color="black"
-                colorWeight={400}>
-                Total
-              </Text>
-              <Text
-                font="headline"
-                fontWeight={300}
-                color="error"
-                colorWeight={500}>
-                $1490,00
-              </Text>
-            </View>
-            <Button
-              type={'primary'}
-              icon={'label-only'}
-              size={'large'}
-              label={'Process Payment'}
-              onPress={onConfirmPress}
-              addStyles={styles.additionBtnStyles}
-            />
-          </>
+        {step === 5 && (
+          <Button
+            type={'primary'}
+            icon={'label-only'}
+            size={'large'}
+            label={'Explore Other Places'}
+            onPress={onConfirmPress}
+          />
         )}
       </View>
     </SafeAreaView>
@@ -133,13 +134,20 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     padding: 20,
+    backgroundColor: Colors.black[0],
+  },
+  oneButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: Colors.black[0],
   },
   additionBtnStyles: {
     minWidth: 160,
+  },
+  priceWrapper: {
+    flexDirection: 'row',
+    gap: 5,
+    alignItems: 'flex-end',
   },
 })
 export default Modal

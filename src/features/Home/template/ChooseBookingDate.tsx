@@ -1,16 +1,10 @@
 import {View, StyleSheet} from 'react-native'
 import {CalendarList} from 'react-native-calendars'
-import {Button, Text} from '../../../components'
+import {Text} from '../../../components'
 import Colors from '../../../utils/Colors'
 
-type ChooseBookingDateProps = {
-  onBackPress: () => void
-  onConfirmPress: () => void
-}
-const ChooseBookingDate: React.FC<ChooseBookingDateProps> = ({
-  onBackPress,
-  onConfirmPress,
-}) => {
+type ChooseBookingDateProps = {}
+const ChooseBookingDate: React.FC<ChooseBookingDateProps> = ({}) => {
   return (
     <>
       <View style={styles.padding}>
@@ -23,6 +17,7 @@ const ChooseBookingDate: React.FC<ChooseBookingDateProps> = ({
           current={new Date().toString()}
           pastScrollRange={0}
           futureScrollRange={24}
+          monthFormat="MMMM"
           markingType="period"
           markedDates={{
             '2023-11-16': {
@@ -47,13 +42,6 @@ const ChooseBookingDate: React.FC<ChooseBookingDateProps> = ({
           }}
         />
       </View>
-      <View
-        style={{
-          backgroundColor: Colors.black[900],
-          height: 2,
-          width: '25%',
-        }}
-      />
       {/* <View style={styles.buttonContainer}>
         <Button
           type={'secondary'}
