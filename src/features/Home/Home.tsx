@@ -8,16 +8,11 @@ import CategoryList from './components/CategoryList'
 import Places from './components/PlaceList'
 import PopularPackagesList from './components/PopularPackageList'
 import Search from './components/Search'
-import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import {RootStackProps, Screens} from '../../navigation/types'
-import {useEffect} from 'react'
 
-type HomeProps = NativeStackScreenProps<RootStackProps, Screens.Main>
-const Home: React.FC<HomeProps> = observer(({navigation}) => {
+// type HomeProps = NativeStackScreenProps<RootStackProps, Screens.Main>
+type HomeProps = {}
+const Home: React.FC<HomeProps> = observer(({}) => {
   const isEnabled = store.places.placesForSearch.length === 0
-  useEffect(() => {
-    navigation.navigate(Screens.Modal)
-  }, [])
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView style={styles.scrollContainer} scrollEnabled={isEnabled}>
