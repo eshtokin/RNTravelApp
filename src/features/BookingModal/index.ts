@@ -1,0 +1,5 @@
+export {default as BookingSuccessfully} from './components/BookingSuccessfully'
+export {default as Card} from './components/Card'
+export {default as ChooseBookingDate} from './components/ChooseBookingDate'
+export {default as DetailBooking} from './components/DetailBooking'
+export {default as PaymentMethods} from './components/PaymentMethods'

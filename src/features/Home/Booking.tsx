@@ -13,11 +13,15 @@ import BookingBottom from './booking/BookngBottom'
 import SERVICE from '../../store/mockData/services'
 import GalleryPhoto from './booking/GalleryPhoto'
 import MiniMap from './booking/MiniMap'
+import {useNavigation} from '@react-navigation/native'
+import {Screens} from '../../navigation/types'
 
 type BookingProps = {}
 const Booking: React.FC<BookingProps> = ({}) => {
   const {selectedPlace} = store.places
-  const onBookingPress = () => {}
+  const navigation = useNavigation()
+  const onBookingPress = () => navigation.navigate(Screens.Modal)
+
   return (
     <SafeAreaView style={bookingStyle.container}>
       <Header withBackIcon blackIconColor={Colors.black[900]} />

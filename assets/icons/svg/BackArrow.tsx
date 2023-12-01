@@ -4,10 +4,14 @@ import Colors from '../../../src/utils/Colors'
 
 type BackArrowProps = {
   color?: string
+  size?: number
 }
-const BackArrow: React.FC<BackArrowProps> = ({color = Colors.black[0]}) => {
+const BackArrow: React.FC<BackArrowProps> = ({
+  color = Colors.black[0],
+  size = 24,
+}) => {
   return (
-    <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none">
       <G id="vuesax/linear/arrow-left">
         <G id="arrow-left">
           <Path

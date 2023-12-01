@@ -34,3 +34,9 @@ export {default as MessageIcon} from './MessageIcon'
 export {default as NorificationIcon} from './NotificationIcon'
 
 export {default as CalendarIcon} from './CalendarIcon'
+
+export {default as AppleIcon} from './paymentsMethods/AppleIcon'
+export {default as CreditCardicon} from './paymentsMethods/CreditCardIcon'
+export {default as PaypallIcon} from './paymentsMethods/PaypallIcon'
+
+export {default as PalmBeach} from './palm_beach'

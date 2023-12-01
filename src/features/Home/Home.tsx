@@ -9,6 +9,7 @@ import Places from './components/PlaceList'
 import PopularPackagesList from './components/PopularPackageList'
 import Search from './components/Search'
 
+// type HomeProps = NativeStackScreenProps<RootStackProps, Screens.Main>
 type HomeProps = {}
 const Home: React.FC<HomeProps> = observer(({}) => {
   const isEnabled = store.places.placesForSearch.length === 0
