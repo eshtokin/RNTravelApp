@@ -14,4 +14,4 @@ export {default as Header} from './Header'
 export {default as Text} from './Text'
 export {default as Heart} from './Heart'
 
-export {default as Modal} from './Modal'
+export {default as Modal} from '../features/BookingModal/containers/BookingModal'

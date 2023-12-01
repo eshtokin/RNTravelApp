@@ -9,9 +9,9 @@ const Card: React.FC<CardProps> = () => {
       <View style={styles.cardWrapper}>
         <Image source={CreditCardImage} />
         <View style={styles.infoWrapper}>
-          {/* <Text font="headline" fontWeight={200} color="black" colorWeight={0}>
+          <Text font="headline" fontWeight={200} color="black" colorWeight={0}>
             Pristia Candra
-          </Text> */}
+          </Text>
           <View style={styles.cardInfo}>
             <Text
               font="headline"
@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
   },
   infoWrapper: {
     position: 'absolute',
-    top: 20,
-    bottom: 20,
-    left: 20,
+    top: 30,
+    bottom: 30,
+    left: 30,
     justifyContent: 'space-between',
   },
   cardInfo: {gap: 10},
