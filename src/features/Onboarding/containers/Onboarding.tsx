@@ -1,35 +1,48 @@
-import React from 'react'
+import {useEffect, useRef} from 'react'
 import {SectionList, StatusBar, StyleSheet, View} from 'react-native'
 import {ONBOARDING_DATA} from '../onboarding_info'
 import Colors from '../../../utils/Colors'
 import StaticContent from '../components/StaticContent'
-import {useNavigation} from '@react-navigation/native'
-import {Screens} from '../../../navigation/types'
 import {DinamicContent} from '../components'
 import store from '../../../store/RootStore'
+import useOnboardingInterval from '../helpers/useOnboardingInterval'
 
 type OnboardingProps = {}
 const Onboarding: React.FC<OnboardingProps> = ({}) => {
-  const navigation = useNavigation()
-  const [currentIndex, setCurrentIndex] = React.useState(0)
+  const DURATION = 4000
+  const numberOfSteps = ONBOARDING_DATA.length - 1
 
-  const listRef = React.useRef<SectionList>(null)
+  const listRef = useRef<SectionList>(null)
 
-  const onNextPress = () => {
-    const newIndex = currentIndex + 1
-    if (newIndex >= ONBOARDING_DATA.length) {
-      store.setIsOnboardingPassed(true)
-      return
-    }
-    setCurrentIndex(newIndex)
+  const scrollToNextView = (viewPosition: number) =>
     listRef.current?.scrollToLocation({
       itemIndex: 1,
-      sectionIndex: newIndex,
+      sectionIndex: viewPosition,
       animated: true,
       viewOffset: 0,
       viewPosition: 0,
     })
+
+  const {step, goToNextStep, clearOnboardingInterval, setOnboardingInterval} =
+    useOnboardingInterval({
+      stepDuration: DURATION,
+      numberOfSteps,
+      callback: scrollToNextView,
+    })
+
+  const onButtonPress = () => {
+    clearOnboardingInterval()
+    goToNextStep()
+    setOnboardingInterval()
   }
+
+  useEffect(() => {
+    if (step >= 0 && step <= numberOfSteps) {
+      scrollToNextView(step)
+    } else {
+      store.setIsOnboardingPassed(true)
+    }
+  }, [step, scrollToNextView])
 
   return (
     <View style={styles.container}>
@@ -39,7 +52,12 @@ const Onboarding: React.FC<OnboardingProps> = ({}) => {
         backgroundColor={Colors.black.transparent}
       />
       <DinamicContent listRef={listRef} />
-      <StaticContent currentIndex={currentIndex} onNextPress={onNextPress} />
+      <StaticContent
+        buttonLabel={ONBOARDING_DATA[step % 3].data[0].buttonLabel || ''}
+        currentIndex={step}
+        onNextPress={onButtonPress}
+        duration={DURATION}
+      />
     </View>
   )
 }
