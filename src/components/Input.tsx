@@ -1,4 +1,4 @@
-import {ReactNode, useRef, useState} from 'react'
+import {ReactElement, useRef, useState} from 'react'
 import {
   LayoutAnimation,
   Pressable,
@@ -9,11 +9,13 @@ import {
 } from 'react-native'
 import {TextInput} from 'react-native-gesture-handler'
 import Colors from '../utils/Colors'
+import {SecureEye, UnsecureEye} from '../../assets/icons/svg'
 
 type InputProps = {
   label: string
   value: string
   error?: string
+  leftIcon?: ReactElement
   onChangeText: (text: string) => void
 } & TextInputProps
 const Input: React.FC<InputProps> = ({
@@ -21,10 +23,12 @@ const Input: React.FC<InputProps> = ({
   value,
   error,
   onChangeText,
+  secureTextEntry,
   ...props
 }) => {
   const inputRef = useRef<TextInput>(null)
   const [isInputActive, setIsInputActive] = useState(false)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(secureTextEntry)
   const activeCondition = value.length > 0 || isInputActive
 
   return (
@@ -53,8 +57,16 @@ const Input: React.FC<InputProps> = ({
           setIsInputActive(false)
         }}
         onGestureEvent={() => setIsInputActive(false)}
+        secureTextEntry={isPasswordVisible}
         {...props}
       />
+      {secureTextEntry && (
+        <Pressable
+          style={{position: 'absolute', top: 18, right: 20}}
+          onPress={() => setIsPasswordVisible(flag => !flag)}>
+          {isPasswordVisible ? <SecureEye /> : <UnsecureEye />}
+        </Pressable>
+      )}
       <Text style={styles.error}>{error}</Text>
     </View>
   )

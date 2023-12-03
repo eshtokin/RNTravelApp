@@ -23,7 +23,7 @@ const LoginInputSection: React.FC<LoginInputSectionProps> = ({
     <View style={styles.inputsContainer}>
       <Input label="Email" value={values.email} onChangeText={onChangeEmail} />
       <Input
-        // secured
+        secureTextEntry
         label="Password"
         value={values.password}
         onChangeText={onChangePassword}
