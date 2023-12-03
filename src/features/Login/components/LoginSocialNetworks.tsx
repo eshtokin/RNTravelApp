@@ -1,5 +1,5 @@
-import React, {FC} from 'react'
-import {StyleSheet, View} from 'react-native'
+import React, {FC, JSXElementConstructor, ReactElement, useState} from 'react'
+import {Pressable, StyleSheet, View} from 'react-native'
 import {
   FacebookIcon,
   GoogleIcon,
@@ -11,10 +11,46 @@ type SocialNetworkLoginProps = {}
 const SocialNetworkLogin: FC<SocialNetworkLoginProps> = () => {
   return (
     <View style={styles.socialWrapper}>
-      <InstagramIcon />
-      <GoogleIcon />
-      <FacebookIcon />
+      <SocialIconWrapper
+        Icon={InstagramIcon}
+        onPress={() => console.log('insta')}
+      />
+      <SocialIconWrapper
+        Icon={GoogleIcon}
+        onPress={() => console.log('google')}
+      />
+      <SocialIconWrapper
+        Icon={FacebookIcon}
+        onPress={() => console.log('face')}
+      />
     </View>
+  )
+}
+
+type SocialIconWrapperProps = {
+  Icon: JSXElementConstructor<{color?: string; foregroundColor?: string}>
+  onPress: () => void
+}
+const SocialIconWrapper: React.FC<SocialIconWrapperProps> = ({
+  Icon,
+  onPress,
+}) => {
+  const foregroundActiveColor = Colors.brand[500]
+  const foregroundInactiveColor = Colors.black[200]
+
+  const [pressed, setPressed] = useState(false)
+
+  return (
+    <Pressable
+      onPress={onPress}
+      onPressIn={() => setPressed(true)}
+      onPressOut={() => setPressed(false)}>
+      <Icon
+        foregroundColor={
+          pressed ? foregroundActiveColor : foregroundInactiveColor
+        }
+      />
+    </Pressable>
   )
 }
 
