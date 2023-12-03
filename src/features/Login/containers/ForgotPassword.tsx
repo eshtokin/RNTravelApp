@@ -22,7 +22,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
           </Text>
 
           <Text style={styles.title}>Forgot Your Password?</Text>
-          <Input label={'Email'} value={email} onChageText={setEmail} />
+          <Input label={'Email'} value={email} onChangeText={setEmail} />
         </View>
         <View style={styles.inputWrapper}>
           <Button

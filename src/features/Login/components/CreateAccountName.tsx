@@ -7,14 +7,14 @@ const CreateAccountName: React.FC<CreateAccountNameProps> = ({}) => {
       <Input
         label={'First Name'}
         value={''}
-        onChageText={function (text: string): void {
+        onChangeText={function (text: string): void {
           throw new Error('Function not implemented.')
         }}
       />
       <Input
         label={'Last Name'}
         value={''}
-        onChageText={function (text: string): void {
+        onChangeText={function (text: string): void {
           throw new Error('Function not implemented.')
         }}
       />

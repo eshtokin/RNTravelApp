@@ -36,6 +36,7 @@ const Login: React.FC<LoginProps> = ({}) => {
 
   return (
     <KeyboardAwareScrollView
+      bounces={false}
       contentContainerStyle={styles.keyboardAvoidingWrapper}>
       <SafeAreaView style={styles.container}>
         <StatusBar

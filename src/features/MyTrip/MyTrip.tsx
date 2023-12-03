@@ -27,9 +27,9 @@ const MyTrip: React.FC<MyTripProps> = observer(({}) => {
         <ScreenTitle title="List Your Trip" />
         <Input
           label="Search destination"
-          onChageText={() => {}}
+          onChangeText={() => {}}
           value=""
-          rightIcon={<LoupeIcon />}
+          // rightIcon={<LoupeIcon />}
         />
       </View>
       <FlatList

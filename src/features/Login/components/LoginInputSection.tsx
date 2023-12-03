@@ -21,12 +21,12 @@ const LoginInputSection: React.FC<LoginInputSectionProps> = ({
 }) => {
   return (
     <View style={styles.inputsContainer}>
-      <Input label="Email" value={values.email} onChageText={onChangeEmail} />
+      <Input label="Email" value={values.email} onChangeText={onChangeEmail} />
       <Input
-        secured
+        // secured
         label="Password"
         value={values.password}
-        onChageText={onChangePassword}
+        onChangeText={onChangePassword}
       />
       <View style={styles.checkboxWrapper}>
         <BouncyCheckbox

@@ -9,9 +9,9 @@ const CreateAccountPassword: React.FC<CreateAccountPasswordProps> = ({}) => {
     <>
       <Input
         label={'Password'}
-        secured
+        // secured
         value={''}
-        onChageText={function (text: string): void {
+        onChangeText={function (text: string): void {
           throw new Error('Function not implemented.')
         }}
       />

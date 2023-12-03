@@ -1,159 +1,99 @@
-import React, {ReactElement, ReactNode} from 'react'
+import {ReactNode, useRef, useState} from 'react'
 import {
-  Pressable,
+  LayoutAnimation,
   StyleSheet,
   Text,
-  TextInput,
-  View,
   TextInputProps,
+  View,
 } from 'react-native'
+import {TextInput} from 'react-native-gesture-handler'
 import Colors from '../utils/Colors'
-import Typography from '../utils/Typography'
-import {CrossIcon, SecureEye, UnsecureEye} from '../../assets/icons/svg'
 
 type InputProps = {
   label: string
   value: string
-  onChageText: (text: string) => void
   error?: string
-  secured?: boolean
-  rightIcon?: ReactNode
-  onRightIconPress?: () => void
+  onChangeText: (text: string) => void
 } & TextInputProps
 const Input: React.FC<InputProps> = ({
   label,
   value,
-  onChageText,
   error,
-  rightIcon,
-  onRightIconPress,
-  secured = false,
+  onChangeText,
   ...props
 }) => {
-  const [isActive, setIsActive] = React.useState(false)
-  const [securedField, setSecureField] = React.useState(secured)
-
-  const inputRef = React.useRef<TextInput>(null)
-
-  const _onRigthIconPress = () => {
-    inputRef.current?.blur()
-    if (rightIcon) {
-      onRightIconPress && onRightIconPress()
-      return
-    }
-
-    setSecureField(!securedField)
-  }
+  const inputRef = useRef<TextInput>(null)
+  const [isInputActive, setIsInputActive] = useState(false)
+  const activeCondition = value.length > 0 || isInputActive
 
   return (
     <View style={styles.container}>
       <View
         style={[
           styles.labelContainer,
-          value.length > 0 && styles.activeLabelContainerPosition,
-          isActive && styles.activeLabelContainerPosition,
+          activeCondition && styles.activeLabelContainer,
         ]}>
-        <Text style={[styles.label, isActive && styles.activeLabel]}>
+        <Text style={[styles.label, activeCondition && styles.activeLabel]}>
           {label}
         </Text>
       </View>
       <TextInput
         ref={inputRef}
-        secureTextEntry={securedField}
-        style={[styles.input, isActive && styles.activeInput]}
-        onFocus={() => setIsActive(true)}
-        onBlur={() => setIsActive(false)}
-        onChangeText={onChageText}
+        style={[styles.input, activeCondition && styles.activeInput]}
         value={value}
+        onChangeText={onChangeText}
+        onFocus={() => {
+          LayoutAnimation.easeInEaseOut()
+          setIsInputActive(true)
+        }}
+        onBlur={() => {
+          LayoutAnimation.easeInEaseOut()
+          setIsInputActive(false)
+        }}
+        onGestureEvent={() => setIsInputActive(false)}
         {...props}
       />
-      <Pressable style={styles.iconContainer} onPress={_onRigthIconPress}>
-        {secured ? (
-          securedField ? (
-            <SecureEye />
-          ) : (
-            <UnsecureEye />
-          )
-        ) : (
-          rightIcon && rightIcon
-        )}
-      </Pressable>
-      <View style={styles.errorContainer}>
-        {error && (
-          <Text style={styles.errorMessage} numberOfLines={1}>
-            {error}
-          </Text>
-        )}
-      </View>
+      <Text style={styles.error}>{error}</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {marginTop: 11, zIndex: 900},
-  input: {
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderWidth: 1,
-    borderColor: Colors.black[300],
-    borderRadius: 20,
-    backgroundColor: Colors.black[0],
-    ...Typography.bodyText[200],
-    lineHeight: 22,
-    color: Colors.black[900],
-    zIndex: 500,
-  },
-  activeInput: {
-    borderColor: Colors.brand[500],
-    borderWidth: 1,
+  container: {
+    marginVertical: 2,
   },
   labelContainer: {
     position: 'absolute',
-    left: 20,
-    top: 8,
-    zIndex: 0,
+    top: 22 - 5,
+    padding: 5,
+    marginLeft: 20,
     backgroundColor: Colors.black[0],
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 10,
+    zIndex: 999,
   },
-  activeLabelContainerPosition: {
-    left: 20,
-    top: -15,
-    zIndex: 1000,
+  label: {color: Colors.black[300]},
+  activeLabel: {color: Colors.brand[500]},
+  activeLabelContainer: {
+    top: -8,
   },
-  label: {
-    ...Typography.bodyText[200],
-    color: Colors.black[300],
-    zIndex: 9000,
+  input: {
+    height: 50,
+    paddingHorizontal: 20,
+    paddingVertical: 17,
+
+    marginVertical: 5,
+
+    borderWidth: 1,
+    borderRadius: 15,
+    borderColor: Colors.black[200],
+
+    backgroundColor: Colors.black[0],
+    color: Colors.black[900],
+    fontSize: 16,
   },
-  activeLabel: {
-    ...Typography.headline[100],
-    color: Colors.brand[500],
+  activeInput: {
+    borderColor: Colors.brand[500],
   },
-  placeholder: {
-    ...Typography.bodyText[200],
-    color: Colors.black[300],
-  },
-  iconContainer: {
-    padding: 10,
-    position: 'absolute',
-    right: 15,
-    top: 5,
-    zIndex: 1000,
-  },
-  errorContainer: {
-    justifyContent: 'center',
-    height: 16,
-    marginHorizontal: 25,
-  },
-  errorMessage: {
-    ...Typography.headline[300],
-    color: Colors.error[300],
-  },
+  error: {marginLeft: 20, color: Colors.error[500], fontSize: 12},
 })
 
 export default Input

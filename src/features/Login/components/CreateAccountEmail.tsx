@@ -10,7 +10,7 @@ const CreateAccountEmail: React.FC<CreateAccountEmailProps> = ({}) => {
       <Input
         label={'Email'}
         value={''}
-        onChageText={function (text: string): void {
+        onChangeText={function (text: string): void {
           throw new Error('Function not implemented.')
         }}
       />

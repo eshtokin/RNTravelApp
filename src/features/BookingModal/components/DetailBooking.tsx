@@ -13,35 +13,35 @@ const DetailBooking: React.FC<DetailBookingProps> = () => {
         <Input
           label={'Person Responsible'}
           value={'Pristia'}
-          onChageText={function (text: string): void {
+          onChangeText={function (text: string): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Contact Info'}
           value={'+62039120102012031'}
-          onChageText={function (text: string): void {
+          onChangeText={function (text: string): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Member'}
           value={'2 Member'}
-          onChageText={function (text: string): void {
+          onChangeText={function (text: string): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Type ID'}
           value={'ID Card'}
-          onChageText={function (text: string): void {
+          onChangeText={function (text: string): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Number ID'}
           value={'0210312013103003010303'}
-          onChageText={function (text: string): void {
+          onChangeText={function (text: string): void {
             throw new Error('Function not implemented.')
           }}
         />

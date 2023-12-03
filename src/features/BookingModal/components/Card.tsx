@@ -40,14 +40,14 @@ const Card: React.FC<CardProps> = () => {
       <Input
         label={'Card Number'}
         value={'465 6453 6453 354'}
-        onChageText={function (text: string): void {
+        onChangeText={function (text: string): void {
           throw new Error('Function not implemented.')
         }}
       />
       <Input
         label={'CVV'}
         value={''}
-        onChageText={function (text: string): void {
+        onChangeText={function (text: string): void {
           throw new Error('Function not implemented.')
         }}
       />

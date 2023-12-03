@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import {Input, Package} from '../../../components'
 import store from '../../../store/RootStore'
-import {CrossIcon, LoupeIcon} from '../../../../assets/icons/svg'
+// import {CrossIcon, LoupeIcon} from '../../../../assets/icons/svg'
 import {observer} from 'mobx-react-lite'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import {useState} from 'react'
@@ -30,7 +30,7 @@ const Search: React.FC<SearchProps> = observer(({}) => {
   const onLayout = (event: LayoutChangeEvent) => {
     setSearchResultLayout(event.nativeEvent.layout)
   }
-  const clearInput = () => changeSearchValue('')
+  // const clearInput = () => changeSearchValue('')
 
   const isEnabled = store.places.placesForSearch.length > 0
 
@@ -44,9 +44,9 @@ const Search: React.FC<SearchProps> = observer(({}) => {
         onLayout={onLayout}
         label={'Search destination'}
         value={searchValue}
-        onChageText={onChangeSearchValue}
-        onRightIconPress={clearInput}
-        rightIcon={searchValue.length ? <CrossIcon /> : <LoupeIcon />}
+        onChangeText={onChangeSearchValue}
+        // onRightIconPress={clearInput}
+        // rightIcon={searchValue.length ? <CrossIcon /> : <LoupeIcon />}
         clearTextOnFocus={true}
         autoCorrect={false}
         returnKeyType="done"

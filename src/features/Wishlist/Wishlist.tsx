@@ -19,10 +19,10 @@ const WishList: React.FC<WishListProps> = observer(({}) => {
       <View style={styles.searchContainer}>
         <Input
           label="Search"
-          onChageText={setSearchValue}
+          onChangeText={setSearchValue}
           value={searchValue}
-          rightIcon={searchValue.length ? <CrossIcon /> : <LoupeIcon />}
-          onRightIconPress={searchValue.length ? clearInput : undefined}
+          // rightIcon={searchValue.length ? <CrossIcon /> : <LoupeIcon />}
+          // onRightIconPress={searchValue.length ? clearInput : undefined}
         />
       </View>
       <FlatList
