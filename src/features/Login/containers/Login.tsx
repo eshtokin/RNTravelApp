@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import {StatusBar, StyleSheet} from 'react-native'
 import {LogoBlack} from '../../../../assets/icons/svg'
 import Colors from '../../../utils/Colors'
@@ -8,12 +8,13 @@ import {SafeAreaView} from 'react-native-safe-area-context'
 import store, {UserType} from '../../../store/RootStore'
 import {LoginActionButtons, LoginInputSection} from '../components'
 import SocialNetworkLogin from '../components/LoginSocialNetworks'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 type LoginProps = {}
 const Login: React.FC<LoginProps> = ({}) => {
   const navigation = useNavigation()
-  const [checkboxValue, setCheckboxValue] = React.useState(false)
-  const [inputValues, setInputValues] = React.useState<UserType>({
+  const [checkboxValue, setCheckboxValue] = useState(false)
+  const [inputValues, setInputValues] = useState<UserType>({
     email: '',
     password: '',
   })
@@ -29,35 +30,41 @@ const Login: React.FC<LoginProps> = ({}) => {
   const onForgotPasswordPress = () =>
     navigation.navigate(Screens.ForgotPassword)
 
-  const onCreateAccountHandler = () =>
-    navigation.navigate(Screens.CreateAccount)
+  const onCreateAccountPress = () => navigation.navigate(Screens.CreateAccount)
 
   const onSignInHandler = () => store.setUserInfo(inputValues)
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={Colors.black[0]} />
-      <LogoBlack />
+    <KeyboardAwareScrollView
+      contentContainerStyle={styles.keyboardAvoidingWrapper}>
+      <SafeAreaView style={styles.container}>
+        <StatusBar
+          barStyle={'dark-content'}
+          backgroundColor={Colors.black[0]}
+        />
+        <LogoBlack />
+        <LoginInputSection
+          values={inputValues}
+          onChangeEmail={changeInputValue('email')}
+          onChangePassword={changeInputValue('password')}
+          setToggleCheckBox={setToggleCheckBox}
+          onForgotPasswordPress={onForgotPasswordPress}
+        />
+        <LoginActionButtons
+          onCreateAccount={onCreateAccountPress}
+          onSignIn={onSignInHandler}
+        />
 
-      <LoginInputSection
-        values={inputValues}
-        onChangeEmail={changeInputValue('email')}
-        onChangePassword={changeInputValue('password')}
-        setToggleCheckBox={setToggleCheckBox}
-        onForgotPasswordPress={onForgotPasswordPress}
-      />
-
-      <LoginActionButtons
-        onCreateAccount={onCreateAccountHandler}
-        onSignIn={onSignInHandler}
-      />
-
-      <SocialNetworkLogin />
-    </SafeAreaView>
+        <SocialNetworkLogin />
+      </SafeAreaView>
+    </KeyboardAwareScrollView>
   )
 }
 
 const styles = StyleSheet.create({
+  keyboardAvoidingWrapper: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'flex-end',
