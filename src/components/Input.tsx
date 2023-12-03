@@ -1,6 +1,7 @@
 import {ReactNode, useRef, useState} from 'react'
 import {
   LayoutAnimation,
+  Pressable,
   StyleSheet,
   Text,
   TextInputProps,
@@ -28,7 +29,8 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <View style={styles.container}>
-      <View
+      <Pressable
+        onPress={() => inputRef.current?.focus()}
         style={[
           styles.labelContainer,
           activeCondition && styles.activeLabelContainer,
@@ -36,7 +38,7 @@ const Input: React.FC<InputProps> = ({
         <Text style={[styles.label, activeCondition && styles.activeLabel]}>
           {label}
         </Text>
-      </View>
+      </Pressable>
       <TextInput
         ref={inputRef}
         style={[styles.input, activeCondition && styles.activeInput]}
