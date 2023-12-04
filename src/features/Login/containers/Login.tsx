@@ -19,11 +19,10 @@ const Login: React.FC<LoginProps> = ({}) => {
     password: '',
   })
 
-  const changeInputValue = (filedName: keyof typeof inputValues) => {
-    return (text: string) => {
+  const changeInputValue =
+    (filedName: keyof typeof inputValues) => (text: string) => {
       setInputValues({...inputValues, [filedName]: text})
     }
-  }
 
   const setToggleCheckBox = (newValue: boolean) => setCheckboxValue(newValue)
 
@@ -52,6 +51,9 @@ const Login: React.FC<LoginProps> = ({}) => {
           onForgotPasswordPress={onForgotPasswordPress}
         />
         <LoginActionButtons
+          loginActionEnebled={
+            inputValues.email.length > 5 && inputValues.password.length > 5
+          }
           onCreateAccount={onCreateAccountPress}
           onSignIn={onSignInHandler}
         />

@@ -1,12 +1,15 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
 import {Button} from '../../../components'
+import {observer} from 'mobx-react-lite'
 
 type LoginActionButtonsProps = {
+  loginActionEnebled: boolean
   onCreateAccount: () => void
   onSignIn: () => void
 }
 const LoginActionButtons: React.FC<LoginActionButtonsProps> = ({
+  loginActionEnebled,
   onCreateAccount,
   onSignIn,
 }) => {
@@ -25,6 +28,7 @@ const LoginActionButtons: React.FC<LoginActionButtonsProps> = ({
         size={'large'}
         label={'Sign In'}
         onPress={onSignIn}
+        disabled={!loginActionEnebled}
       />
     </View>
   )

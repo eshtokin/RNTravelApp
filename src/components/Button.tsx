@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {
   Image,
   ImageSourcePropType,
@@ -32,9 +32,7 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   addStyles,
 }) => {
-  const [buttonState, setButtonState] = React.useState<
-    'pressed' | 'disabled' | ''
-  >(disabled ? 'disabled' : '')
+  const [buttonState, setButtonState] = React.useState<'pressed' | ''>('')
 
   const containerSize = (size + 'Container') as ButtonStyleKey
   const containerType = (type + 'Container') as ButtonStyleKey
@@ -42,7 +40,9 @@ const Button: React.FC<ButtonProps> = ({
   const pressedStyleKey = (containerType + 'Pressed') as ButtonStyleKey
 
   const labelSizeKey = (size + 'Label') as ButtonStyleKey
-  const labelTypeKey = (type + 'Label' + buttonState) as ButtonStyleKey
+  const labelTypeKey = (
+    type + 'Label' + disabled ? 'disabled' : buttonState
+  ) as ButtonStyleKey
 
   const containerSizeForIconOnly = (containerSize +
     'IconOnly') as ButtonStyleKey
@@ -61,7 +61,7 @@ const Button: React.FC<ButtonProps> = ({
         styles[containerType] as ViewStyle,
         addStyles,
         'pressed' === buttonState && (styles[pressedStyleKey] as ViewStyle),
-        'disabled' === buttonState && (styles[disabledStyleKey] as ViewStyle),
+        disabled && (styles[disabledStyleKey] as ViewStyle),
         icon === 'icon-only' && (containerSizeForIconOnly as ViewStyle),
       ]}>
       {'icon-left' === icon && <View style={styles.iconSize} />}
