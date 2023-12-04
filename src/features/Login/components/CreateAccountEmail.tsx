@@ -3,17 +3,21 @@ import {Input, Switch} from '../../../components'
 import Typography from '../../../utils/Typography'
 import Colors from '../../../utils/Colors'
 
-type CreateAccountEmailProps = {}
-const CreateAccountEmail: React.FC<CreateAccountEmailProps> = ({}) => {
+type CreateAccountEmailProps = {
+  email: string
+  shouldReceiveEmail: boolean
+  onChangeEmail: (email: string) => void
+  onToggleShouldReceiveEmail: (flag: boolean) => void
+}
+const CreateAccountEmail: React.FC<CreateAccountEmailProps> = ({
+  email,
+  onChangeEmail,
+  shouldReceiveEmail,
+  onToggleShouldReceiveEmail,
+}) => {
   return (
     <>
-      <Input
-        label={'Email'}
-        value={''}
-        onChangeText={function (text: string): void {
-          throw new Error('Function not implemented.')
-        }}
-      />
+      <Input label={'Email'} value={email} onChangeText={onChangeEmail} />
       <View style={{flexDirection: 'row', flexWrap: 'wrap', gap: 20}}>
         <Text
           style={{
@@ -25,10 +29,8 @@ const CreateAccountEmail: React.FC<CreateAccountEmailProps> = ({}) => {
           and its partners.
         </Text>
         <Switch
-          value={false}
-          onToggle={function (flag: boolean): void {
-            throw new Error('Function not implemented.')
-          }}
+          value={shouldReceiveEmail}
+          onToggle={onToggleShouldReceiveEmail}
         />
       </View>
     </>

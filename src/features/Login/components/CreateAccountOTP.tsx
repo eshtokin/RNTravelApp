@@ -1,19 +1,26 @@
-import React from 'react'
+import {FC, useState} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import {CodeField, Cursor} from 'react-native-confirmation-code-field'
 import Colors from '../../../utils/Colors'
 import Typography from '../../../utils/Typography'
 
-type CreateAccountOTPProps = {}
-const CreateAccountOTP: React.FC<CreateAccountOTPProps> = ({}) => {
-  const [otp, setOtp] = React.useState('')
+type CreateAccountOTPProps = {
+  otpCode: string
+  onChangeOtp: (text: string) => void
+  timer: number
+}
+const CreateAccountOTP: FC<CreateAccountOTPProps> = ({
+  otpCode,
+  onChangeOtp,
+  timer,
+}) => {
   return (
     <>
       <CodeField
         // ref={ref}
         // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-        value={otp}
-        onChangeText={setOtp}
+        value={otpCode}
+        onChangeText={onChangeOtp}
         cellCount={4}
         rootStyle={styles.inputRootStyle}
         keyboardType="number-pad"
@@ -40,7 +47,7 @@ const CreateAccountOTP: React.FC<CreateAccountOTPProps> = ({}) => {
             ...Typography.bodyText[100],
             color: Colors.black[300],
           }}>
-          1:00
+          {timer === 60 ? '1:00' : `0:${timer}`}
         </Text>
       </View>
     </>
@@ -53,6 +60,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   numberWrapper: {
+    height: 60,
     paddingHorizontal: 20,
     paddingVertical: 17,
     borderWidth: 1,

@@ -3,17 +3,21 @@ import {Input} from '../../../components'
 import Typography from '../../../utils/Typography'
 import Colors from '../../../utils/Colors'
 
-type CreateAccountPasswordProps = {}
-const CreateAccountPassword: React.FC<CreateAccountPasswordProps> = ({}) => {
+type CreateAccountPasswordProps = {
+  password: string
+  onChangePassword: (text: string) => void
+}
+const CreateAccountPassword: React.FC<CreateAccountPasswordProps> = ({
+  password,
+  onChangePassword,
+}) => {
   return (
     <>
       <Input
         label={'Password'}
-        // secured
-        value={''}
-        onChangeText={function (text: string): void {
-          throw new Error('Function not implemented.')
-        }}
+        secureTextEntry
+        value={password}
+        onChangeText={onChangePassword}
       />
       <Text
         style={{
