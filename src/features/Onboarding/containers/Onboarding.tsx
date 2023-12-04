@@ -14,6 +14,21 @@ const Onboarding: React.FC<OnboardingProps> = ({}) => {
 
   const listRef = useRef<SectionList>(null)
 
+  const setOnbardingIsFinish = () => store.setIsOnboardingPassed(true)
+
+  const {step, goToNextStep, clearOnboardingInterval, setOnboardingInterval} =
+    useOnboardingInterval({
+      stepDuration: DURATION,
+      numberOfSteps,
+      onFinishCallback: setOnbardingIsFinish,
+    })
+
+  const onButtonPress = () => {
+    clearOnboardingInterval()
+    goToNextStep()
+    setOnboardingInterval()
+  }
+
   const scrollToNextView = (viewPosition: number) =>
     listRef.current?.scrollToLocation({
       itemIndex: 1,
@@ -23,26 +38,16 @@ const Onboarding: React.FC<OnboardingProps> = ({}) => {
       viewPosition: 0,
     })
 
-  const {step, goToNextStep, clearOnboardingInterval, setOnboardingInterval} =
-    useOnboardingInterval({
-      stepDuration: DURATION,
-      numberOfSteps,
-      callback: scrollToNextView,
-    })
-
-  const onButtonPress = () => {
-    clearOnboardingInterval()
-    goToNextStep()
-    setOnboardingInterval()
-  }
-
   useEffect(() => {
     if (step >= 0 && step <= numberOfSteps) {
       scrollToNextView(step)
-    } else {
-      store.setIsOnboardingPassed(true)
     }
   }, [step, scrollToNextView])
+
+  const buttonLabel =
+    step <= numberOfSteps
+      ? ONBOARDING_DATA[step % ONBOARDING_DATA.length].data[0].buttonLabel
+      : ONBOARDING_DATA[ONBOARDING_DATA.length - 1].data[0].buttonLabel
 
   return (
     <View style={styles.container}>
@@ -53,7 +58,7 @@ const Onboarding: React.FC<OnboardingProps> = ({}) => {
       />
       <DinamicContent listRef={listRef} />
       <StaticContent
-        buttonLabel={ONBOARDING_DATA[step % 3].data[0].buttonLabel || ''}
+        buttonLabel={buttonLabel}
         currentIndex={step}
         onNextPress={onButtonPress}
         duration={DURATION}
