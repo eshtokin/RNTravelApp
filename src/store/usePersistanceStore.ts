@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {AsyncTrunk} from 'mobx-sync'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {Store} from './RootStore'
+import {Store} from './Store'
 
 export default function usePersistedData(store: Store) {
   useEffect(() => {

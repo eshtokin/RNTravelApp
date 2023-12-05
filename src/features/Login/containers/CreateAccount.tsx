@@ -1,8 +1,12 @@
+import {useNavigation} from '@react-navigation/native'
+import {observer} from 'mobx-react-lite'
 import React, {useState} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
-import {Button, Header} from '../../../components'
-import Colors from '../../../utils/Colors'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import {Button, Header} from '../../../components'
+import {Screens} from '../../../navigation/types'
+import store from '../../../store/RootStore'
+import Colors from '../../../utils/Colors'
 import Typography from '../../../utils/Typography'
 import {
   CreateAccountEmail,
@@ -11,38 +15,33 @@ import {
   CreateAccountPassword,
   CreateAccountSuccessfully,
 } from '../components'
-import {useNavigation} from '@react-navigation/native'
-import {Screens} from '../../../navigation/types'
 import {CREATE_ACCOUNT_STEPS} from '../constants'
 
 type CreateAccountProps = {}
 const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
   const navigation = useNavigation()
-  const [currentStep, setCurrentStep] = React.useState(0)
-  const submitButtonHandler = () => {
-    if (currentStep + 1 === 5) {
-      navigation.navigate(Screens.ChooseFavouritePlace)
-    }
-    setCurrentStep((currentStep + 1) % 5)
-  }
 
-  const [userFullName, setUserFullName] = useState({
-    firstName: 'oleksii',
-    lastName: 'yeshtokin',
-  })
-  const changeUserFullName =
-    (field: keyof typeof userFullName) => (name: string) =>
-      setUserFullName({...userFullName, [field]: name})
+  const {email, firstName, lastName, setEmail, setUserName} = store.user
 
-  const canSendFullName =
-    userFullName.firstName.length > 1 && userFullName.lastName.length > 1
-
-  const [email, setEmail] = useState('eshtok@gmail.com')
+  const [currentStep, setCurrentStep] = useState(0)
   const [shouldReceiveEmail, setShouldReceiveEmail] = useState(false)
-  const [password, setPassword] = useState('password')
+  const [password, setPassword] = useState('')
   const [otpCode, setOtpCode] = useState('')
   const [timer, setTimer] = useState(60)
 
+  const changeUserFullName =
+    (field: 'firstName' | 'lastName') => (name: string) =>
+      setUserName({[field]: name})
+
+  const submitButtonHandler = () => {
+    if (currentStep === 4) {
+      navigation.navigate(Screens.ChooseFavouritePlace)
+      return
+    }
+    setCurrentStep(currentStep => currentStep + 1)
+  }
+
+  const canSendFullName = firstName.length > 1 && lastName.length > 1
   const canSendEmail = email.length > 5
   const canSendPassword = password.length > 5
   const canSendOtpCode = otpCode.length === 4
@@ -66,7 +65,7 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
                 {
                   0: (
                     <CreateAccountName
-                      userFullName={userFullName}
+                      userFullName={{lastName, firstName}}
                       onChangeFirstname={changeUserFullName('firstName')}
                       onChangeLastName={changeUserFullName('lastName')}
                     />
@@ -142,4 +141,5 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 })
-export default CreateAccount
+
+export default observer(CreateAccount)

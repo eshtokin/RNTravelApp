@@ -1,6 +1,6 @@
 import {makeAutoObservable} from 'mobx'
 import places, {Places} from './PlacesStore'
-import user, {User} from './UserStore'
+import User from './UserStore'
 
 export class Store {
   isOnboardingPassed = false
@@ -8,7 +8,7 @@ export class Store {
   places: Places
 
   constructor() {
-    this.user = user
+    this.user = new User()
     this.places = places
 
     makeAutoObservable(this)
@@ -31,7 +31,3 @@ export class Store {
     return isUserHaveEmail && isUserHavePassword
   }
 }
-
-const store = new Store()
-
-export default store
