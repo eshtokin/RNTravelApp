@@ -1,6 +1,6 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
-import {Button} from '../../../components'
+import Button from '@components/Button'
 import {observer} from 'mobx-react-lite'
 
 type LoginActionButtonsProps = {

@@ -5,6 +5,15 @@ module.exports = {
     ['@babel/plugin-proposal-class-properties'],
     ['@babel/plugin-proposal-private-methods'],
     'react-native-reanimated/plugin',
+    [
+      'module-resolver',
+      {
+        root: ['./src'],
+        alias: {
+          '@components': './src/components',
+        },
+      },
+    ],
   ],
   assumptions: {
     setPublicClassFields: true,
