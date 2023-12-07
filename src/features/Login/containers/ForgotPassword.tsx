@@ -11,10 +11,12 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
   const insets = useSafeAreaInsets()
 
   const onSubmitHandler = () => {}
+
+  const canSubmitEmail = email.length > 5
   return (
     <SafeAreaView
       style={[styles.container, {paddingBottom: 20 + insets.bottom}]}>
-      <Header withBackIcon withoutTitle />
+      <Header withBackIcon withoutTitle blackIconColor="black" />
       <View style={styles.contentContainer}>
         <View style={styles.infoContainer}>
           <Text style={{...Typography.bodyText[300], color: Colors.black[400]}}>
@@ -31,6 +33,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
             size="large"
             onPress={onSubmitHandler}
             label={'Submit'}
+            disabled={!canSubmitEmail}
           />
         </View>
       </View>
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.black[0],
   },
-  contentContainer: {flex: 1, paddingHorizontal: 20},
+  contentContainer: {flex: 1, paddingHorizontal: 30},
   title: {
     ...Typography.headline[700],
     color: Colors.black[900],

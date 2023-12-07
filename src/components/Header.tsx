@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react'
-import {Pressable, StyleSheet, Text, View, useAnimatedValue} from 'react-native'
+import {Pressable, StyleSheet, Text, View} from 'react-native'
 import Typography from '../utils/Typography'
 import Colors from '../utils/Colors'
 import {BackArrow} from '../../assets/icons/svg'
@@ -14,6 +14,7 @@ type HeaderProps = {
   transparent?: boolean
   withoutTitle?: boolean
   blackIconColor?: string
+  onBackIconPress?: () => void
 }
 const Header: React.FC<HeaderProps> = ({
   transparent = false,
@@ -23,9 +24,16 @@ const Header: React.FC<HeaderProps> = ({
   withoutTitle,
   RightIcon,
   blackIconColor = Colors.black[0],
+  onBackIconPress,
 }) => {
   const navigation = useNavigation()
-  const goBack = () => navigation.canGoBack() && navigation.goBack()
+  const goBack = () => {
+    if (onBackIconPress) {
+      onBackIconPress()
+      return
+    }
+    navigation.canGoBack() && navigation.goBack()
+  }
   return (
     <View
       style={[styles.container, transparent && styles.transparentContainer]}>

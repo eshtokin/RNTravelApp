@@ -1,12 +1,8 @@
-import {useNavigation} from '@react-navigation/native'
-import {observer} from 'mobx-react-lite'
 import React, {useState} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
-import {SafeAreaView} from 'react-native-safe-area-context'
 import {Button, Header} from '../../../components'
-import {Screens} from '../../../navigation/types'
-import store from '../../../store/RootStore'
 import Colors from '../../../utils/Colors'
+import {SafeAreaView} from 'react-native-safe-area-context'
 import Typography from '../../../utils/Typography'
 import {
   CreateAccountEmail,
@@ -15,40 +11,70 @@ import {
   CreateAccountPassword,
   CreateAccountSuccessfully,
 } from '../components'
+import {useNavigation} from '@react-navigation/native'
+import {Screens} from '../../../navigation/types'
 import {CREATE_ACCOUNT_STEPS} from '../constants'
+import store from '../../../store/RootStore'
 
 type CreateAccountProps = {}
 const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
   const navigation = useNavigation()
+  const [currentStep, setCurrentStep] = React.useState(0)
 
-  const {email, firstName, lastName, setEmail, setUserName} = store.user
+  const [userFullName, setUserFullName] = useState({
+    firstName: 'oleksii',
+    lastName: 'yeshtokin',
+  })
+  const changeUserFullName =
+    (field: keyof typeof userFullName) => (name: string) =>
+      setUserFullName({...userFullName, [field]: name})
 
-  const [currentStep, setCurrentStep] = useState(0)
+  const canSendFullName =
+    userFullName.firstName.length > 1 && userFullName.lastName.length > 1
+
+  const [email, setEmail] = useState('eshtok@gmail.com')
   const [shouldReceiveEmail, setShouldReceiveEmail] = useState(false)
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState('password')
   const [otpCode, setOtpCode] = useState('')
   const [timer, setTimer] = useState(60)
 
-  const changeUserFullName =
-    (field: 'firstName' | 'lastName') => (name: string) =>
-      setUserName({[field]: name})
-
   const submitButtonHandler = () => {
-    if (currentStep === 4) {
-      navigation.navigate(Screens.ChooseFavouritePlace)
-      return
+    switch (currentStep) {
+      case 0:
+        store.user.setUserName(userFullName)
+        break
+      case 1:
+        store.user.setEmail(email)
+        break
+      case 4:
+        navigation.navigate(Screens.ChooseFavouritePlace)
+        return
     }
     setCurrentStep(currentStep => currentStep + 1)
   }
 
-  const canSendFullName = firstName.length > 1 && lastName.length > 1
+  const onBackIconPress = () => {
+    if (currentStep === 0) {
+      navigation.goBack()
+      return
+    }
+    setCurrentStep(currentStep => currentStep - 1)
+  }
+
   const canSendEmail = email.length > 5
   const canSendPassword = password.length > 5
   const canSendOtpCode = otpCode.length === 4
 
   return (
     <SafeAreaView style={styles.container}>
-      {currentStep < 4 && <Header withBackIcon withoutTitle />}
+      {currentStep < 4 && (
+        <Header
+          withBackIcon
+          withoutTitle
+          blackIconColor="black"
+          onBackIconPress={onBackIconPress}
+        />
+      )}
       <View style={styles.contentContainer}>
         {currentStep > 3 ? (
           <CreateAccountSuccessfully
@@ -65,7 +91,7 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
                 {
                   0: (
                     <CreateAccountName
-                      userFullName={{lastName, firstName}}
+                      userFullName={userFullName}
                       onChangeFirstname={changeUserFullName('firstName')}
                       onChangeLastName={changeUserFullName('lastName')}
                     />
@@ -141,5 +167,4 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 })
-
-export default observer(CreateAccount)
+export default CreateAccount

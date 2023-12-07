@@ -25,6 +25,10 @@ export class User {
   setEmail(email: string) {
     this.email = email
   }
+
+  setPassword(password: string) {
+    this.password = password
+  }
 }
 
 const user = new User()

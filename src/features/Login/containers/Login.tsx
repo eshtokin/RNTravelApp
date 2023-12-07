@@ -1,27 +1,27 @@
-import {useState} from 'react'
-import {StatusBar, StyleSheet} from 'react-native'
-import {LogoBlack} from '../../../../assets/icons/svg'
+import { useState } from 'react'
+import { StatusBar, StyleSheet } from 'react-native'
+import { LogoBlack } from '../../../../assets/icons/svg'
 import Colors from '../../../utils/Colors'
-import {useNavigation} from '@react-navigation/native'
-import {Screens} from '../../../navigation/types'
-import {SafeAreaView} from 'react-native-safe-area-context'
-import store, {UserType} from '../../../store/RootStore'
-import {LoginActionButtons, LoginInputSection} from '../components'
+import { useNavigation } from '@react-navigation/native'
+import { Screens } from '../../../navigation/types'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import store from '../../../store/RootStore'
+import { LoginActionButtons, LoginInputSection } from '../components'
 import SocialNetworkLogin from '../components/LoginSocialNetworks'
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 type LoginProps = {}
-const Login: React.FC<LoginProps> = ({}) => {
+const Login: React.FC<LoginProps> = ({ }) => {
   const navigation = useNavigation()
-  const [checkboxValue, setCheckboxValue] = useState(false)
-  const [inputValues, setInputValues] = useState<UserType>({
+  const [, setCheckboxValue] = useState(false)
+  const [inputValues, setInputValues] = useState({
     email: '',
     password: '',
   })
 
   const changeInputValue =
     (filedName: keyof typeof inputValues) => (text: string) => {
-      setInputValues({...inputValues, [filedName]: text})
+      setInputValues({ ...inputValues, [filedName]: text })
     }
 
   const setToggleCheckBox = (newValue: boolean) => setCheckboxValue(newValue)
@@ -31,7 +31,9 @@ const Login: React.FC<LoginProps> = ({}) => {
 
   const onCreateAccountPress = () => navigation.navigate(Screens.CreateAccount)
 
-  const onSignInHandler = () => store.setUserInfo(inputValues)
+  const onSignInHandler = () => store.user.setEmail(inputValues.email)
+  const canPressLogin =
+    inputValues.email.length > 5 && inputValues.password.length > 5
 
   return (
     <KeyboardAwareScrollView
@@ -51,9 +53,7 @@ const Login: React.FC<LoginProps> = ({}) => {
           onForgotPasswordPress={onForgotPasswordPress}
         />
         <LoginActionButtons
-          loginActionEnebled={
-            inputValues.email.length > 5 && inputValues.password.length > 5
-          }
+          loginActionEnebled={canPressLogin}
           onCreateAccount={onCreateAccountPress}
           onSignIn={onSignInHandler}
         />

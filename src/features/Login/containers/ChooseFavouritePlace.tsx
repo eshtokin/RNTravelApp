@@ -1,17 +1,14 @@
-import {ScrollView, Text, View} from 'react-native'
+import {ScrollView, StyleSheet, Text, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import Typography from '../../../utils/Typography'
 import Colors from '../../../utils/Colors'
 import {Button, Category} from '../../../components'
-import {kutaBeachDestinationSmall} from '../../../../assets/images'
 import {useState} from 'react'
-import {NavigationContainer, useNavigation} from '@react-navigation/native'
-import {Screens} from '../../../navigation/types'
+import {MOCK_CATEGORIES} from '../../../store/mockData/places'
 import store from '../../../store/RootStore'
 
 type ChooseFavouritePlaceProps = {}
 const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
-  const navigation = useNavigation()
   const [selectedCategory, setSelectedCategory] = useState<string[]>([])
 
   const onCategoryPressHandler = (categoryName: string) => {
@@ -26,45 +23,28 @@ const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
     }
   }
 
-  const onSubmitHandler = () =>
-    store.setUserInfo({email: 'test', password: 'test'})
+  const onSubmitHandler = () => store.user.setPassword('mockpassword')
 
+  const canPressSubmit = selectedCategory.length > 0
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: Colors.black[0],
-        paddingBottom: 30,
-      }}>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView
-        style={{flex: 1}}
-        contentContainerStyle={{
-          paddingHorizontal: 30,
-          paddingTop: 30,
-        }}>
-        <Text style={{...Typography.headline[700], color: Colors.black[900]}}>
+        style={styles.scrollContainer}
+        contentContainerStyle={styles.scrollContent}>
+        <Text style={styles.title}>
           Where is your favorite place to explore?
         </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            marginTop: 30,
-            alignItems: 'center',
-            gap: 30,
-            justifyContent: 'space-evenly',
-          }}>
-          {['Beach', 'Mountaing', 'Forest', 'Ocean', 'Camping', 'Fishing'].map(
-            categoryName => (
-              <Category
-                key={categoryName}
-                icon={kutaBeachDestinationSmall}
-                label={categoryName}
-                onPress={() => onCategoryPressHandler(categoryName)}
-                active={selectedCategory.includes(categoryName)}
-              />
-            ),
-          )}
+        <View style={styles.categoriesContainer}>
+          {MOCK_CATEGORIES.map(({name, image}) => (
+            <Category
+              key={name}
+              icon={image}
+              label={name}
+              onPress={() => onCategoryPressHandler(name)}
+              active={selectedCategory.includes(name)}
+              type="large"
+            />
+          ))}
         </View>
       </ScrollView>
       <Button
@@ -73,13 +53,43 @@ const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
         size={'large'}
         label={'Next'}
         onPress={onSubmitHandler}
-        addStyles={{
-          marginTop: 30,
-          marginHorizontal: 30,
-        }}
+        addStyles={styles.addBtnStyle}
+        disabled={!canPressSubmit}
       />
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: Colors.black[0],
+    paddingBottom: 30,
+  },
+  scrollContainer: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingHorizontal: 30,
+    paddingTop: 30,
+  },
+
+  title: {
+    ...Typography.headline[700],
+    color: Colors.black[900],
+  },
+  categoriesContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 30,
+    alignItems: 'center',
+    gap: 30,
+    justifyContent: 'space-evenly',
+  },
+  addBtnStyle: {
+    marginTop: 30,
+    marginHorizontal: 30,
+  },
+})
 
 export default ChooseFavouritePlace

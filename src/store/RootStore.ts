@@ -14,15 +14,10 @@ export class Store {
     makeAutoObservable(this)
 
     this.setIsOnboardingPassed = this.setIsOnboardingPassed.bind(this)
-    this.setUserInfo = this.setUserInfo.bind(this)
   }
 
   setIsOnboardingPassed(flag: boolean) {
     this.isOnboardingPassed = flag
-  }
-
-  setUserInfo(user: User) {
-    this.user = user
   }
 
   isUserLogged(): boolean {
