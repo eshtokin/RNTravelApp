@@ -1,7 +1,7 @@
 import {ReactElement} from 'react'
 import {View, StyleSheet} from 'react-native'
-import {Text} from '../../../components'
-import Colors from '../../../utils/Colors'
+import {Text} from '@components'
+import {Colors} from '@utils'
 
 type ServiceElementProps = {serviceInfo: {label: string; icon: ReactElement}}
 const ServiceElement: React.FC<ServiceElementProps> = ({serviceInfo}) => {

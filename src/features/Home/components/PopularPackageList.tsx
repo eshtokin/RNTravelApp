@@ -1,8 +1,8 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
 import TitleForSection from './TitleForSection'
-import {Package} from '../../../components'
-import store from '../../../store/RootStore'
+import {Package} from '@components'
+import store from '@store/RootStore'
 
 const PopularPackagesList = () => {
   const {places, toggleFavouriteOnPlace} = store.places

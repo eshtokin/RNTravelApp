@@ -1,13 +1,13 @@
+import {FunctionComponent, useState} from 'react'
 import {Pressable, StyleSheet, View} from 'react-native'
-import {Text} from '../../../components'
-import Colors from '../../../utils/Colors'
+import {Text} from '@components'
+import {Colors} from '@utils'
 import {
   AppleIcon,
   CircleChecked,
   CreditCardicon,
   PaypallIcon,
 } from '../../../../assets/icons/svg'
-import {FunctionComponent, useState} from 'react'
 
 const PAYMENT_METHODS = [
   {label: 'Credit Card', icon: CreditCardicon},

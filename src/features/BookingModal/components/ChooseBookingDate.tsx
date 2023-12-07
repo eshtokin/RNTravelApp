@@ -1,7 +1,8 @@
+import React from 'react'
 import {View, StyleSheet} from 'react-native'
 import {CalendarList} from 'react-native-calendars'
-import {Text} from '../../../components'
-import Colors from '../../../utils/Colors'
+import {Text} from '@components'
+import {Colors} from '@utils'
 
 type ChooseBookingDateProps = {}
 const ChooseBookingDate: React.FC<ChooseBookingDateProps> = ({}) => {

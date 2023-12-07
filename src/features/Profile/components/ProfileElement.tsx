@@ -1,7 +1,7 @@
-import {StyleSheet, View} from 'react-native'
-import {Text} from '../../../components'
-import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {ReactElement} from 'react'
+import {StyleSheet, View} from 'react-native'
+import {Colors} from 'react-native/Libraries/NewAppScreen'
+import {Text} from '@components'
 
 type ProfileElementProps = {
   label: string

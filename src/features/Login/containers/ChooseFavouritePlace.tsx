@@ -1,11 +1,10 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import Typography from '../../../utils/Typography'
-import Colors from '../../../utils/Colors'
-import {Button, Category} from '../../../components'
+import {Colors, Typography} from '@utils'
+import {Button, Category} from '@components'
 import {useState} from 'react'
-import {MOCK_CATEGORIES} from '../../../store/mockData/places'
-import store from '../../../store/RootStore'
+import {MOCK_CATEGORIES} from '@store/mockData/places'
+import store from '@store/RootStore'
 
 type ChooseFavouritePlaceProps = {}
 const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {

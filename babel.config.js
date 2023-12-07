@@ -11,6 +11,11 @@ module.exports = {
         root: ['./src'],
         alias: {
           '@components': './src/components',
+          '@features': './src/features',
+          '@navigation': './src/navigation',
+          '@store': './src/store',
+          '@types': './src/types',
+          '@utils': './src/utils',
         },
       },
     ],

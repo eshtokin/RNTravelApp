@@ -1,18 +1,17 @@
 import {useEffect, useState} from 'react'
 import {SafeAreaView, StyleSheet, View} from 'react-native'
 import Animated, {useSharedValue, withTiming} from 'react-native-reanimated'
-import {Button, Header} from '../../../components'
-import {RootStackProps, Screens} from '../../../navigation/types'
-import Colors from '../../../utils/Colors'
-import SCREEN_SIZE from '../../../utils/ScreenSIze'
+import {Button, Header} from '@components'
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import {Colors, SCREEN_SIZE} from '@utils'
 import {
   BookingSuccessfully,
   Card,
   ChooseBookingDate,
   DetailBooking,
   PaymentMethods,
-} from '..'
-import {NativeStackScreenProps} from '@react-navigation/native-stack'
+} from './../components'
+import {RootStackProps, Screens} from '../../../navigation/types'
 import ChooseBookingDateBottom from '../components/ChooseBookingDateBottom'
 import DetailPaymentCardBottom from '../components/DetailPaymentCardBottom'
 

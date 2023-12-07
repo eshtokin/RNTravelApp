@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native'
 import {PalmBeach} from '../../../../assets/icons/svg'
-import {Text} from '../../../components'
+import {Text} from '@components'
 
 type BookingSuccessfullyProps = {}
 const BookingSuccessfully: React.FC<BookingSuccessfullyProps> = () => {

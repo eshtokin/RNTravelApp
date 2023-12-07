@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native'
-import {Button, Text} from '../../../components'
+import {Button, Text} from '@components'
 
 type DetailPaymentCardBottomProps = {
   confirmButtonLabel: string

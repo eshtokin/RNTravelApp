@@ -1,3 +1,4 @@
+import {ImageSourcePropType} from 'react-native'
 import {
   ArchitectureInBarcelonaSpain,
   EileanDonanLochDuichIslandScotland,
@@ -26,7 +27,6 @@ import {
   category_mountins,
   category_wave,
 } from '../../../assets/images'
-import {ImageSourcePropType} from 'react-native'
 
 export enum Categories {
   all = 'All',

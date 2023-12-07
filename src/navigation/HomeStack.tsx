@@ -1,11 +1,11 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {Home} from '../features/Home'
+import {observer} from 'mobx-react-lite'
+import {Home} from '@features/Home'
+import {Wishlist} from '@features/Wishlist'
+import {Profile} from '@features/Profile'
+import {MyTrip} from '@features/MyTrip'
 import TabBar from './Tabbar'
 import {HomeScreens, HomeScreensPropsTypes} from './types'
-import {Wishlist} from '../features/Wishlist'
-import {Profile} from '../features/Profile'
-import {MyTrip} from '../features/MyTrip'
-import {observer} from 'mobx-react-lite'
 
 const {Navigator, Screen} = createBottomTabNavigator<HomeScreensPropsTypes>()
 

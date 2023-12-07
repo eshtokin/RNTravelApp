@@ -1,7 +1,7 @@
 import {ImageBackground, StyleSheet, View} from 'react-native'
 import {VerifiedIcon, Location} from '../../../../assets/icons/svg'
-import {Rate, Text} from '../../../components'
-import {GeneratedPlace} from '../../../store/mockData/places'
+import {Rate, Text} from '@components'
+import {GeneratedPlace} from '@store/mockData/places'
 
 type PlaceImageCardProps = {place: GeneratedPlace}
 const PlaceImageCard: React.FC<PlaceImageCardProps> = ({place}) => {

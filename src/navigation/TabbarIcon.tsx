@@ -8,8 +8,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 import SharedIconProps from '../types/SharedIconProps'
-import Colors from '../utils/Colors'
-import Typography from '../utils/Typography'
+import {Colors, Typography} from '@utils'
 
 const APressable = Animated.createAnimatedComponent(Pressable)
 // iconWidth + paddingHorizontal

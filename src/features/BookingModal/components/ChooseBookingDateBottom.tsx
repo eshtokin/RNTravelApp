@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import {Button} from '../../../components'
+import {Button} from '@components'
 
 type ChooseBookingDateBottomProps = {
   onBackPress: () => void

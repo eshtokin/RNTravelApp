@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
-import {Button, Header} from '../../../components'
-import Colors from '../../../utils/Colors'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import Typography from '../../../utils/Typography'
+import {Button, Header} from '@components'
+import {useNavigation} from '@react-navigation/native'
+import store from '@store/RootStore'
+import {Colors, Typography} from '@utils'
+import {Screens} from '../../../navigation/types'
 import {
   CreateAccountEmail,
   CreateAccountName,
@@ -11,10 +13,7 @@ import {
   CreateAccountPassword,
   CreateAccountSuccessfully,
 } from '../components'
-import {useNavigation} from '@react-navigation/native'
-import {Screens} from '../../../navigation/types'
 import {CREATE_ACCOUNT_STEPS} from '../constants'
-import store from '../../../store/RootStore'
 
 type CreateAccountProps = {}
 const CreateAccount: React.FC<CreateAccountProps> = ({}) => {

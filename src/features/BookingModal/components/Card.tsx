@@ -1,6 +1,6 @@
 import {Image, StyleSheet, View} from 'react-native'
 import {CreditCardImage} from '../../../../assets/images'
-import {Input, Text} from '../../../components'
+import {Input, Text} from '@components'
 
 type CardProps = {}
 const Card: React.FC<CardProps> = () => {

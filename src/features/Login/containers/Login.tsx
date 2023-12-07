@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import { StatusBar, StyleSheet } from 'react-native'
-import { LogoBlack } from '../../../../assets/icons/svg'
-import Colors from '../../../utils/Colors'
-import { useNavigation } from '@react-navigation/native'
-import { Screens } from '../../../navigation/types'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import {useNavigation} from '@react-navigation/native'
+import {useState} from 'react'
+import {StatusBar, StyleSheet} from 'react-native'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import {SafeAreaView} from 'react-native-safe-area-context'
+import {LogoBlack} from '../../../../assets/icons/svg'
+import {Screens} from '../../../navigation/types'
 import store from '../../../store/RootStore'
-import { LoginActionButtons, LoginInputSection } from '../components'
+import {Colors} from '@utils'
+import {LoginActionButtons, LoginInputSection} from '../components'
 import SocialNetworkLogin from '../components/LoginSocialNetworks'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 type LoginProps = {}
-const Login: React.FC<LoginProps> = ({ }) => {
+const Login: React.FC<LoginProps> = ({}) => {
   const navigation = useNavigation()
   const [, setCheckboxValue] = useState(false)
   const [inputValues, setInputValues] = useState({
@@ -21,7 +21,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
 
   const changeInputValue =
     (filedName: keyof typeof inputValues) => (text: string) => {
-      setInputValues({ ...inputValues, [filedName]: text })
+      setInputValues({...inputValues, [filedName]: text})
     }
 
   const setToggleCheckBox = (newValue: boolean) => setCheckboxValue(newValue)

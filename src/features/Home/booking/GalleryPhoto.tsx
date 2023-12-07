@@ -1,5 +1,5 @@
 import {View, Image, StyleSheet} from 'react-native'
-import {Text} from '../../../components'
+import {Text} from '@components'
 import {
   SmallBooking1,
   SmallBooking2,

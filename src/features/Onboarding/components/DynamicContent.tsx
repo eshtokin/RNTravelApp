@@ -1,8 +1,8 @@
 import React from 'react'
 import {SectionList} from 'react-native'
-import {PageComponent} from '../components'
+import PageComponent from './PageComponent'
 import {ONBOARDING_DATA} from '../onboarding_info'
-import SCREEN_SIZE from '../../../utils/ScreenSIze'
+import {SCREEN_SIZE} from '@utils'
 
 type DinamicContentProps = {
   listRef: React.Ref<SectionList>

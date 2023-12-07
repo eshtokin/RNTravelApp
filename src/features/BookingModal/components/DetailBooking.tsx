@@ -1,6 +1,5 @@
 import {StyleSheet, View} from 'react-native'
-import {Input, Text} from '../../../components'
-import Colors from '../../../utils/Colors'
+import {Input} from '@components'
 
 type DetailBookingProps = {}
 const DetailBooking: React.FC<DetailBookingProps> = () => {

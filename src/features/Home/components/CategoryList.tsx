@@ -1,9 +1,9 @@
-import {FlatList, ScrollView, StyleSheet} from 'react-native'
-import TitleForSection from './TitleForSection'
-import {Category} from '../../../components'
-import store from '../../../store/RootStore'
-import {Categories} from '../../../store/mockData/places'
+import {ScrollView, StyleSheet} from 'react-native'
 import {observer} from 'mobx-react-lite'
+import TitleForSection from './TitleForSection'
+import {Category} from '@components'
+import store from '@store/RootStore'
+import {Categories} from '@store/mockData/places'
 
 type CategoryListProps = {}
 const CategoryList: React.FC<CategoryListProps> = observer(({}) => {

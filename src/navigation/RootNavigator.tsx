@@ -1,14 +1,14 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import {observer} from 'mobx-react-lite'
 import React from 'react'
-import {Modal} from '../components'
-import {Booking, Product} from '../features/Home'
-import {CreateAccount, ForgotPassword, Login} from '../features/Login'
-import ChooseFavouritePlace from '../features/Login/containers/ChooseFavouritePlace'
-import {Onboarding} from '../features/Onboarding'
-import store from '../store/RootStore'
+import {Booking, Product} from '@features/Home'
+import {CreateAccount, ForgotPassword, Login} from '@features/Login'
+import ChooseFavouritePlace from '@features/Login/containers/ChooseFavouritePlace'
+import {Onboarding} from '@features/Onboarding'
+import store from '@store/RootStore'
 import HomeNavigator from './HomeStack'
 import {RootStackProps, Screens} from './types'
+import {BookingModalContainer} from '@features/BookingModal'
 
 const {Screen, Group, Navigator} = createNativeStackNavigator<RootStackProps>()
 
@@ -23,7 +23,7 @@ const RootNavigation: React.FC<RootNavigationProps> = observer(({}) => {
           <Screen name={Screens.Booking} component={Booking} />
           <Screen
             name={Screens.Modal}
-            component={Modal}
+            component={BookingModalContainer}
             options={{presentation: 'modal'}}
           />
         </Group>

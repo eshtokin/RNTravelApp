@@ -7,10 +7,9 @@ import {
   Dimensions,
 } from 'react-native'
 import {LogoWhite} from '../../../../assets/icons/svg'
-import Typography from '../../../utils/Typography'
-import Colors from '../../../utils/Colors'
+import {Colors, Typography, SCREEN_SIZE} from '@utils'
 
-const {width, height} = Dimensions.get('screen')
+const {width, height} = SCREEN_SIZE
 
 type PageComponentProps = {
   backgroundImage: ImageSourcePropType

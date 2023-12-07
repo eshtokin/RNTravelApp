@@ -2,11 +2,9 @@ import {observer} from 'mobx-react-lite'
 import {useState} from 'react'
 import {FlatList, StyleSheet, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import {CrossIcon, LoupeIcon} from '../../../assets/icons/svg'
-import {Input, Package, Text} from '../../components'
-import store from '../../store/RootStore'
-import Colors from '../../utils/Colors'
-import ScreenTitle from '../../components/ScreenTitle'
+import {Input, Package, ScreenTitle} from '@components'
+import store from '@store/RootStore'
+import {Colors} from '@utils'
 
 type WishListProps = {}
 const WishList: React.FC<WishListProps> = observer(({}) => {

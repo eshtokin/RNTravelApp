@@ -1,9 +1,8 @@
 import React from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context'
-import {Button, Header, Input} from '../../../components'
-import Typography from '../../../utils/Typography'
-import Colors from '../../../utils/Colors'
+import {Button, Header, Input} from '@components'
+import {Colors, Typography} from '@utils'
 
 type ForgotPasswordProps = {}
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {

@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native'
-import {Rate, Text} from '../../../components'
-import {Review as ReviewClass} from '../../../store/mockData/reviews'
+import {Rate, Text} from '@components'
+import {Review as ReviewClass} from '@store/mockData/reviews'
 
 type ReviewProps = {
   review: ReviewClass

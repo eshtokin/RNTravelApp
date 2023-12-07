@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native'
 import MapView, {Marker} from 'react-native-maps'
-import store from '../../../store/RootStore'
+import store from '@store/RootStore'
 
 type MiniMapProps = {}
 const MiniMap: React.FC<MiniMapProps> = ({}) => {

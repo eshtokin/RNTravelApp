@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native'
-import {Button, Text} from '../../../components'
+import {Button, Text} from '@components'
 
 // TODO: include same component to Product page
 type BookingBottomProps = {price: number; onBookingPress: () => void}

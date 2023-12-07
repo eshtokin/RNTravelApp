@@ -1,6 +1,6 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
-import {Button} from '../../../components'
+import {Button} from '@components'
 import StepIndicator from './StepIndicator'
 
 type StaticContentProps = {

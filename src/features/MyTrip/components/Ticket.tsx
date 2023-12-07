@@ -1,8 +1,8 @@
 import {View} from 'react-native'
 import {CalendarIcon} from '../../../../assets/icons/svg'
 import TicketBorder from './TicketBorder'
-import {Text} from '../../../components'
-import Colors from '../../../utils/Colors'
+import {Text} from '@components'
+import {Colors} from '@utils'
 
 type TicketProps = {
   item: {

@@ -1,6 +1,6 @@
 import {Image, StyleSheet, View} from 'react-native'
-import {Text} from '../../../components'
-import Colors from '../../../utils/Colors'
+import {Text} from '@components'
+import {Colors} from '@utils'
 import {avatar1} from './../../../../assets/images'
 
 type ProfileCardProps = {}

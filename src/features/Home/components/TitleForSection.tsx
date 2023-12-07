@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, StyleSheet} from 'react-native'
-import {Text} from '../../../components'
+import {Text} from '@components'
 
 const TitleForSection: React.FC<{title: string; label?: string}> = ({
   title,

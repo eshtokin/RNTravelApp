@@ -1,7 +1,6 @@
 import React from 'react'
 import {StyleSheet, View} from 'react-native'
-import Button from '@components/Button'
-import {observer} from 'mobx-react-lite'
+import {Button} from '@components'
 
 type LoginActionButtonsProps = {
   loginActionEnebled: boolean

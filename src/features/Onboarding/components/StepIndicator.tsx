@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {StyleSheet, View} from 'react-native'
-import Colors from '../../../utils/Colors'
 import Animated, {
   Easing,
   SharedValue,
@@ -8,6 +7,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
+import {Colors} from '@utils'
 
 const LINE_WIDTH = 100
 

@@ -1,6 +1,6 @@
 import {Dimensions} from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import Colors from '../../../utils/Colors'
+import {Colors} from '@utils'
 
 const GRADIENT_COLORS = [
   Colors.black[400],

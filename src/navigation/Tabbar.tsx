@@ -6,7 +6,7 @@ import {
   PersonIcon,
   PlaneIcon,
 } from '../../assets/icons/svg'
-import Colors from '../utils/Colors'
+import {Colors} from '@utils'
 import TabbarIcon from './TabbarIcon'
 import {HomeScreens} from './types'
 

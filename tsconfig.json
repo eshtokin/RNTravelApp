@@ -4,8 +4,23 @@
     "useDefineForClassFields": true,
     "baseUrl": "./src",
     "paths": {
-      "@components/*": [
-        "components/*"
+      "@components": [
+        "components"
+      ],
+      "@features/*": [
+        "features/*"
+      ],
+      "@navigation/*": [
+        "navigation/*"
+      ],
+      "@utils": [
+        "utils"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@types/*": [
+        "types/*"
       ],
     }
   }

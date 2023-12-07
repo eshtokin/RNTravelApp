@@ -1,10 +1,10 @@
 import {StyleSheet, ScrollView} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import {ScreenTitle} from '@components'
+import {Colors} from '@utils'
+import {ProfileCard, ProfileElement} from './components'
 import {GlobalIcon, MessageIcon, ProfileIcon} from '../../../assets/icons/svg'
 import NotificationIcon from '../../../assets/icons/svg/NotificationIcon'
-import ScreenTitle from '../../components/ScreenTitle'
-import Colors from '../../utils/Colors'
-import {ProfileCard, ProfileElement} from './components'
 
 const ProfileElementsTitle = [
   {label: 'Personal Information', icon: <ProfileIcon />},

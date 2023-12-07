@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {
   Dimensions,
   LayoutChangeEvent,
@@ -6,13 +7,11 @@ import {
   StyleSheet,
   View,
 } from 'react-native'
-import {Input, Package} from '../../../components'
-import store from '../../../store/RootStore'
-// import {CrossIcon, LoupeIcon} from '../../../../assets/icons/svg'
 import {observer} from 'mobx-react-lite'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
-import {useState} from 'react'
-import Colors from '../../../utils/Colors'
+import {Input, Package} from '@components'
+import store from '@store/RootStore'
+import {Colors} from '@utils'
 
 type SearchProps = {}
 const Search: React.FC<SearchProps> = observer(({}) => {
