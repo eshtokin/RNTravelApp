@@ -7,9 +7,11 @@ import MOCK_PLACES, {
 
 export class Places {
   searchValue: string = ''
+  searchValueForWishlist: string = ''
   places = MOCK_PLACES
   selectedPlace: GeneratedPlace = MOCK_PLACES[0]
   placesForSearch: GeneratedPlace[] = []
+  placesForFavouriteSearch: GeneratedPlace[] = []
   categories = MOCK_CATEGORIES
   selectedCategory: Categories = Categories.all
 
@@ -60,11 +62,19 @@ export class Places {
     }
   }
 
-  changeSearchValue(text: string) {
+  changeSearchValue(text: string, inWishlist: boolean = false) {
+    if (inWishlist) {
+      this.searchValueForWishlist = text
+      return
+    }
     this.searchValue = text
   }
 
-  setPlacesForSearch(places: GeneratedPlace[]) {
+  setPlacesForSearch(places: GeneratedPlace[], inFavourites: boolean = false) {
+    if (inFavourites) {
+      this.placesForFavouriteSearch = places
+      return
+    }
     this.placesForSearch = places
   }
 }
@@ -73,20 +83,43 @@ const places = new Places()
 
 reaction(
   () => places.searchValue,
-  () => {
-    if (places.searchValue.length === 0) {
+  value => {
+    if (value.length === 0) {
       places.setPlacesForSearch([])
       return
     }
 
     const filteredPlaces = places.places.filter(
       p =>
-        p.name.includes(places.searchValue) ||
-        p.description.includes(places.searchValue) ||
-        p.country.includes(places.searchValue),
+        p.name.toLocaleLowerCase().includes(value) ||
+        p.description.toLocaleLowerCase().includes(value) ||
+        p.country.toLocaleLowerCase().includes(value),
     )
 
     places.setPlacesForSearch(filteredPlaces)
+  },
+  {delay: 500},
+)
+
+reaction(
+  () => places.searchValueForWishlist,
+  value => {
+    const lowerCaseValue = value.toLocaleLowerCase()
+    if (lowerCaseValue.length === 0) {
+      places.setPlacesForSearch([], true)
+      return
+    }
+
+    const filteredPlaces = places.places
+      .filter(p => p.inFavourites)
+      .filter(
+        p =>
+          p.name.toLocaleLowerCase().includes(lowerCaseValue) ||
+          p.description.toLocaleLowerCase().includes(lowerCaseValue) ||
+          p.country.toLocaleLowerCase().includes(lowerCaseValue),
+      )
+
+    places.setPlacesForSearch(filteredPlaces, true)
   },
   {delay: 500},
 )

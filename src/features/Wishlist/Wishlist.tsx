@@ -5,12 +5,20 @@ import {SafeAreaView} from 'react-native-safe-area-context'
 import {Input, Package, ScreenTitle} from '@components'
 import store from '@store/RootStore'
 import {Colors} from '@utils'
+import {CrossIcon, LoupeIcon} from '../../../assets/icons/svg'
 
 type WishListProps = {}
 const WishList: React.FC<WishListProps> = observer(({}) => {
-  const {favouritePlaces, toggleFavouriteOnPlace} = store.places
-  const [searchValue, setSearchValue] = useState('')
-  const clearInput = () => setSearchValue('')
+  const {
+    searchValueForWishlist,
+    favouritePlaces,
+    toggleFavouriteOnPlace,
+    placesForFavouriteSearch,
+  } = store.places
+
+  const setSearchValue = (value: string) =>
+    store.places.changeSearchValue(value, true)
+
   return (
     <SafeAreaView style={styles.screenContainer} edges={['top']}>
       <ScreenTitle title="Your Wishlist" style={styles.screenTitle} />
@@ -18,13 +26,15 @@ const WishList: React.FC<WishListProps> = observer(({}) => {
         <Input
           label="Search"
           onChangeText={setSearchValue}
-          value={searchValue}
-          // rightIcon={searchValue.length ? <CrossIcon /> : <LoupeIcon />}
-          // onRightIconPress={searchValue.length ? clearInput : undefined}
+          value={searchValueForWishlist}
         />
       </View>
       <FlatList
-        data={favouritePlaces}
+        data={
+          placesForFavouriteSearch.length
+            ? placesForFavouriteSearch
+            : favouritePlaces
+        }
         keyExtractor={({name, location}) => name + location.latitude}
         renderItem={({item}) => (
           <Package

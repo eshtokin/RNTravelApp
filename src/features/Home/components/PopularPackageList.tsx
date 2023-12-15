@@ -26,7 +26,7 @@ const PopularPackagesList = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {gap: 24, marginTop: 30},
+  container: {gap: 24, marginTop: 10},
   scrollContainer: {paddingHorizontal: 30, paddingBottom: 24},
   scrollContentContainer: {gap: 24},
 })

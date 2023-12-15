@@ -12,8 +12,7 @@ import {BookingModalContainer} from '@features/BookingModal'
 
 const {Screen, Group, Navigator} = createNativeStackNavigator<RootStackProps>()
 
-type RootNavigationProps = {}
-const RootNavigation: React.FC<RootNavigationProps> = observer(({}) => {
+const RootNavigation: React.FC = observer(({}) => {
   return (
     <Navigator screenOptions={{headerShown: false}}>
       {store.isUserLogged() ? (

@@ -15,7 +15,6 @@ type InputProps = {
   label: string
   value: string
   error?: string
-  leftIcon?: ReactElement
   onChangeText: (text: string) => void
 } & TextInputProps
 const Input: React.FC<InputProps> = ({

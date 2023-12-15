@@ -1,5 +1,5 @@
 import React from 'react'
-import {FlatList, StyleSheet} from 'react-native'
+import {FlatList, LayoutAnimation, StyleSheet} from 'react-native'
 import {observer} from 'mobx-react-lite'
 import {Destination} from '@components'
 import TitleForSection from './TitleForSection'
@@ -8,15 +8,21 @@ import {useNavigation} from '@react-navigation/native'
 import {Screens} from '../../../navigation/types'
 
 const Places: React.FC = observer(() => {
+  LayoutAnimation.easeInEaseOut()
+
   const navigation = useNavigation()
-  const {placesForSelectedCategory, toggleFavouriteOnPlace, selectPlace} =
-    store.places
+  const {toggleFavouriteOnPlace, selectPlace, favouritePlaces} = store.places
+
   const onFavIconPress = (placeName: string) => () =>
     toggleFavouriteOnPlace(placeName)
 
   const onDestinationPress = (name: string) => {
     selectPlace(name)
     navigation.navigate(Screens.Product)
+  }
+
+  if (favouritePlaces.length === 0) {
+    return null
   }
 
   return (
@@ -26,7 +32,7 @@ const Places: React.FC = observer(() => {
         horizontal
         style={styles.scrollContainer}
         contentContainerStyle={styles.scrollContent}
-        data={placesForSelectedCategory}
+        data={favouritePlaces}
         keyExtractor={item => item.name}
         renderItem={({item, index}) => (
           <Destination
