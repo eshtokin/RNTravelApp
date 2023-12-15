@@ -22,7 +22,7 @@ const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {
     }
   }
 
-  const onSubmitHandler = () => store.user.setPassword('mockpassword')
+  const onSubmitHandler = () => {}
 
   const canPressSubmit = selectedCategory.length > 0
   return (

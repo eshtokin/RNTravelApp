@@ -13,7 +13,7 @@ import {CircleChecked} from '../../assets/icons/svg'
 
 type CategoryProps = {
   label: string
-  icon: ImageSourcePropType
+  icon?: ImageSourcePropType
   onPress: () => void
   active?: boolean
   type?: 'small' | 'large'
@@ -49,9 +49,11 @@ const Category: React.FC<CategoryProps> = ({
           {active && <CircleChecked />}
         </View>
       )}
-      <View style={s.iconContainer}>
-        <Image source={icon} style={s.icon} />
-      </View>
+      {icon && (
+        <View style={s.iconContainer}>
+          <Image source={icon} style={s.icon} />
+        </View>
+      )}
       <Text style={styles.label}>{label}</Text>
     </Pressable>
   )
@@ -78,8 +80,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: Colors.black[100],
     padding: 5,
-    paddingLeft: 10,
-    paddingRight: 20,
+    paddingHorizontal: 10,
+    height: 58,
+    minWidth: 60,
   },
   containerActive: {
     borderWidth: 2,

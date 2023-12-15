@@ -4,7 +4,6 @@ export class User {
   firstName = ''
   lastName = ''
   email = ''
-  password = ''
 
   constructor() {
     makeAutoObservable(this)
@@ -24,10 +23,6 @@ export class User {
 
   setEmail(email: string) {
     this.email = email
-  }
-
-  setPassword(password: string) {
-    this.password = password
   }
 }
 

@@ -38,15 +38,18 @@ export enum Categories {
   Fishing = 'Fishing',
 }
 
-export const MOCK_CATEGORIES: {name: Categories; image: ImageSourcePropType}[] =
-  [
-    {name: Categories.Forest, image: category_forest},
-    {name: Categories.Beach, image: category_beach},
-    {name: Categories.Mountain, image: category_mountins},
-    {name: Categories.Ocean, image: category_wave},
-    {name: Categories.Camping, image: category_camping},
-    {name: Categories.Fishing, image: category_fishing},
-  ]
+export const MOCK_CATEGORIES: {
+  name: Categories
+  image?: ImageSourcePropType
+}[] = [
+  {name: Categories.all},
+  {name: Categories.Forest, image: category_forest},
+  {name: Categories.Beach, image: category_beach},
+  {name: Categories.Mountain, image: category_mountins},
+  {name: Categories.Ocean, image: category_wave},
+  {name: Categories.Camping, image: category_camping},
+  {name: Categories.Fishing, image: category_fishing},
+]
 
 export type GeneratedPlace = {
   name: string

@@ -22,8 +22,7 @@ export class Store {
 
   isUserLogged(): boolean {
     const isUserHaveEmail = this.user.email.length > 3
-    const isUserHavePassword = this.user.password.length > 3
-    return isUserHaveEmail && isUserHavePassword
+    return isUserHaveEmail
   }
 }
 
