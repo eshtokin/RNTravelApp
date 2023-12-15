@@ -27,6 +27,7 @@ const LoginInputSection: React.FC<LoginInputSectionProps> = ({
         label="Password"
         value={values.password}
         onChangeText={onChangePassword}
+        autoComplete="email"
       />
       <View style={styles.checkboxWrapper}>
         <BouncyCheckbox

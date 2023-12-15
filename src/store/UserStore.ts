@@ -10,6 +10,7 @@ export class User {
 
     this.setEmail = this.setEmail.bind(this)
     this.setUserName = this.setUserName.bind(this)
+    this.resetUser = this.resetUser.bind(this)
   }
 
   setUserName({firstName, lastName}: {firstName?: string; lastName?: string}) {
@@ -23,6 +24,11 @@ export class User {
 
   setEmail(email: string) {
     this.email = email
+  }
+
+  resetUser() {
+    this.setUserName({firstName: '', lastName: ''})
+    this.setEmail('')
   }
 }
 

@@ -1,20 +1,25 @@
 import {ReactElement} from 'react'
-import {StyleSheet, View} from 'react-native'
+import {Pressable, StyleSheet, View} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {Text} from '@components'
 
 type ProfileElementProps = {
   label: string
   icon?: ReactElement
+  handler?: () => void
 }
-const ProfileElement: React.FC<ProfileElementProps> = ({label, icon}) => {
+const ProfileElement: React.FC<ProfileElementProps> = ({
+  label,
+  icon,
+  handler,
+}) => {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handler}>
       <Text font="headline" fontWeight={200}>
         {label}
       </Text>
       {icon}
-    </View>
+    </Pressable>
   )
 }
 

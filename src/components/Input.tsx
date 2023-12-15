@@ -58,6 +58,7 @@ const Input: React.FC<InputProps> = ({
         }}
         onGestureEvent={() => setIsInputActive(false)}
         secureTextEntry={isPasswordVisible}
+        autoCapitalize="none"
         {...props}
       />
       {secureTextEntry && (

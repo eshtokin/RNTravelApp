@@ -5,6 +5,7 @@ import {Colors} from '@utils'
 import {ProfileCard, ProfileElement} from './components'
 import {GlobalIcon, MessageIcon, ProfileIcon} from '../../../assets/icons/svg'
 import NotificationIcon from '../../../assets/icons/svg/NotificationIcon'
+import store from '@store/RootStore'
 
 const ProfileElementsTitle = [
   {label: 'Personal Information', icon: <ProfileIcon />},
@@ -17,13 +18,22 @@ const ProfileElementsTitle = [
 
 type ProfileProps = {}
 const Profile: React.FC<ProfileProps> = ({}) => {
+  const profileHandlers = {
+    Logout: () => store.user.resetUser(),
+  }
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <ScreenTitle title="Profile" />
         <ProfileCard />
         {ProfileElementsTitle.map(e => (
-          <ProfileElement key={e.label} label={e.label} icon={e.icon} />
+          <ProfileElement
+            key={e.label}
+            label={e.label}
+            icon={e.icon}
+            handler={profileHandlers['Logout']}
+          />
         ))}
       </ScrollView>
     </SafeAreaView>
