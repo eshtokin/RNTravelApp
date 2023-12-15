@@ -18,21 +18,25 @@ const ProfileElementsTitle = [
 
 type ProfileProps = {}
 const Profile: React.FC<ProfileProps> = ({}) => {
-  const profileHandlers = {
-    Logout: () => store.user.resetUser(),
+  const {firstName, resetUser} = store.user
+
+  const profileHandlers = (label: string) => {
+    if (label === 'Logout') {
+      return resetUser
+    }
   }
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <ScreenTitle title="Profile" />
-        <ProfileCard />
+        <ProfileCard firstName={firstName} />
         {ProfileElementsTitle.map(e => (
           <ProfileElement
             key={e.label}
             label={e.label}
             icon={e.icon}
-            handler={profileHandlers['Logout']}
+            handler={profileHandlers(e.label)}
           />
         ))}
       </ScrollView>

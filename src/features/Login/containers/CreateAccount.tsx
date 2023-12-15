@@ -21,8 +21,8 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
   const [currentStep, setCurrentStep] = React.useState(0)
 
   const [userFullName, setUserFullName] = useState({
-    firstName: 'oleksii',
-    lastName: 'yeshtokin',
+    firstName: '',
+    lastName: '',
   })
   const changeUserFullName =
     (field: keyof typeof userFullName) => (name: string) =>
@@ -31,9 +31,9 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
   const canSendFullName =
     userFullName.firstName.length > 1 && userFullName.lastName.length > 1
 
-  const [email, setEmail] = useState('eshtok@gmail.com')
+  const [email, setEmail] = useState('')
   const [shouldReceiveEmail, setShouldReceiveEmail] = useState(false)
-  const [password, setPassword] = useState('password')
+  const [password, setPassword] = useState('')
   const [otpCode, setOtpCode] = useState('')
   const [timer, setTimer] = useState(60)
 
@@ -42,11 +42,9 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
       case 0:
         store.user.setUserName(userFullName)
         break
-      case 1:
-        store.user.setEmail(email)
-        break
       case 4:
-        navigation.navigate(Screens.ChooseFavouritePlace)
+        store.user.setEmail(email)
+        // navigation.navigate(Screens.ChooseFavouritePlace)
         return
     }
     setCurrentStep(currentStep => currentStep + 1)

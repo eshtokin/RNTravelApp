@@ -3,14 +3,16 @@ import {Text} from '@components'
 import {Colors} from '@utils'
 import {avatar1} from './../../../../assets/images'
 
-type ProfileCardProps = {}
-const ProfileCard: React.FC<ProfileCardProps> = ({}) => {
+type ProfileCardProps = {
+  firstName: string
+}
+const ProfileCard: React.FC<ProfileCardProps> = ({firstName}) => {
   return (
     <View style={styles.container}>
       <Image source={avatar1} style={styles.image} />
       <View>
         <Text font="headline" fontWeight={400}>
-          Hello, Pristia
+          Hello, {firstName}
         </Text>
         <Text font="bodyText" fontWeight={100}>
           Semarang, Indonesia
