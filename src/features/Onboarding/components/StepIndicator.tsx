@@ -13,10 +13,10 @@ const LINE_WIDTH = 100
 
 type StepIndicatorProps = {
   currentStep: number
-  duration: number
+  stepDuration: number
 }
 const StepIndicator: React.FC<StepIndicatorProps> = ({
-  duration,
+  stepDuration,
   currentStep,
 }) => {
   const progress1 = useSharedValue(0)
@@ -45,22 +45,22 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({
   useEffect(() => {
     switch (currentStep) {
       case 0:
-        animateProgress(progress1, duration)
+        animateProgress(progress1, stepDuration)
         break
       case 1:
         if (progress1.value !== LINE_WIDTH) {
           finishProgressImediatelly(progress1)
         }
-        animateProgress(progress2, duration)
+        animateProgress(progress2, stepDuration)
         break
       case 2:
         if (progress2.value !== LINE_WIDTH) {
           finishProgressImediatelly(progress2)
         }
-        animateProgress(progress3, duration)
+        animateProgress(progress3, stepDuration)
         break
     }
-  }, [currentStep])
+  }, [currentStep, progress1, progress2, progress3, stepDuration])
 
   return (
     <View style={styles.container}>

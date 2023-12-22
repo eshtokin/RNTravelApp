@@ -1,4 +1,4 @@
-import {View} from 'react-native'
+import {StyleSheet, View} from 'react-native'
 import {CalendarIcon} from '../../../../assets/icons/svg'
 import TicketBorder from './TicketBorder'
 import {Text} from '@components'
@@ -22,7 +22,7 @@ const Ticket: React.FC<TicketProps> = ({item}) => {
       <Text font="headline" fontWeight={200} color="error" colorWeight={500}>
         ${price}
       </Text>
-      <View style={{flexDirection: 'row', alignItems: 'center', gap: 2}}>
+      <View style={styles.dateWrapper}>
         <CalendarIcon />
         <Text font="bodyText" fontWeight={100} colorWeight={400}>
           {startDate} - {endDate}
@@ -31,5 +31,13 @@ const Ticket: React.FC<TicketProps> = ({item}) => {
     </TicketBorder>
   )
 }
+
+const styles = StyleSheet.create({
+  dateWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+  },
+})
 
 export default Ticket

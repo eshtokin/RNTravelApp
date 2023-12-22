@@ -37,7 +37,7 @@ const TicketBorder: React.FC<TicketBorderProps> = ({
       />
       <View style={styles.positionForDashedLine}>
         <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
-          <Path d={`M2 0 V130`} stroke={color} strokeDasharray="5 5" />
+          <Path d={'M2 0 V130'} stroke={color} strokeDasharray="5 5" />
         </Svg>
       </View>
       {children}

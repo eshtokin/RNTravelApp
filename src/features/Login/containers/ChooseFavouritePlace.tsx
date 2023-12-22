@@ -4,7 +4,6 @@ import {Colors, Typography} from '@utils'
 import {Button, Category} from '@components'
 import {useState} from 'react'
 import {MOCK_CATEGORIES} from '@store/mockData/places'
-import store from '@store/RootStore'
 
 type ChooseFavouritePlaceProps = {}
 const ChooseFavouritePlace: React.FC<ChooseFavouritePlaceProps> = ({}) => {

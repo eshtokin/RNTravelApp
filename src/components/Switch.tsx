@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  Pressable,
-  StyleSheet,
-  Switch as RNSwitch,
-  View,
-  LayoutAnimation,
-} from 'react-native'
+import {Pressable, StyleSheet, View, LayoutAnimation} from 'react-native'
 import Colors from '../utils/Colors'
 
 type SwitchProps = {

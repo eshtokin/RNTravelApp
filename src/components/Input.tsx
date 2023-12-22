@@ -1,4 +1,4 @@
-import {ReactElement, useRef, useState} from 'react'
+import {useRef, useState} from 'react'
 import {
   LayoutAnimation,
   Pressable,
@@ -62,7 +62,7 @@ const Input: React.FC<InputProps> = ({
       />
       {secureTextEntry && (
         <Pressable
-          style={{position: 'absolute', top: 18, right: 20}}
+          style={styles.secureIconWrapper}
           onPress={() => setIsPasswordVisible(flag => !flag)}>
           {isPasswordVisible ? <SecureEye /> : <UnsecureEye />}
         </Pressable>
@@ -108,6 +108,11 @@ const styles = StyleSheet.create({
     borderColor: Colors.brand[500],
   },
   error: {marginLeft: 20, color: Colors.error[500], fontSize: 12},
+  secureIconWrapper: {
+    position: 'absolute',
+    top: 18,
+    right: 20,
+  },
 })
 
 export default Input

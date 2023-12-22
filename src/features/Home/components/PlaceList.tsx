@@ -34,7 +34,7 @@ const Places: React.FC = observer(() => {
         contentContainerStyle={styles.scrollContent}
         data={favouritePlaces}
         keyExtractor={item => item.name}
-        renderItem={({item, index}) => (
+        renderItem={({item}) => (
           <Destination
             key={item.name}
             item={item}

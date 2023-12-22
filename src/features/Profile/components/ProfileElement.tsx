@@ -1,5 +1,5 @@
 import {ReactElement} from 'react'
-import {Pressable, StyleSheet, View} from 'react-native'
+import {Pressable, StyleSheet} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {Text} from '@components'
 

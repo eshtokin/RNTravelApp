@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react'
+import {useCallback, useEffect, useRef, useState} from 'react'
 
 type UseOnboardingIntervalType = {
   stepDuration: number
@@ -14,14 +14,16 @@ function useOnboardingInterval({
   const interval = useRef<NodeJS.Timeout>()
   const [step, setStep] = useState(0)
 
-  const goToNextStep = () => setStep(step => step + 1)
+  const goToNextStep = () => setStep(s => s + 1)
 
-  const setOnboardingInterval = () => {
-    if (step >= numberOfSteps) return
+  const setOnboardingInterval = useCallback(() => {
+    if (step >= numberOfSteps) {
+      return
+    }
     interval.current = setInterval(() => {
-      setStep(step => step + 1)
+      setStep(s => s + 1)
     }, stepDuration)
-  }
+  }, [numberOfSteps, step, stepDuration])
 
   const clearOnboardingInterval = () => clearInterval(interval.current)
 
@@ -33,7 +35,7 @@ function useOnboardingInterval({
       clearOnboardingInterval()
       onFinishCallback && onFinishCallback()
     }
-  }, [step])
+  }, [numberOfSteps, onFinishCallback, setOnboardingInterval, step])
 
   return {
     step,

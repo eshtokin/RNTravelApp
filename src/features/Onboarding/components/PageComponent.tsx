@@ -4,7 +4,7 @@ import {
   ImageBackground,
   View,
   Text,
-  Dimensions,
+  StyleSheet,
 } from 'react-native'
 import {LogoWhite} from '../../../../assets/icons/svg'
 import {Colors, Typography, SCREEN_SIZE} from '@utils'
@@ -25,14 +25,14 @@ const PageComponent: React.FC<PageComponentProps> = ({
     <ImageBackground
       source={backgroundImage}
       resizeMode="stretch"
-      style={{
-        width,
-        height,
-        justifyContent: 'flex-end',
-        paddingHorizontal: 30,
-        paddingBottom: 30,
-      }}>
-      <View style={{gap: 30, marginBottom: 180}}>
+      style={[
+        {
+          width,
+          height,
+        },
+        styles.image,
+      ]}>
+      <View style={styles.content}>
         <LogoWhite />
         <Text style={{...Typography.headline[900], color: Colors.black[0]}}>
           {title}
@@ -45,4 +45,15 @@ const PageComponent: React.FC<PageComponentProps> = ({
   )
 }
 
+const styles = StyleSheet.create({
+  image: {
+    justifyContent: 'flex-end',
+    paddingHorizontal: 30,
+    paddingBottom: 30,
+  },
+  content: {
+    gap: 30,
+    marginBottom: 180,
+  },
+})
 export default PageComponent

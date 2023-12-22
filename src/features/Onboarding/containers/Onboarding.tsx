@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react'
+import {useCallback, useEffect, useRef} from 'react'
 import {SectionList, StatusBar, StyleSheet, View} from 'react-native'
 import {ONBOARDING_DATA} from '../onboarding_info'
 import Colors from '../../../utils/Colors'
@@ -29,20 +29,23 @@ const Onboarding: React.FC<OnboardingProps> = ({}) => {
     setOnboardingInterval()
   }
 
-  const scrollToNextView = (viewPosition: number) =>
-    listRef.current?.scrollToLocation({
-      itemIndex: 1,
-      sectionIndex: viewPosition,
-      animated: true,
-      viewOffset: 0,
-      viewPosition: 0,
-    })
+  const scrollToNextView = useCallback(
+    (viewPosition: number) =>
+      listRef.current?.scrollToLocation({
+        itemIndex: 1,
+        sectionIndex: viewPosition,
+        animated: true,
+        viewOffset: 0,
+        viewPosition: 0,
+      }),
+    [],
+  )
 
   useEffect(() => {
     if (step >= 0 && step <= numberOfSteps) {
       scrollToNextView(step)
     }
-  }, [step, scrollToNextView])
+  }, [step, scrollToNextView, numberOfSteps])
 
   const buttonLabel =
     step <= numberOfSteps

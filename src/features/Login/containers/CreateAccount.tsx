@@ -5,7 +5,6 @@ import {Button, Header} from '@components'
 import {useNavigation} from '@react-navigation/native'
 import store from '@store/RootStore'
 import {Colors, Typography} from '@utils'
-import {Screens} from '../../../navigation/types'
 import {
   CreateAccountEmail,
   CreateAccountName,
@@ -35,7 +34,7 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
   const [shouldReceiveEmail, setShouldReceiveEmail] = useState(false)
   const [password, setPassword] = useState('')
   const [otpCode, setOtpCode] = useState('')
-  const [timer, setTimer] = useState(60)
+  const [timer] = useState(60)
 
   const submitButtonHandler = () => {
     switch (currentStep) {
@@ -47,7 +46,7 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
         // navigation.navigate(Screens.ChooseFavouritePlace)
         return
     }
-    setCurrentStep(currentStep => currentStep + 1)
+    setCurrentStep(cs => cs + 1)
   }
 
   const onBackIconPress = () => {
@@ -55,7 +54,7 @@ const CreateAccount: React.FC<CreateAccountProps> = ({}) => {
       navigation.goBack()
       return
     }
-    setCurrentStep(currentStep => currentStep - 1)
+    setCurrentStep(cs => cs - 1)
   }
 
   const canSendEmail = email.length > 5

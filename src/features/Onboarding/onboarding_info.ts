@@ -1,8 +1,3 @@
-import {
-  DefaultSectionT,
-  ImageSourcePropType,
-  SectionListData,
-} from 'react-native'
 import {onboarding_1, onboarding_2, onboarding_3} from '../../../assets/images'
 
 export const ONBOARDING_DATA = [

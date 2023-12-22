@@ -66,7 +66,7 @@ const TabbarIcon: React.FC<TabbarIconProps> = memo(
         opacity.value = withTiming(0, {duration: DURATION})
         colorProgress.value = withTiming(0, {duration: DURATION})
       }
-    }, [active])
+    }, [active, colorProgress, width, opacity])
 
     const maxWidth = active ? lWidth + 13 + BASE_WIDTH : BASE_WIDTH
     return (

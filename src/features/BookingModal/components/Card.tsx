@@ -40,14 +40,14 @@ const Card: React.FC<CardProps> = () => {
       <Input
         label={'Card Number'}
         value={'465 6453 6453 354'}
-        onChangeText={function (text: string): void {
+        onChangeText={function (): void {
           throw new Error('Function not implemented.')
         }}
       />
       <Input
         label={'CVV'}
         value={''}
-        onChangeText={function (text: string): void {
+        onChangeText={function (): void {
           throw new Error('Function not implemented.')
         }}
       />

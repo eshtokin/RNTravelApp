@@ -1,4 +1,4 @@
-import React, {FC, JSXElementConstructor, ReactElement, useState} from 'react'
+import React, {FC, JSXElementConstructor, useState} from 'react'
 import {Pressable, StyleSheet, View} from 'react-native'
 import {
   FacebookIcon,

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {
   Image,
   ImageSourcePropType,
@@ -60,19 +60,19 @@ const Button: React.FC<ButtonProps> = ({
         styles[containerSize] as ViewStyle,
         styles[containerType] as ViewStyle,
         addStyles,
-        'pressed' === buttonState && (styles[pressedStyleKey] as ViewStyle),
+        buttonState === 'pressed' && (styles[pressedStyleKey] as ViewStyle),
         disabled && (styles[disabledStyleKey] as ViewStyle),
         icon === 'icon-only' && (containerSizeForIconOnly as ViewStyle),
       ]}>
-      {'icon-left' === icon && <View style={styles.iconSize} />}
-      {'icon-only' === icon ? (
+      {icon === 'icon-left' && <View style={styles.iconSize} />}
+      {icon === 'icon-only' ? (
         iconSource && <Image source={iconSource} style={styles.iconSize} />
       ) : (
         <Text style={[styles[labelSizeKey], styles[labelTypeKey]]}>
           {label}
         </Text>
       )}
-      {'icon-right' === icon && <View style={styles.iconSize} />}
+      {icon === 'icon-right' && <View style={styles.iconSize} />}
     </Pressable>
   )
 }

@@ -25,7 +25,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({navigation}) => {
   const progressStep = SCREEN_SIZE.width / numberOfActiveSteps
   useEffect(() => {
     progressWidth.value = withTiming(step * progressStep)
-  }, [step])
+  }, [progressStep, progressWidth, step])
 
   const onBackPress = () => navigation.canGoBack() && navigation.goBack()
   const onConfirmPress = () => {
@@ -44,11 +44,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({navigation}) => {
       {step === 5 && <BookingSuccessfully />}
       {step < 5 && (
         <Animated.View
-          style={{
-            backgroundColor: Colors.black[900],
-            height: 2,
-            width: progressWidth,
-          }}
+          style={[
+            {
+              width: progressWidth,
+            },
+            styles.progress,
+          ]}
         />
       )}
       <View
@@ -108,6 +109,10 @@ const styles = StyleSheet.create({
   },
   additionBtnStyles: {
     minWidth: 160,
+  },
+  progress: {
+    backgroundColor: Colors.black[900],
+    height: 2,
   },
 })
 

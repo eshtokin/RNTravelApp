@@ -12,35 +12,35 @@ const DetailBooking: React.FC<DetailBookingProps> = () => {
         <Input
           label={'Person Responsible'}
           value={'Pristia'}
-          onChangeText={function (text: string): void {
+          onChangeText={function (): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Contact Info'}
           value={'+62039120102012031'}
-          onChangeText={function (text: string): void {
+          onChangeText={function (): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Member'}
           value={'2 Member'}
-          onChangeText={function (text: string): void {
+          onChangeText={function (): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Type ID'}
           value={'ID Card'}
-          onChangeText={function (text: string): void {
+          onChangeText={function (): void {
             throw new Error('Function not implemented.')
           }}
         />
         <Input
           label={'Number ID'}
           value={'0210312013103003010303'}
-          onChangeText={function (text: string): void {
+          onChangeText={function (): void {
             throw new Error('Function not implemented.')
           }}
         />

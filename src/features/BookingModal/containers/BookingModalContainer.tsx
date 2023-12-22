@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import {RootStackProps, Screens} from '../../../navigation/types'
 import BookingModal from './BookingModal'

@@ -5,7 +5,7 @@ import Rate from './Rate'
 import Text from './Text'
 import {GeneratedPlace} from '../store/mockData/places'
 import Colors from '../utils/Colors'
-import {HeartIcon, Location} from '../../assets/icons/svg'
+import {Location} from '../../assets/icons/svg'
 import LinearGradient from 'react-native-linear-gradient'
 import Heart from './Heart'
 

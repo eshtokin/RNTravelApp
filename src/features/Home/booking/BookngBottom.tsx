@@ -9,18 +9,13 @@ const BookingBottom: React.FC<BookingBottomProps> = ({
 }) => {
   return (
     <View style={styles.bookingInformation}>
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
-        }}>
+      <View style={styles.priceWrapper}>
         <Text
           font="headline"
           fontWeight={300}
           color="error"
           colorWeight={500}
-          style={{marginRight: 5}}>
+          style={styles.price}>
           ${price}
         </Text>
         <Text font="headline" fontWeight={300} color="black" colorWeight={900}>
@@ -37,26 +32,26 @@ const BookingBottom: React.FC<BookingBottomProps> = ({
       />
     </View>
   )
-  return (
-    <View style={styles.container}>
-      <View style={styles.priceInfo}>
-        <Text font="headline" fontWeight={300} color="error" colorWeight={500}>
-          ${price}
-        </Text>
-        <Text font="bodyText" fontWeight={100} color="black" colorWeight={400}>
-          / Person
-        </Text>
-      </View>
-      <Button
-        size="large"
-        type="primary"
-        label={'Booking'}
-        onPress={onBookingPress}
-        icon={'label-only'}
-        addStyles={styles.minButtonSize}
-      />
-    </View>
-  )
+  // return (
+  //   <View style={styles.container}>
+  //     <View style={styles.priceInfo}>
+  //       <Text font="headline" fontWeight={300} color="error" colorWeight={500}>
+  //         ${price}
+  //       </Text>
+  //       <Text font="bodyText" fontWeight={100} color="black" colorWeight={400}>
+  //         / Person
+  //       </Text>
+  //     </View>
+  //     <Button
+  //       size="large"
+  //       type="primary"
+  //       label={'Booking'}
+  //       onPress={onBookingPress}
+  //       icon={'label-only'}
+  //       addStyles={styles.minButtonSize}
+  //     />
+  //   </View>
+  // )
 }
 
 const styles = StyleSheet.create({
@@ -83,6 +78,12 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: 30,
   },
+  priceWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  price: {marginRight: 5},
   bookingBtn: {
     minWidth: 175,
   },
